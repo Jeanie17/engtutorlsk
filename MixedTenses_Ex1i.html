@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Grammar Slides: Mixed Tenses | Present/Past Continuous, Perfect Tenses & Future</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #1e3a4d;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .slides-container {
+            max-width: 1300px;
+            width: 100%;
+            background: #ecf5fc;
+            border-radius: 55px 55px 35px 35px;
+            box-shadow: 0 25px 35px -10px #0b2a36;
+            overflow: hidden;
+            padding: 20px 30px 45px 30px;
+        }
+
+        /* header */
+        .header {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        h1 {
+            font-size: 2.6rem;
+            background: white;
+            display: inline-block;
+            padding: 12px 40px;
+            border-radius: 80px;
+            color: #1b5a6f;
+            border-left: 20px solid #e67e22;
+            box-shadow: 0 10px 0 #b9d0e5;
+        }
+        .tense-badge {
+            background: #2c6e9e;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* topic index */
+        .topic-index {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 35px;
+            justify-content: center;
+        }
+        .topic-btn {
+            background: #eef2f9;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 1px solid #cbddee;
+        }
+        .topic-btn i {
+            margin-right: 10px;
+        }
+        .topic-btn.active {
+            background: #2c6e9e;
+            color: white;
+            border-color: #ffb347;
+            box-shadow: 0 6px 0 #124257;
+            transform: translateY(-2px);
+        }
+
+        /* slide card (tense block) */
+        .tense-slide {
+            background: white;
+            border-radius: 55px;
+            padding: 25px 30px 20px 30px;
+            margin: 20px 0 25px;
+            box-shadow: 0 20px 0 #b6cbdf, 0 25px 30px -10px #1b3c4b;
+            display: none;
+            border: 3px solid white;
+        }
+        .tense-slide.active-slide {
+            display: block;
+        }
+        .slide-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: #1f6390;
+            color: white;
+            display: inline-block;
+            padding: 12px 45px;
+            border-radius: 70px;
+            margin-top: -48px;
+            margin-bottom: 25px;
+            border: 4px solid white;
+            box-shadow: 0 12px 0 #0a3a54;
+        }
+        .rule-box {
+            background: #eef4fc;
+            padding: 18px 25px;
+            border-radius: 45px;
+            margin-bottom: 30px;
+            border-left: 16px solid #f39c12;
+            font-size: 1.1rem;
+            box-shadow: inset 0 1px 6px #cbdbe0;
+        }
+        .exercises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 35px;
+        }
+        .exercise-card {
+            background: #fafdff;
+            border-radius: 35px;
+            padding: 18px 20px;
+            border: 2px solid #cde0f0;
+            box-shadow: 0 8px 0 #97adc7;
+        }
+        .question {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+            color: #023858;
+        }
+        .question span {
+            background: #184e6b;
+            color: white;
+            border-radius: 40px;
+            padding: 3px 15px;
+            margin-right: 12px;
+            font-size: 0.85rem;
+        }
+        .toggle-answer {
+            background: #3b7c9c;
+            border: none;
+            color: white;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin: 8px 0 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 0 #1b4b64;
+        }
+        .toggle-answer:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 #1b4b64;
+        }
+        .answer {
+            background: #e9f0f8;
+            border-radius: 30px;
+            padding: 12px 18px;
+            margin-top: 12px;
+            font-family: 'Courier New', monospace;
+            font-weight: 500;
+            color: #0a5c3e;
+            border-left: 10px solid #e67e22;
+            display: none;
+        }
+        .answer.show {
+            display: block;
+        }
+        .full-answers-panel {
+            background: #173f53;
+            border-radius: 45px;
+            padding: 25px;
+            margin-top: 25px;
+            border: 4px solid #ffb347;
+        }
+        .full-answers-panel h3 {
+            color: #ffe0a3;
+            font-size: 1.8rem;
+            border-bottom: 2px dashed #f1a23d;
+            margin-bottom: 15px;
+        }
+        .answers-content {
+            background: #225f7c;
+            border-radius: 40px;
+            padding: 22px;
+            color: #f5f9ff;
+            font-family: monospace;
+            font-size: 1rem;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            max-height: 380px;
+            overflow-y: auto;
+            border: 2px solid #ffcd7e;
+        }
+        .show-all-btn {
+            background: #f3ae42;
+            border: none;
+            font-size: 1.4rem;
+            font-weight: bold;
+            padding: 12px 35px;
+            border-radius: 60px;
+            margin: 15px 0 5px;
+            cursor: pointer;
+            box-shadow: 0 9px 0 #b46f1a;
+            color: #1f4a5e;
+            border: 2px solid white;
+        }
+        .show-all-btn:active {
+            transform: translateY(5px);
+            box-shadow: 0 4px 0 #b46f1a;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+        .nav-btn {
+            background: #356f8c;
+            border: none;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #1c475e;
+        }
+        .nav-btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #1c475e;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #4f7f9b;
+            font-weight: 500;
+        }
+        @media (max-width: 700px) {
+            .slide-title { font-size: 1.6rem; padding: 8px 25px; }
+            .exercises-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="slides-container">
+    <div class="header">
+        <h1><i class="fas fa-hourglass-half"></i> Mixed Tenses Mastery</h1>
+        <div class="tense-badge">📘 5 tenses · 12 exercises each · with answers</div>
+    </div>
+
+    <!-- tense selector buttons -->
+    <div class="topic-index" id="tenseTabs">
+        <button class="topic-btn" data-tense="presentCont"><i class="fas fa-running"></i> Present Continuous</button>
+        <button class="topic-btn" data-tense="pastCont"><i class="fas fa-history"></i> Past Continuous</button>
+        <button class="topic-btn" data-tense="presentPerfect"><i class="fas fa-check-double"></i> Present Perfect</button>
+        <button class="topic-btn" data-tense="pastPerfect"><i class="fas fa-clock"></i> Past Perfect</button>
+        <button class="topic-btn" data-tense="future"><i class="fas fa-calendar-alt"></i> Future Tenses</button>
+    </div>
+
+    <!-- ==================== SLIDE 1: PRESENT CONTINUOUS ==================== -->
+    <div class="tense-slide" id="presentContSlide">
+        <div class="slide-title">📖 Present Continuous (am/is/are + verb-ing)</div>
+        <div class="rule-box"><i class="fas fa-lightbulb"></i> <strong>用法:</strong> 正在进行的动作、现阶段临时情况、将来安排。<br> <strong>结构:</strong> subject + am/is/are + present participle (V-ing).</div>
+        <div class="exercises-grid" id="presentContGrid"></div>
+        <div class="full-answers-panel" id="presentContAnswers" style="display: none;">
+            <h3>🔑 Present Continuous — 全部答案</h3>
+            <div class="answers-content" id="presentContAnsText"></div>
+        </div>
+        <button class="show-all-btn" id="revealPresentCont"><i class="fas fa-eye"></i> SHOW ALL 12 ANSWERS</button>
+    </div>
+
+    <!-- ==================== SLIDE 2: PAST CONTINUOUS ==================== -->
+    <div class="tense-slide" id="pastContSlide">
+        <div class="slide-title">⏳ Past Continuous (was/were + verb-ing)</div>
+        <div class="rule-box"><i class="fas fa-lightbulb"></i> <strong>用法:</strong> 过去某一时刻或时段正在进行的动作；与一般过去时搭配表示 interrupted action.</div>
+        <div class="exercises-grid" id="pastContGrid"></div>
+        <div class="full-answers-panel" id="pastContAnswers" style="display: none;">
+            <h3>🔑 Past Continuous — 全部答案</h3>
+            <div class="answers-content" id="pastContAnsText"></div>
+        </div>
+        <button class="show-all-btn" id="revealPastCont"><i class="fas fa-eye"></i> SHOW ALL 12 ANSWERS</button>
+    </div>
+
+    <!-- ==================== SLIDE 3: PRESENT PERFECT ==================== -->
+    <div class="tense-slide" id="presentPerfectSlide">
+        <div class="slide-title">✨ Present Perfect (have/has + past participle)</div>
+        <div class="rule-box"><i class="fas fa-lightbulb"></i> <strong>用法:</strong> 过去经历、已完成对现在有影响、持续到现在的动作。常与 ever, never, since, for, already, yet 连用。</div>
+        <div class="exercises-grid" id="presentPerfectGrid"></div>
+        <div class="full-answers-panel" id="presentPerfectAnswers" style="display: none;">
+            <h3>🔑 Present Perfect — 全部答案</h3>
+            <div class="answers-content" id="presentPerfectAnsText"></div>
+        </div>
+        <button class="show-all-btn" id="revealPresentPerfect"><i class="fas fa-eye"></i> SHOW ALL 12 ANSWERS</button>
+    </div>
+
+    <!-- ==================== SLIDE 4: PAST PERFECT ==================== -->
+    <div class="tense-slide" id="pastPerfectSlide">
+        <div class="slide-title">🕰️ Past Perfect (had + past participle)</div>
+        <div class="rule-box"><i class="fas fa-lightbulb"></i> <strong>用法:</strong> 过去某个时间之前已经完成的动作（过去的过去）。常与 by the time, before, after 搭配。</div>
+        <div class="exercises-grid" id="pastPerfectGrid"></div>
+        <div class="full-answers-panel" id="pastPerfectAnswers" style="display: none;">
+            <h3>🔑 Past Perfect — 全部答案</h3>
+            <div class="answers-content" id="pastPerfectAnsText"></div>
+        </div>
+        <button class="show-all-btn" id="revealPastPerfect"><i class="fas fa-eye"></i> SHOW ALL 12 ANSWERS</button>
+    </div>
+
+    <!-- ==================== SLIDE 5: FUTURE TENSES (will, going to, present continuous future) ================= -->
+    <div class="tense-slide" id="futureSlide">
+        <div class="slide-title">🚀 Future Tenses (will / be going to / present continuous)</div>
+        <div class="rule-box"><i class="fas fa-lightbulb"></i> <strong>用法:</strong> will: 预测、自发决定；be going to: 计划、已有迹象；present continuous: 确定安排。</div>
+        <div class="exercises-grid" id="futureGrid"></div>
+        <div class="full-answers-panel" id="futureAnswers" style="display: none;">
+            <h3>🔑 Future Tenses — 全部答案</h3>
+            <div class="answers-content" id="futureAnsText"></div>
+        </div>
+        <button class="show-all-btn" id="revealFuture"><i class="fas fa-eye"></i> SHOW ALL 12 ANSWERS</button>
+    </div>
+
+    <!-- navigation buttons -->
+    <div class="nav-buttons">
+        <button class="nav-btn" id="prevBtn"><i class="fas fa-chevron-left"></i> Previous Tense</button>
+        <button class="nav-btn" id="nextBtn">Next Tense <i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="footer"><i class="fas fa-check-circle"></i> 每个时态 12 道练习 · 点击题目下方按钮单独看答案 · 底部显示全部答案</div>
+</div>
+
+<script>
+    // ---------- 生成每个时态的12个练习题 (带答案) ----------
+    // 1. Present Continuous
+    const presentContQ = [
+        { q: "She __________ (read) a book at the moment.", a: "is reading" },
+        { q: "They __________ (build) a new school this month.", a: "are building" },
+        { q: "I __________ (not / sleep) right now.", a: "am not sleeping" },
+        { q: "________ he ________ (work) on the project today?", a: "Is / working" },
+        { q: "The children __________ (play) in the garden now.", a: "are playing" },
+        { q: "We __________ (travel) to Japan next week (fixed plan).", a: "are travelling" },
+        { q: "Listen! Someone __________ (knock) on the door.", a: "is knocking" },
+        { q: "Why __________ you __________ (laugh) at me?", a: "are / laughing" },
+        { q: "The population of the city __________ (grow) rapidly.", a: "is growing" },
+        { q: "I __________ (study) for my IELTS exam these days.", a: "am studying" },
+        { q: "She usually wears trainers, but today she __________ (wear) heels.", a: "is wearing" },
+        { q: "The chef __________ (prepare) a special dish at the moment.", a: "is preparing" }
+    ];
+    // 2. Past Continuous
+    const pastContQ = [
+        { q: "Yesterday at 7 pm, I __________ (watch) a film.", a: "was watching" },
+        { q: "They __________ (argue) when I entered the room.", a: "were arguing" },
+        { q: "She __________ (not / sleep) when the phone rang.", a: "wasn't sleeping" },
+        { q: "What __________ you __________ (do) at 10 am yesterday?", a: "were / doing" },
+        { q: "While we __________ (walk) home, it started to rain.", a: "were walking" },
+        { q: "He __________ (drive) too fast when the accident happened.", a: "was driving" },
+        { q: "The children __________ (play) video games all evening.", a: "were playing" },
+        { q: "I __________ (cook) dinner while my husband __________ (clean) the house.", a: "was cooking / was cleaning" },
+        { q: "The sun __________ (shine) brightly when we left.", a: "was shining" },
+        { q: "They __________ (wait) for the bus when I saw them.", a: "were waiting" },
+        { q: "She __________ (practise) the piano at 8 o'clock last night.", a: "was practising" },
+        { q: "We __________ (not / travel) during the storm; we stayed home.", a: "were not travelling" }
+    ];
+    // 3. Present Perfect
+    const presentPerfectQ = [
+        { q: "I __________ (never / visit) London.", a: "have never visited" },
+        { q: "She __________ (already / finish) her homework.", a: "has already finished" },
+        { q: "__________ you ever __________ (eat) Thai food?", a: "Have / eaten" },
+        { q: "They __________ (live) in this city since 2018.", a: "have lived" },
+        { q: "He __________ (not / see) that movie yet.", a: "hasn't seen" },
+        { q: "We __________ (know) each other for ten years.", a: "have known" },
+        { q: "My father __________ (just / return) from a business trip.", a: "has just returned" },
+        { q: "How long __________ she __________ (work) at the company?", a: "has / worked" },
+        { q: "I __________ (lose) my keys. I can't find them anywhere.", a: "have lost" },
+        { q: "The team __________ (win) five championships so far.", a: "has won" },
+        { q: "__________ you __________ (book) the tickets yet?", a: "Have / booked" },
+        { q: "She __________ (write) three books since 2020.", a: "has written" }
+    ];
+    // 4. Past Perfect
+    const pastPerfectQ = [
+        { q: "When I arrived, the meeting __________ (already / start).", a: "had already started" },
+        { q: "She realized she __________ (leave) her purse at home.", a: "had left" },
+        { q: "After they __________ (eat) lunch, they went for a walk.", a: "had eaten" },
+        { q: "By the time we got to the cinema, the film __________ (begin).", a: "had begun" },
+        { q: "He __________ (never / see) such a beautiful sunset before.", a: "had never seen" },
+        { q: "The train __________ (leave) before I reached the station.", a: "had left" },
+        { q: "She told me that she __________ (finish) the report.", a: "had finished" },
+        { q: "I was tired because I __________ (work) all day.", a: "had worked" },
+        { q: "They __________ (live) in that house for 10 years before moving.", a: "had lived" },
+        { q: "The garden was dry; it __________ (not / rain) for weeks.", a: "hadn't rained" },
+        { q: "When she arrived, we __________ (already / eat) dinner.", a: "had already eaten" },
+        { q: "He knew the city well because he __________ (visit) it several times.", a: "had visited" }
+    ];
+    // 5. Future (will, going to, present continuous)
+    const futureQ = [
+        { q: "I think it __________ (rain) tomorrow.", a: "will rain" },
+        { q: "Look at those clouds! It __________ (snow).", a: "is going to snow" },
+        { q: "We __________ (meet) our friends at 7 pm (arranged).", a: "are meeting" },
+        { q: "Don't worry, I __________ (help) you with the luggage.", a: "will help" },
+        { q: "She __________ (start) her new job next Monday (schedule).", a: "is starting" },
+        { q: "The train __________ (arrive) at 9:30 according to timetable.", a: "arrives" }, // 一般现在表将来
+        { q: "They __________ (build) a new bridge; they have already planned it.", a: "are going to build" },
+        { q: "I promise I __________ (not / be) late.", a: "will not be" },
+        { q: "What __________ you __________ (do) this weekend? (plans)", a: "are / going to do" },
+        { q: "By this time next year, she __________ (graduate).", a: "will graduate" },
+        { q: "The shop __________ (close) in ten minutes (scheduled).", a: "closes" },
+        { q: "Watch out! You __________ (fall) off the ladder.", a: "are going to fall" }
+    ];
+
+    // 渲染题目网格 (带独立答案按钮)
+    function renderGrid(containerId, questions) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = '';
+        questions.forEach((item, idx) => {
+            const card = document.createElement('div');
+            card.className = 'exercise-card';
+            card.innerHTML = `
+                <div class="question"><span>Q${idx+1}</span> ${item.q}</div>
+                <button class="toggle-answer" data-idx="${idx}"><i class="far fa-eye"></i> reveal answer</button>
+                <div class="answer" id="ans-${containerId}-${idx}">${item.a}</div>
+            `;
+            container.appendChild(card);
+        });
+        // 绑定每个按钮事件
+        document.querySelectorAll(`#${containerId} .toggle-answer`).forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const idx = btn.getAttribute('data-idx');
+                const ansDiv = document.getElementById(`ans-${containerId}-${idx}`);
+                if (ansDiv) {
+                    ansDiv.classList.toggle('show');
+                    btn.innerHTML = ansDiv.classList.contains('show') ? '<i class="far fa-eye-slash"></i> hide answer' : '<i class="far fa-eye"></i> reveal answer';
+                }
+            });
+        });
+    }
+
+    renderGrid('presentContGrid', presentContQ);
+    renderGrid('pastContGrid', pastContQ);
+    renderGrid('presentPerfectGrid', presentPerfectQ);
+    renderGrid('pastPerfectGrid', pastPerfectQ);
+    renderGrid('futureGrid', futureQ);
+
+    // 生成完整答案文本
+    function makeFullAnswer(questions) {
+        return questions.map((item, idx) => `Q${idx+1}. ${item.q}  →  ${item.a}`).join('\n');
+    }
+
+    // 设置 "show all answers" 按钮逻辑
+    function setupReveal(btnId, panelId, textId, questions) {
+        const btn = document.getElementById(btnId);
+        const panel = document.getElementById(panelId);
+        const textDiv = document.getElementById(textId);
+        btn.addEventListener('click', () => {
+            if (panel.style.display === 'none' || panel.style.display === '') {
+                textDiv.innerText = makeFullAnswer(questions);
+                panel.style.display = 'block';
+                btn.innerHTML = '<i class="fas fa-eye-slash"></i> HIDE ALL ANSWERS';
+            } else {
+                panel.style.display = 'none';
+                btn.innerHTML = '<i class="fas fa-eye"></i> SHOW ALL 12 ANSWERS';
+            }
+        });
+    }
+
+    setupReveal('revealPresentCont', 'presentContAnswers', 'presentContAnsText', presentContQ);
+    setupReveal('revealPastCont', 'pastContAnswers', 'pastContAnsText', pastContQ);
+    setupReveal('revealPresentPerfect', 'presentPerfectAnswers', 'presentPerfectAnsText', presentPerfectQ);
+    setupReveal('revealPastPerfect', 'pastPerfectAnswers', 'pastPerfectAnsText', pastPerfectQ);
+    setupReveal('revealFuture', 'futureAnswers', 'futureAnsText', futureQ);
+
+    // ---------- 幻灯片切换逻辑 ----------
+    const tensesOrder = ['presentCont', 'pastCont', 'presentPerfect', 'pastPerfect', 'future'];
+    let currentIndex = 0;
+
+    function showSlide(index) {
+        // 隐藏所有幻灯片
+        document.querySelectorAll('.tense-slide').forEach(slide => slide.classList.remove('active-slide'));
+        const activeId = tensesOrder[index] + 'Slide';
+        document.getElementById(activeId).classList.add('active-slide');
+        // 更新按钮高亮
+        document.querySelectorAll('.topic-btn').forEach((btn, i) => {
+            if (btn.dataset.tense === tensesOrder[index]) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+        currentIndex = index;
+    }
+
+    document.querySelectorAll('.topic-btn').forEach((btn, idx) => {
+        btn.addEventListener('click', (e) => {
+            const tense = btn.dataset.tense;
+            const newIndex = tensesOrder.indexOf(tense);
+            if (newIndex !== -1) showSlide(newIndex);
+        });
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        let newIdx = currentIndex - 1;
+        if (newIdx < 0) newIdx = tensesOrder.length - 1;
+        showSlide(newIdx);
+    });
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        let newIdx = currentIndex + 1;
+        if (newIdx >= tensesOrder.length) newIdx = 0;
+        showSlide(newIdx);
+    });
+
+    // 默认显示第一个 (present continuous)
+    showSlide(0);
+</script>
+</body>
+</html>

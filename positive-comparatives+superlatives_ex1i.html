@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Grammar Slides: Adjectives | Positive, Comparative, Superlative | 50 Exercises</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #1f5e6e;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .slides-container {
+            max-width: 1400px;
+            width: 100%;
+            background: #f1f8fe;
+            border-radius: 60px 60px 35px 35px;
+            box-shadow: 0 28px 40px -12px #0e3b48;
+            overflow: hidden;
+            padding: 20px 30px 45px 30px;
+        }
+
+        /* header */
+        .header {
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+        h1 {
+            font-size: 2.4rem;
+            background: white;
+            display: inline-block;
+            padding: 12px 38px;
+            border-radius: 70px;
+            color: #1a5c72;
+            border-left: 18px solid #e67e22;
+            box-shadow: 0 8px 0 #c3d8ec;
+        }
+        .badge {
+            background: #2c6e9e;
+            color: white;
+            padding: 8px 28px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* topic tabs */
+        .topic-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        .tab-btn {
+            background: #eef2f9;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 60px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+            border: 1px solid #cbdef0;
+        }
+        .tab-btn i {
+            margin-right: 10px;
+        }
+        .tab-btn.active {
+            background: #2c6e9e;
+            color: white;
+            border-color: #ffb347;
+            box-shadow: 0 6px 0 #124257;
+            transform: translateY(-2px);
+        }
+
+        /* slide card */
+        .grammar-slide {
+            background: white;
+            border-radius: 55px;
+            padding: 25px 30px 20px 30px;
+            margin: 15px 0 20px;
+            box-shadow: 0 18px 0 #b3c8df, 0 20px 28px -10px #1a4157;
+            display: none;
+            border: 3px solid white;
+        }
+        .grammar-slide.active-slide {
+            display: block;
+        }
+        .slide-title {
+            font-size: 2rem;
+            font-weight: 800;
+            background: #1f6390;
+            color: white;
+            display: inline-block;
+            padding: 10px 42px;
+            border-radius: 70px;
+            margin-top: -48px;
+            margin-bottom: 25px;
+            border: 4px solid white;
+            box-shadow: 0 10px 0 #0a3a54;
+        }
+        .rule-box {
+            background: #eef4fc;
+            padding: 20px 28px;
+            border-radius: 45px;
+            margin-bottom: 30px;
+            border-left: 16px solid #f39c12;
+            font-size: 1.05rem;
+            line-height: 1.5;
+            box-shadow: inset 0 1px 6px #cddeed;
+        }
+        .rule-box i {
+            margin-right: 12px;
+            color: #e67e22;
+        }
+        .rule-highlight {
+            background: #fcf8e7;
+            border-radius: 28px;
+            padding: 12px 20px;
+            margin-top: 12px;
+        }
+        .exercises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+            margin-bottom: 35px;
+        }
+        .exercise-card {
+            background: #fafeff;
+            border-radius: 35px;
+            padding: 18px 20px;
+            border: 2px solid #cde0f0;
+            box-shadow: 0 6px 0 #97adc7;
+            transition: 0.1s;
+        }
+        .question {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+            color: #023858;
+        }
+        .question span {
+            background: #184e6b;
+            color: white;
+            border-radius: 40px;
+            padding: 3px 15px;
+            margin-right: 12px;
+            font-size: 0.85rem;
+        }
+        .toggle-answer {
+            background: #3b7c9c;
+            border: none;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin: 8px 0 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 0 #1b4b64;
+        }
+        .toggle-answer:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 #1b4b64;
+        }
+        .answer {
+            background: #e9f0f8;
+            border-radius: 30px;
+            padding: 12px 18px;
+            margin-top: 12px;
+            font-family: 'Courier New', monospace;
+            font-weight: 500;
+            color: #0a5c3e;
+            border-left: 10px solid #e67e22;
+            display: none;
+        }
+        .answer.show {
+            display: block;
+        }
+        .full-answers-panel {
+            background: #173f53;
+            border-radius: 45px;
+            padding: 25px;
+            margin-top: 25px;
+            border: 4px solid #ffb347;
+        }
+        .full-answers-panel h3 {
+            color: #ffe0a3;
+            font-size: 1.8rem;
+            border-bottom: 2px dashed #f1a23d;
+            margin-bottom: 15px;
+        }
+        .answers-content {
+            background: #225f7c;
+            border-radius: 40px;
+            padding: 22px;
+            color: #f5f9ff;
+            font-family: monospace;
+            font-size: 1rem;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            max-height: 450px;
+            overflow-y: auto;
+            border: 2px solid #ffcd7e;
+        }
+        .show-all-btn {
+            background: #f3ae42;
+            border: none;
+            font-size: 1.4rem;
+            font-weight: bold;
+            padding: 12px 35px;
+            border-radius: 60px;
+            margin: 10px 0 5px;
+            cursor: pointer;
+            box-shadow: 0 9px 0 #b46f1a;
+            color: #1f4a5e;
+            border: 2px solid white;
+        }
+        .show-all-btn:active {
+            transform: translateY(5px);
+            box-shadow: 0 4px 0 #b46f1a;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        .nav-btn {
+            background: #356f8c;
+            border: none;
+            color: white;
+            padding: 10px 32px;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #1c475e;
+        }
+        .nav-btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #1c475e;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #4f7f9b;
+            font-weight: 500;
+        }
+        @media (max-width: 750px) {
+            .slide-title { font-size: 1.6rem; padding: 8px 28px; }
+            .exercises-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="slides-container">
+    <div class="header">
+        <h1><i class="fas fa-chart-line"></i> Adjectives: Positive, Comparative, Superlative</h1>
+        <div class="badge">📝 50 exercises · full answers</div>
+    </div>
+
+    <!-- tabs for three sections -->
+    <div class="topic-tabs" id="adjTabs">
+        <button class="tab-btn active" data-slide="positive"><i class="fas fa-star"></i> Positive (Primary)</button>
+        <button class="tab-btn" data-slide="comparative"><i class="fas fa-balance-scale"></i> Comparative</button>
+        <button class="tab-btn" data-slide="superlative"><i class="fas fa-crown"></i> Superlative</button>
+    </div>
+
+    <!-- ==================== SLIDE 1: POSITIVE (PRIMARY) ADJECTIVES ==================== -->
+    <div class="grammar-slide active-slide" id="positiveSlide">
+        <div class="slide-title">📘 Positive / Primary Adjectives</div>
+        <div class="rule-box">
+            <i class="fas fa-lightbulb"></i> <strong>What are positive adjectives?</strong><br>
+            The base form of an adjective, used to describe a quality without comparison.<br>
+            <strong>Examples:</strong> tall, beautiful, expensive, intelligent, fast, good.<br>
+            <div class="rule-highlight">✨ Use: "The car is fast." / "She is kind." / "This is an interesting book."</div>
+        </div>
+        <div class="exercises-grid" id="positiveGrid"></div>
+        <div class="full-answers-panel" id="positiveAnswers" style="display: none;">
+            <h3>🔑 Positive Adjectives — 全部答案 (20 exercises)</h3>
+            <div class="answers-content" id="positiveAnsText"></div>
+        </div>
+        <button class="show-all-btn" id="revealPositive"><i class="fas fa-eye"></i> SHOW ALL 20 ANSWERS</button>
+    </div>
+
+    <!-- ==================== SLIDE 2: COMPARATIVE ADJECTIVES ==================== -->
+    <div class="grammar-slide" id="comparativeSlide">
+        <div class="slide-title">⚖️ Comparative Adjectives</div>
+        <div class="rule-box">
+            <i class="fas fa-lightbulb"></i> <strong>Formation:</strong><br>
+            • Short adjectives: add <strong>-er</strong> (tall → taller)<br>
+            • Adjectives ending in -y: change y → i + er (happy → happier)<br>
+            • Long adjectives (2+ syllables): <strong>more + adjective</strong> (beautiful → more beautiful)<br>
+            • Irregular: good → better, bad → worse, far → farther/further<br>
+            • Use <strong>than</strong> for comparison: "She is taller than her brother."<br>
+            • "as + positive + as" for equality: "He is as fast as me."
+        </div>
+        <div class="exercises-grid" id="comparativeGrid"></div>
+        <div class="full-answers-panel" id="comparativeAnswers" style="display: none;">
+            <h3>🔑 Comparative Adjectives — 全部答案 (15 exercises)</h3>
+            <div class="answers-content" id="comparativeAnsText"></div>
+        </div>
+        <button class="show-all-btn" id="revealComparative"><i class="fas fa-eye"></i> SHOW ALL 15 ANSWERS</button>
+    </div>
+
+    <!-- ==================== SLIDE 3: SUPERLATIVE ADJECTIVES ==================== -->
+    <div class="grammar-slide" id="superlativeSlide">
+        <div class="slide-title">👑 Superlative Adjectives</div>
+        <div class="rule-box">
+            <i class="fas fa-lightbulb"></i> <strong>Formation:</strong><br>
+            • Short adjectives: add <strong>-est</strong> (tall → tallest)<br>
+            • -y adjectives: change y → i + est (happy → happiest)<br>
+            • Long adjectives: <strong>most + adjective</strong> (beautiful → most beautiful)<br>
+            • Irregular: good → best, bad → worst, far → farthest/furthest<br>
+            • Use <strong>the</strong> before superlative: "Mount Everest is the highest mountain."<br>
+            • Often followed by "in/of": "She is the smartest in the class."
+        </div>
+        <div class="exercises-grid" id="superlativeGrid"></div>
+        <div class="full-answers-panel" id="superlativeAnswers" style="display: none;">
+            <h3>🔑 Superlative Adjectives — 全部答案 (15 exercises)</h3>
+            <div class="answers-content" id="superlativeAnsText"></div>
+        </div>
+        <button class="show-all-btn" id="revealSuperlative"><i class="fas fa-eye"></i> SHOW ALL 15 ANSWERS</button>
+    </div>
+
+    <!-- navigation buttons -->
+    <div class="nav-buttons">
+        <button class="nav-btn" id="prevSlideBtn"><i class="fas fa-chevron-left"></i> Previous</button>
+        <button class="nav-btn" id="nextSlideBtn">Next <i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="footer"><i class="fas fa-check-circle"></i> 共50道练习 (Positive 20题 + Comparative 15题 + Superlative 15题) · 点击题目下方按钮单独显示答案 · 底部显示全部答案</div>
+</div>
+
+<script>
+    // ---------- POSITIVE ADJECTIVES (20 questions) ----------
+    const positiveQuestions = [
+        { q: "The weather today is __________ (sun) and warm.", a: "sunny" },
+        { q: "She is a very __________ (intelligence) student.", a: "intelligent" },
+        { q: "This coffee tastes __________ (bitter).", a: "bitter" },
+        { q: "He has a __________ (friendly) smile.", a: "friendly" },
+        { q: "The movie was __________ (excite) from start to finish.", a: "exciting" },
+        { q: "My grandfather is __________ (health) for his age.", a: "healthy" },
+        { q: "It's a __________ (danger) road at night.", a: "dangerous" },
+        { q: "She wore a __________ (beauty) dress to the party.", a: "beautiful" },
+        { q: "The exam was __________ (difficulty) but I passed.", a: "difficult" },
+        { q: "He is an __________ (honesty) person.", a: "honest" },
+        { q: "This is a __________ (peace) place to live.", a: "peaceful" },
+        { q: "The children were __________ (noise) this morning.", a: "noisy" },
+        { q: "She gave me a __________ (help) advice.", a: "helpful" },
+        { q: "The mountain view is __________ (breath) taking.", a: "breathtaking" },
+        { q: "He is a __________ (rely) friend.", a: "reliable" },
+        { q: "This soup tastes __________ (salt).", a: "salty" },
+        { q: "The journey was __________ (comfort).", a: "comfortable" },
+        { q: "She has a __________ (cheer) personality.", a: "cheerful" },
+        { q: "The elephant is a __________ (power) animal.", a: "powerful" },
+        { q: "His explanation was __________ (clear) and concise.", a: "clear" }
+    ];
+
+    // ---------- COMPARATIVE ADJECTIVES (15 questions) ----------
+    const comparativeQuestions = [
+        { q: "This road is __________ (narrow) than the highway.", a: "narrower" },
+        { q: "She is __________ (happy) now than she was before.", a: "happier" },
+        { q: "Your house is __________ (beautiful) than mine.", a: "more beautiful" },
+        { q: "This exercise is __________ (easy) than I expected.", a: "easier" },
+        { q: "He runs __________ (fast) than his brother.", a: "faster" },
+        { q: "My phone is __________ (expensive) than yours.", a: "more expensive" },
+        { q: "The weather today is __________ (bad) than yesterday.", a: "worse" },
+        { q: "She speaks English __________ (fluent) than me.", a: "more fluently (or more fluent)" },
+        { q: "This suitcase is __________ (heavy) than that one.", a: "heavier" },
+        { q: "Living in the city is __________ (stressful) than in the countryside.", a: "more stressful" },
+        { q: "His new car is __________ (fast) than his old one.", a: "faster" },
+        { q: "This book is __________ (interesting) than the last one.", a: "more interesting" },
+        { q: "The situation is becoming __________ (bad) every day.", a: "worse" },
+        { q: "My sister is __________ (young) than me.", a: "younger" },
+        { q: "Traveling by train is __________ (comfortable) than by bus.", a: "more comfortable" }
+    ];
+
+    // ---------- SUPERLATIVE ADJECTIVES (15 questions) ----------
+    const superlativeQuestions = [
+        { q: "Mount Everest is __________ (high) mountain in the world.", a: "the highest" },
+        { q: "She is __________ (intelligent) student in the class.", a: "the most intelligent" },
+        { q: "This is __________ (good) pizza I've ever tasted.", a: "the best" },
+        { q: "Yesterday was __________ (hot) day of the year.", a: "the hottest" },
+        { q: "He is __________ (funny) person I know.", a: "the funniest" },
+        { q: "This is __________ (beautiful) beach in the region.", a: "the most beautiful" },
+        { q: "She gave me __________ (helpful) advice.", a: "the most helpful" },
+        { q: "That was __________ (bad) movie I have ever seen.", a: "the worst" },
+        { q: "He is __________ (rich) man in the town.", a: "the richest" },
+        { q: "This is __________ (difficult) question on the test.", a: "the most difficult" },
+        { q: "My grandmother is __________ (kind) person in our family.", a: "the kindest" },
+        { q: "This is __________ (exciting) adventure of my life.", a: "the most exciting" },
+        { q: "Who is __________ (old) person in your family?", a: "the oldest" },
+        { q: "That's __________ (crazy) idea I've ever heard.", a: "the craziest" },
+        { q: "She is __________ (talented) singer I've ever seen.", a: "the most talented" }
+    ];
+
+    // Render grid function
+    function renderGrid(containerId, questions) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        container.innerHTML = '';
+        questions.forEach((item, idx) => {
+            const card = document.createElement('div');
+            card.className = 'exercise-card';
+            card.innerHTML = `
+                <div class="question"><span>Q${idx+1}</span> ${item.q}</div>
+                <button class="toggle-answer" data-idx="${idx}"><i class="far fa-eye"></i> reveal answer</button>
+                <div class="answer" id="ans-${containerId}-${idx}">${item.a}</div>
+            `;
+            container.appendChild(card);
+        });
+        // attach event listeners to toggle buttons
+        document.querySelectorAll(`#${containerId} .toggle-answer`).forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const idx = btn.getAttribute('data-idx');
+                const ansDiv = document.getElementById(`ans-${containerId}-${idx}`);
+                if (ansDiv) {
+                    ansDiv.classList.toggle('show');
+                    btn.innerHTML = ansDiv.classList.contains('show') ? '<i class="far fa-eye-slash"></i> hide answer' : '<i class="far fa-eye"></i> reveal answer';
+                }
+            });
+        });
+    }
+
+    renderGrid('positiveGrid', positiveQuestions);
+    renderGrid('comparativeGrid', comparativeQuestions);
+    renderGrid('superlativeGrid', superlativeQuestions);
+
+    // Helper: full answer string
+    function makeAnswerString(questions) {
+        return questions.map((item, idx) => `Q${idx+1}. ${item.q}  →  ${item.a}`).join('\n');
+    }
+
+    // Setup reveal all answers buttons
+    function setupReveal(btnId, panelId, textId, questions) {
+        const btn = document.getElementById(btnId);
+        const panel = document.getElementById(panelId);
+        const textDiv = document.getElementById(textId);
+        if (!btn || !panel || !textDiv) return;
+        btn.addEventListener('click', () => {
+            if (panel.style.display === 'none' || panel.style.display === '') {
+                textDiv.innerText = makeAnswerString(questions);
+                panel.style.display = 'block';
+                btn.innerHTML = '<i class="fas fa-eye-slash"></i> HIDE ALL ANSWERS';
+            } else {
+                panel.style.display = 'none';
+                btn.innerHTML = '<i class="fas fa-eye"></i> SHOW ALL ANSWERS';
+            }
+        });
+    }
+
+    setupReveal('revealPositive', 'positiveAnswers', 'positiveAnsText', positiveQuestions);
+    setupReveal('revealComparative', 'comparativeAnswers', 'comparativeAnsText', comparativeQuestions);
+    setupReveal('revealSuperlative', 'superlativeAnswers', 'superlativeAnsText', superlativeQuestions);
+
+    // ---------- SLIDE TOGGLE (Positive / Comparative / Superlative) ----------
+    const positiveSlide = document.getElementById('positiveSlide');
+    const comparativeSlide = document.getElementById('comparativeSlide');
+    const superlativeSlide = document.getElementById('superlativeSlide');
+    const positiveTab = document.querySelector('[data-slide="positive"]');
+    const comparativeTab = document.querySelector('[data-slide="comparative"]');
+    const superlativeTab = document.querySelector('[data-slide="superlative"]');
+    const prevBtn = document.getElementById('prevSlideBtn');
+    const nextBtn = document.getElementById('nextSlideBtn');
+
+    function showSlide(slideId) {
+        positiveSlide.classList.remove('active-slide');
+        comparativeSlide.classList.remove('active-slide');
+        superlativeSlide.classList.remove('active-slide');
+        positiveTab.classList.remove('active');
+        comparativeTab.classList.remove('active');
+        superlativeTab.classList.remove('active');
+
+        if (slideId === 'positive') {
+            positiveSlide.classList.add('active-slide');
+            positiveTab.classList.add('active');
+        } else if (slideId === 'comparative') {
+            comparativeSlide.classList.add('active-slide');
+            comparativeTab.classList.add('active');
+        } else if (slideId === 'superlative') {
+            superlativeSlide.classList.add('active-slide');
+            superlativeTab.classList.add('active');
+        }
+    }
+
+    positiveTab.addEventListener('click', () => showSlide('positive'));
+    comparativeTab.addEventListener('click', () => showSlide('comparative'));
+    superlativeTab.addEventListener('click', () => showSlide('superlative'));
+
+    let currentOrder = ['positive', 'comparative', 'superlative'];
+    let currentIdx = 0;
+
+    function getCurrentSlideId() {
+        if (positiveSlide.classList.contains('active-slide')) return 'positive';
+        if (comparativeSlide.classList.contains('active-slide')) return 'comparative';
+        return 'superlative';
+    }
+
+    prevBtn.addEventListener('click', () => {
+        let curr = getCurrentSlideId();
+        let idx = currentOrder.indexOf(curr);
+        let newIdx = (idx - 1 + 3) % 3;
+        showSlide(currentOrder[newIdx]);
+    });
+    nextBtn.addEventListener('click', () => {
+        let curr = getCurrentSlideId();
+        let idx = currentOrder.indexOf(curr);
+        let newIdx = (idx + 1) % 3;
+        showSlide(currentOrder[newIdx]);
+    });
+
+    // initial state
+    showSlide('positive');
+</script>
+</body>
+</html>

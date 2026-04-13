@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Grammar Slides: Direct Speech & Reported Speech | 30 Exercises with Answers</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #1a4b6e;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .slides-container {
+            max-width: 1300px;
+            width: 100%;
+            background: #f0f7fe;
+            border-radius: 55px 55px 35px 35px;
+            box-shadow: 0 25px 40px -12px #0a2c3c;
+            overflow: hidden;
+            padding: 20px 30px 45px 30px;
+        }
+
+        /* header */
+        .header {
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+        h1 {
+            font-size: 2.4rem;
+            background: white;
+            display: inline-block;
+            padding: 10px 35px;
+            border-radius: 70px;
+            color: #1b5a6f;
+            border-left: 18px solid #e67e22;
+            box-shadow: 0 8px 0 #c3d8ec;
+        }
+        .badge {
+            background: #2c6e9e;
+            color: white;
+            padding: 8px 28px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* topic tabs */
+        .topic-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        .tab-btn {
+            background: #eef2f9;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 1px solid #cbdef0;
+        }
+        .tab-btn i {
+            margin-right: 10px;
+        }
+        .tab-btn.active {
+            background: #2c6e9e;
+            color: white;
+            border-color: #ffb347;
+            box-shadow: 0 6px 0 #124257;
+            transform: translateY(-2px);
+        }
+
+        /* slide cards */
+        .grammar-slide {
+            background: white;
+            border-radius: 55px;
+            padding: 25px 30px 20px 30px;
+            margin: 15px 0 20px;
+            box-shadow: 0 18px 0 #b3c8df, 0 20px 28px -10px #1a4157;
+            display: none;
+            border: 3px solid white;
+        }
+        .grammar-slide.active-slide {
+            display: block;
+        }
+        .slide-title {
+            font-size: 2rem;
+            font-weight: 800;
+            background: #1f6390;
+            color: white;
+            display: inline-block;
+            padding: 10px 40px;
+            border-radius: 70px;
+            margin-top: -48px;
+            margin-bottom: 25px;
+            border: 4px solid white;
+            box-shadow: 0 10px 0 #0a3a54;
+        }
+        .rule-box {
+            background: #eef4fc;
+            padding: 18px 28px;
+            border-radius: 45px;
+            margin-bottom: 30px;
+            border-left: 16px solid #f39c12;
+            font-size: 1.05rem;
+            line-height: 1.5;
+            box-shadow: inset 0 1px 6px #cddeed;
+        }
+        .rule-box i {
+            margin-right: 12px;
+            color: #e67e22;
+        }
+        .exercises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+            margin-bottom: 35px;
+        }
+        .exercise-card {
+            background: #fafeff;
+            border-radius: 35px;
+            padding: 18px 20px;
+            border: 2px solid #cde0f0;
+            box-shadow: 0 6px 0 #97adc7;
+            transition: 0.1s;
+        }
+        .question {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+            color: #023858;
+        }
+        .question span {
+            background: #184e6b;
+            color: white;
+            border-radius: 40px;
+            padding: 3px 15px;
+            margin-right: 12px;
+            font-size: 0.85rem;
+        }
+        .toggle-answer {
+            background: #3b7c9c;
+            border: none;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin: 8px 0 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 0 #1b4b64;
+        }
+        .toggle-answer:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 #1b4b64;
+        }
+        .answer {
+            background: #e9f0f8;
+            border-radius: 30px;
+            padding: 12px 18px;
+            margin-top: 12px;
+            font-family: 'Courier New', monospace;
+            font-weight: 500;
+            color: #0a5c3e;
+            border-left: 10px solid #e67e22;
+            display: none;
+        }
+        .answer.show {
+            display: block;
+        }
+        .full-answers-panel {
+            background: #173f53;
+            border-radius: 45px;
+            padding: 25px;
+            margin-top: 25px;
+            border: 4px solid #ffb347;
+        }
+        .full-answers-panel h3 {
+            color: #ffe0a3;
+            font-size: 1.8rem;
+            border-bottom: 2px dashed #f1a23d;
+            margin-bottom: 15px;
+        }
+        .answers-content {
+            background: #225f7c;
+            border-radius: 40px;
+            padding: 22px;
+            color: #f5f9ff;
+            font-family: monospace;
+            font-size: 1rem;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            max-height: 420px;
+            overflow-y: auto;
+            border: 2px solid #ffcd7e;
+        }
+        .show-all-btn {
+            background: #f3ae42;
+            border: none;
+            font-size: 1.4rem;
+            font-weight: bold;
+            padding: 12px 35px;
+            border-radius: 60px;
+            margin: 10px 0 5px;
+            cursor: pointer;
+            box-shadow: 0 9px 0 #b46f1a;
+            color: #1f4a5e;
+            border: 2px solid white;
+        }
+        .show-all-btn:active {
+            transform: translateY(5px);
+            box-shadow: 0 4px 0 #b46f1a;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        .nav-btn {
+            background: #356f8c;
+            border: none;
+            color: white;
+            padding: 10px 32px;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #1c475e;
+        }
+        .nav-btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #1c475e;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #4f7f9b;
+            font-weight: 500;
+        }
+        @media (max-width: 750px) {
+            .slide-title { font-size: 1.6rem; padding: 8px 28px; }
+            .exercises-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="slides-container">
+    <div class="header">
+        <h1><i class="fas fa-comment-dots"></i> Direct & Reported Speech</h1>
+        <div class="badge">📝 30 exercises · full answers</div>
+    </div>
+
+    <!-- tabs for two sections: Direct Speech Rules + Reported Speech Rules & Exercises -->
+    <div class="topic-tabs" id="speechTabs">
+        <button class="tab-btn active" data-slide="direct"><i class="fas fa-quote-left"></i> Direct Speech</button>
+        <button class="tab-btn" data-slide="reported"><i class="fas fa-exchange-alt"></i> Reported Speech</button>
+    </div>
+
+    <!-- ==================== SLIDE 1: DIRECT SPEECH ==================== -->
+    <div class="grammar-slide active-slide" id="directSlide">
+        <div class="slide-title">📢 Direct Speech · 直接引语</div>
+        <div class="rule-box">
+            <i class="fas fa-lightbulb"></i> <strong>Rules:</strong><br>
+            • 直接引述说话人的原话，放在引号内。<br>
+            • 常用逗号、问号、感叹号分隔，引述动词(said, asked, shouted等)可放在句首、句中或句末。<br>
+            • 首字母大写，标点符号通常放在引号内。<br>
+            <strong>Examples:</strong> <br>
+            ➤ She said, "I am happy." <br>
+            ➤ "What time is it?" he asked. <br>
+            ➤ "Let's go," Tom whispered, "before it rains."
+        </div>
+        <div class="exercises-grid" id="directGrid"></div>
+        <div class="full-answers-panel" id="directAnswers" style="display: none;">
+            <h3>🔑 Direct Speech — 全部答案 (12 exercises)</h3>
+            <div class="answers-content" id="directAnsText"></div>
+        </div>
+        <button class="show-all-btn" id="revealDirect"><i class="fas fa-eye"></i> SHOW ALL 12 ANSWERS</button>
+    </div>
+
+    <!-- ==================== SLIDE 2: REPORTED SPEECH ==================== -->
+    <div class="grammar-slide" id="reportedSlide">
+        <div class="slide-title">🔄 Reported Speech · 间接引语</div>
+        <div class="rule-box">
+            <i class="fas fa-lightbulb"></i> <strong>Key Changes:</strong><br>
+            • 去掉引号，用 that 连接 (可省略)。<br>
+            • 人称、时态、时间/地点状语相应变化。<br>
+            • <strong>时态倒退:</strong> present → past; past → past perfect; will → would; can → could 等。<br>
+            • 疑问句改为陈述语序，用 if/whether (一般疑问句) 或 wh-词。<br>
+            • 祈使句用 tell/ask + to do。<br>
+            <strong>Examples:</strong> <br>
+            ➤ Direct: "I love coffee," she said. → Reported: She said (that) she loved coffee.<br>
+            ➤ "Are you coming?" he asked. → He asked if I was coming.<br>
+            ➤ "Close the door," she told me. → She told me to close the door.
+        </div>
+        <div class="exercises-grid" id="reportedGrid"></div>
+        <div class="full-answers-panel" id="reportedAnswers" style="display: none;">
+            <h3>🔑 Reported Speech — 全部答案 (18 exercises)</h3>
+            <div class="answers-content" id="reportedAnsText"></div>
+        </div>
+        <button class="show-all-btn" id="revealReported"><i class="fas fa-eye"></i> SHOW ALL 18 ANSWERS</button>
+    </div>
+
+    <!-- navigation buttons -->
+    <div class="nav-buttons">
+        <button class="nav-btn" id="prevSlideBtn"><i class="fas fa-chevron-left"></i> Previous</button>
+        <button class="nav-btn" id="nextSlideBtn">Next <i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="footer"><i class="fas fa-check-circle"></i> 共30道练习 (直接引语12题 + 间接引语18题) · 点击题目下方按钮单独显示答案 · 底部可显示全部答案</div>
+</div>
+
+<script>
+    // ---------- DIRECT SPEECH QUESTIONS (12 exercises) ----------
+    const directQuestions = [
+        { q: "Rewrite with correct direct speech punctuation: she said i am feeling tired", a: "She said, \"I am feeling tired.\"" },
+        { q: "Add quotation marks: Where do you live? asked the stranger", a: "\"Where do you live?\" asked the stranger." },
+        { q: "Convert to direct speech: He told me that he would call later. (start with He said, ...)", a: "He said, \"I will call later.\"" },
+        { q: "Punctuate: Please help me she cried", a: "\"Please help me,\" she cried." },
+        { q: "Rewrite: The teacher announced the exam is tomorrow", a: "The teacher announced, \"The exam is tomorrow.\"" },
+        { q: "Insert correct punctuation: What a beautiful view Mary exclaimed", a: "\"What a beautiful view!\" Mary exclaimed." },
+        { q: "Direct speech: She asked if I was ready. → write as direct", a: "She asked, \"Are you ready?\"" },
+        { q: "Punctuate: I can't believe it Tom said it's incredible", a: "\"I can't believe it,\" Tom said, \"it's incredible.\"" },
+        { q: "Write in direct speech: The boss ordered that we should finish the report.", a: "The boss said, \"Finish the report.\" / \"You must finish the report.\"" },
+        { q: "Add punctuation: Let's go to the beach suggested Anna", a: "\"Let's go to the beach,\" suggested Anna." },
+        { q: "Direct speech: He wondered where she had gone. → rewrite as direct", a: "He wondered, \"Where has she gone?\"" },
+        { q: "Punctuate: Hurry up the bus is leaving shouted the driver", a: "\"Hurry up! The bus is leaving!\" shouted the driver." }
+    ];
+
+    // ---------- REPORTED SPEECH QUESTIONS (18 exercises) ----------
+    const reportedQuestions = [
+        { q: "Direct: 'I am studying English,' she said. → Reported:", a: "She said (that) she was studying English." },
+        { q: "Direct: 'We will arrive tomorrow,' they promised. → Reported:", a: "They promised (that) they would arrive the next day / the following day." },
+        { q: "Direct: 'Have you ever visited Paris?' he asked me. → Reported:", a: "He asked me if I had ever visited Paris." },
+        { q: "Direct: 'Don't touch the wire,' the electrician warned. → Reported:", a: "The electrician warned me not to touch the wire." },
+        { q: "Direct: 'I can swim very fast,' she claimed. → Reported:", a: "She claimed (that) she could swim very fast." },
+        { q: "Direct: 'Where did you buy this dress?' my friend asked. → Reported:", a: "My friend asked where I had bought that dress." },
+        { q: "Direct: 'I must finish the project tonight,' he said. → Reported:", a: "He said (that) he had to finish the project that night." },
+        { q: "Direct: 'Please open the window,' she said to me. → Reported:", a: "She asked me to open the window." },
+        { q: "Direct: 'I was waiting for the bus when you called,' Tom explained. → Reported:", a: "Tom explained (that) he had been waiting for the bus when I called." },
+        { q: "Direct: 'What time does the train leave?' she wondered. → Reported:", a: "She wondered what time the train left." },
+        { q: "Direct: 'Let's go for a picnic,' suggested Mark. → Reported:", a: "Mark suggested going for a picnic. / Mark suggested that we go for a picnic." },
+        { q: "Direct: 'I have never tried sushi before,' said Emma. → Reported:", a: "Emma said (that) she had never tried sushi before." },
+        { q: "Direct: 'Will you be at the party?' they asked me. → Reported:", a: "They asked me if I would be at the party." },
+        { q: "Direct: 'You should see a doctor,' my mother advised. → Reported:", a: "My mother advised me to see a doctor." },
+        { q: "Direct: 'I'm sorry I broke your cup,' he apologized. → Reported:", a: "He apologized for breaking my cup. / He said he was sorry he had broken my cup." },
+        { q: "Direct: 'How long have you been waiting?' she asked. → Reported:", a: "She asked how long I had been waiting." },
+        { q: "Direct: 'Don't forget to lock the door,' Dad reminded us. → Reported:", a: "Dad reminded us not to forget to lock the door. / Dad reminded us to lock the door." },
+        { q: "Direct: 'I'll help you as soon as I finish,' he said. → Reported:", a: "He said (that) he would help me as soon as he finished." }
+    ];
+
+    // Render grid for direct speech (12 items)
+    function renderGrid(containerId, questions) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = '';
+        questions.forEach((item, idx) => {
+            const card = document.createElement('div');
+            card.className = 'exercise-card';
+            card.innerHTML = `
+                <div class="question"><span>Q${idx+1}</span> ${item.q}</div>
+                <button class="toggle-answer" data-idx="${idx}"><i class="far fa-eye"></i> reveal answer</button>
+                <div class="answer" id="ans-${containerId}-${idx}">${item.a}</div>
+            `;
+            container.appendChild(card);
+        });
+        // attach event listeners to each toggle button
+        document.querySelectorAll(`#${containerId} .toggle-answer`).forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const idx = btn.getAttribute('data-idx');
+                const ansDiv = document.getElementById(`ans-${containerId}-${idx}`);
+                if (ansDiv) {
+                    ansDiv.classList.toggle('show');
+                    btn.innerHTML = ansDiv.classList.contains('show') ? '<i class="far fa-eye-slash"></i> hide answer' : '<i class="far fa-eye"></i> reveal answer';
+                }
+            });
+        });
+    }
+
+    renderGrid('directGrid', directQuestions);
+    renderGrid('reportedGrid', reportedQuestions);
+
+    // Helper: generate full answer string
+    function makeAnswerString(questions) {
+        return questions.map((item, idx) => `Q${idx+1}. ${item.q}  →  ${item.a}`).join('\n');
+    }
+
+    // Setup "show all answers" buttons
+    function setupReveal(btnId, panelId, textId, questions) {
+        const btn = document.getElementById(btnId);
+        const panel = document.getElementById(panelId);
+        const textDiv = document.getElementById(textId);
+        btn.addEventListener('click', () => {
+            if (panel.style.display === 'none' || panel.style.display === '') {
+                textDiv.innerText = makeAnswerString(questions);
+                panel.style.display = 'block';
+                btn.innerHTML = '<i class="fas fa-eye-slash"></i> HIDE ALL ANSWERS';
+            } else {
+                panel.style.display = 'none';
+                btn.innerHTML = '<i class="fas fa-eye"></i> SHOW ALL ANSWERS';
+            }
+        });
+    }
+
+    setupReveal('revealDirect', 'directAnswers', 'directAnsText', directQuestions);
+    setupReveal('revealReported', 'reportedAnswers', 'reportedAnsText', reportedQuestions);
+
+    // ---------- SLIDE TOGGLE (Direct vs Reported) ----------
+    const directSlide = document.getElementById('directSlide');
+    const reportedSlide = document.getElementById('reportedSlide');
+    const directTab = document.querySelector('[data-slide="direct"]');
+    const reportedTab = document.querySelector('[data-slide="reported"]');
+    const prevBtn = document.getElementById('prevSlideBtn');
+    const nextBtn = document.getElementById('nextSlideBtn');
+
+    function showSlide(slideId) {
+        if (slideId === 'direct') {
+            directSlide.classList.add('active-slide');
+            reportedSlide.classList.remove('active-slide');
+            directTab.classList.add('active');
+            reportedTab.classList.remove('active');
+        } else {
+            reportedSlide.classList.add('active-slide');
+            directSlide.classList.remove('active-slide');
+            reportedTab.classList.add('active');
+            directTab.classList.remove('active');
+        }
+    }
+
+    directTab.addEventListener('click', () => showSlide('direct'));
+    reportedTab.addEventListener('click', () => showSlide('reported'));
+
+    prevBtn.addEventListener('click', () => {
+        if (directSlide.classList.contains('active-slide')) {
+            showSlide('reported');
+        } else {
+            showSlide('direct');
+        }
+    });
+    nextBtn.addEventListener('click', () => {
+        if (directSlide.classList.contains('active-slide')) {
+            showSlide('reported');
+        } else {
+            showSlide('direct');
+        }
+    });
+
+    // ensure initial state: direct slide active
+    showSlide('direct');
+</script>
+</body>
+</html>

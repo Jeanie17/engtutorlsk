@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relative Pronouns: Who, Which, That</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .presentation-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .slide {
+            padding: 40px;
+            min-height: 500px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #2980b9;
+            margin: 20px 0 15px 0;
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: #16a085;
+            margin: 15px 0 10px 0;
+            font-size: 1.4rem;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .rule-box {
+            background-color: #e8f4fc;
+            border-left: 5px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .example {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid #eee;
+        }
+        
+        .example p {
+            margin: 5px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .exercise {
+            background-color: #f0f7ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px dashed #a5d8ff;
+        }
+        
+        .question {
+            margin: 15px 0;
+            padding-left: 10px;
+        }
+        
+        .answer {
+            color: #27ae60;
+            font-weight: bold;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: #eafaf1;
+            border-radius: 5px;
+            display: inline-block;
+            cursor: pointer;
+        }
+        
+        .highlight {
+            background-color: #fffacd;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .pronoun-example {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        .pronoun-label {
+            background-color: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-right: 15px;
+            font-weight: bold;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background-color: #2c3e50;
+        }
+        
+        button {
+            padding: 12px 25px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        button:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .slide-counter {
+            color: white;
+            font-size: 1.1rem;
+            align-self: center;
+        }
+        
+        .tip-box {
+            background-color: #fffde7;
+            border: 2px solid #ffd54f;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .tip-title {
+            color: #f57c00;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .summary-box {
+            background: linear-gradient(to right, #d4edda, #c3e6cb);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .title-slide {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom right, #3498db, #2c3e50);
+            color: white;
+            min-height: 500px;
+        }
+        
+        .title-slide h1 {
+            color: white;
+            border-bottom: 3px solid #f1c40f;
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+        
+        .title-slide p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .grammar-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .slide {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .title-slide h1 {
+                font-size: 2.2rem;
+            }
+            
+            .pronoun-example {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .pronoun-label {
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Slide 1: Title Slide -->
+        <div class="slide active" id="slide1">
+            <div class="title-slide">
+                <div class="grammar-icon">🔗</div>
+                <h1>Relative Pronouns</h1>
+                <p>who, which, that – connecting ideas in sentences</p>
+                <p style="margin-top: 30px; font-style: italic;">Grammar Presentation and Practice Exercises</p>
+            </div>
+        </div>
+        
+        <!-- Slide 2: What Are Relative Pronouns? -->
+        <div class="slide" id="slide2">
+            <h1>What Are Relative Pronouns?</h1>
+            
+            <div class="rule-box">
+                <p><strong>Relative pronouns</strong> connect a clause or phrase to a noun or pronoun.</p>
+                <p>• They introduce <span class="highlight">relative clauses</span> (extra information about something).</p>
+                <p>• Common relative pronouns: <span class="highlight">who, which, that</span></p>
+            </div>
+            
+            <div class="example">
+                <h3>Example:</h3>
+                <p>The girl <span class="highlight">who is reading</span> is Jenny.</p>
+                <p><em>(The relative clause "who is reading" tells us more about "the girl")</em></p>
+            </div>
+            
+            <div class="example">
+                <h3>Another Example:</h3>
+                <p>The dog <span class="highlight">which is barking</span> belongs to my neighbor.</p>
+                <p><em>(The relative clause "which is barking" tells us more about "the dog")</em></p>
+            </div>
+            
+            <div class="tip-box">
+                <div class="tip-title">💡 Remember:</div>
+                <p>Relative pronouns help us combine two simple sentences into one more detailed sentence.</p>
+            </div>
+        </div>
+        
+        <!-- Slide 3: Relative Pronouns Chart -->
+        <div class="slide" id="slide3">
+            <h1>Relative Pronouns Chart</h1>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pronoun</th>
+                        <th>Used For</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="highlight">who</span></td>
+                        <td>people</td>
+                        <td>The teacher <span class="highlight">who teaches English</span> is kind.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">which</span></td>
+                        <td>animals & things</td>
+                        <td>The book <span class="highlight">which is on the table</span> is mine.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">that</span></td>
+                        <td>people, animals & things (informal)</td>
+                        <td>The dog <span class="highlight">that barks loudly</span> is next door.</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="rule-box">
+                <p><strong>Note:</strong> "That" can often replace "who" or "which" in informal English.</p>
+                <p>Example: "The girl <span class="highlight">who/that</span> won the race is my friend."</p>
+            </div>
+            
+            <div class="exercise">
+                <h3>Quick Practice:</h3>
+                <p>Which relative pronoun would you use for "the car ______ I drive"?</p>
+                <div class="answer" onclick="this.innerHTML='Answer: which or that'">Click for answer</div>
+            </div>
+        </div>
+        
+        <!-- Slide 4: Exercise 1 – Identify Relative Pronouns -->
+        <div class="slide" id="slide4">
+            <h1>Exercise 1 – Identify Relative Pronouns</h1>
+            <p>Circle or highlight the relative pronouns in these sentences:</p>
+            
+            <div class="exercise">
+                <div class="question">
+                    <p>1. Susan is the girl <span class="highlight">who</span> is sitting on the sofa.</p>
+                </div>
+                
+                <div class="question">
+                    <p>2. Mimi is the doll <span class="highlight">which</span> is on the sofa.</p>
+                </div>
+                
+                <div class="question">
+                    <p>3. Lily is the doll <span class="highlight">which</span> is on the floor.</p>
+                </div>
+                
+                <div class="question">
+                    <p>4. Kelly is the girl <span class="highlight">who</span> is sweeping the floor.</p>
+                </div>
+                
+                <div class="question">
+                    <p>5. I like the dress <span class="highlight">which</span> has a white flower on it.</p>
+                </div>
+                
+                <div class="question">
+                    <p>6. This house belongs to a woman <span class="highlight">who</span> has three daughters.</p>
+                </div>
+            </div>
+            
+            <div class="answer" onclick="this.innerHTML='Answers: 1. who, 2. which, 3. which, 4. who, 5. which, 6. who'">
+                Click to see answers
+            </div>
+            
+            <div class="tip-box">
+                <div class="tip-title">📝 Tip:</div>
+                <p>Look for words that introduce extra information about a person, animal, or thing.</p>
+            </div>
+        </div>
+        
+        <!-- Slide 5: Exercise 2 – Choose 'who' or 'which' -->
+        <div class="slide" id="slide5">
+            <h1>Exercise 2 – Choose 'who' or 'which'</h1>
+            <p>Complete the sentences with 'who' or 'which':</p>
+            
+            <div class="exercise">
+                <div class="question">
+                    <p>1. This house belongs to a woman ______ has three daughters.</p>
+                </div>
+                
+                <div class="question">
+                    <p>2. My sister is the girl ______ is reading a magazine.</p>
+                </div>
+                
+                <div class="question">
+                    <p>3. I like the cat ______ is playing with a ball.</p>
+                </div>
+                
+                <div class="question">
+                    <p>4. Rocky is the naughty boy ______ is shouting at his brother.</p>
+                </div>
+                
+                <div class="question">
+                    <p>5. The movie ______ we watched yesterday was exciting.</p>
+                </div>
+                
+                <div class="question">
+                    <p>6. The doctor ______ treated me was very patient.</p>
+                </div>
+            </div>
+            
+            <div class="answer" onclick="this.innerHTML='Answers: 1. who, 2. who, 3. which, 4. who, 5. which, 6. who'">
+                Click to see answers
+            </div>
+            
+            <div class="tip-box">
+                <div class="tip-title">💡 Remember:</div>
+                <p><span class="highlight">Who</span> = people<br>
+                   <span class="highlight">Which</span> = animals and things</p>
+            </div>
+        </div>
+        
+        <!-- Slide 6: Exercise 3 – Combine Sentences -->
+        <div class="slide" id="slide6">
+            <h1>Exercise 3 – Combine Sentences</h1>
+            <p>Combine these sentences using 'who' or 'which':</p>
+            
+            <div class="exercise">
+                <div class="question">
+                    <p>1. Henry is talking to a girl. She has long hair.</p>
+                    <p>→ Henry is talking to a girl <textarea rows="1" placeholder="your answer"></textarea> has long hair.</p>
+                </div>
+                
+                <div class="question">
+                    <p>2. My neighbour has a dog. It often barks at night.</p>
+                    <p>→ My neighbour has a dog <textarea rows="1" placeholder="your answer"></textarea> often barks at night.</p>
+                </div>
+                
+                <div class="question">
+                    <p>3. This story is about a king. He is kind and generous.</p>
+                    <p>→ This story is about a king <textarea rows="1" placeholder="your answer"></textarea> is kind and generous.</p>
+                </div>
+                
+                <div class="question">
+                    <p>4. I have a cousin. She likes painting pictures.</p>
+                    <p>→ I have a cousin <textarea rows="1" placeholder="your answer"></textarea> likes painting pictures.</p>
+                </div>
+                
+                <div class="question">
+                    <p>5. Last year Mr Lam bought a flat. It has a balcony.</p>
+                    <p>→ Last year Mr Lam bought a flat <textarea rows="1" placeholder="your answer"></textarea> has a balcony.</p>
+                </div>
+            </div>
+            
+            <div class="answer" onclick="this.innerHTML='Answers: 1. who, 2. which, 3. who, 4. who, 5. which'">
+                Click to see answers
+            </div>
+            
+            <div class="tip-box">
+                <div class="tip-title">✏️ How to combine sentences:</div>
+                <p>1. Identify the noun that appears in both sentences.<br>
+                   2. Replace the pronoun in the second sentence with 'who' or 'which'.<br>
+                   3. Join the sentences together.</p>
+            </div>
+        </div>
+        
+        <!-- Slide 7: Exercise 4 – Complete the Story -->
+        <div class="slide" id="slide7">
+            <h1>Exercise 4 – Complete the Story</h1>
+            <p>Fill in the blanks with 'who' or 'which':</p>
+            
+            <div class="exercise">
+                <p>'Kelly and the Dragon' is a storybook <textarea rows="1" style="width: 80px;"></textarea> is suitable for primary school children. Kelly is a brave young girl <textarea rows="1" style="width: 80px;"></textarea> wants to fight a fierce dragon. The dragon breathes fire <textarea rows="1" style="width: 80px;"></textarea> can burn everything.</p>
+                
+                <p style="margin-top: 15px;">Kelly needs help. She goes to a forest to find a wizard <textarea rows="1" style="width: 80px;"></textarea> has magical powers. He knows a magical word <textarea rows="1" style="width: 80px;"></textarea> can freeze the dragon's fire. The wizard lives in a small house <textarea rows="1" style="width: 80px;"></textarea> is at the top of a mountain. Kelly gets lost, but then she meets a friendly boy <textarea rows="1" style="width: 80px;"></textarea> shows her the way.</p>
+            </div>
+            
+            <div class="answer" onclick="this.innerHTML='Answers: which, who, which, who, which, which, who'">
+                Click to see answers
+            </div>
+            
+            <div class="tip-box">
+                <div class="tip-title">📖 Story Tip:</div>
+                <p>When reading stories, look for relative pronouns. They help add interesting details about characters and objects.</p>
+            </div>
+        </div>
+        
+        <!-- Slide 8: Exercise 5 – Correct the Mistakes -->
+        <div class="slide" id="slide8">
+            <h1>Exercise 5 – Correct the Mistakes</h1>
+            <p>Find and correct the wrong relative pronouns:</p>
+            
+            <div class="exercise">
+                <div class="question">
+                    <p>1. The man <span class="highlight">which</span> lives next door is a pilot.</p>
+                    <textarea rows="1" placeholder="Correct sentence"></textarea>
+                </div>
+                
+                <div class="question">
+                    <p>2. I have a computer <span class="highlight">who</span> is very fast.</p>
+                    <textarea rows="1" placeholder="Correct sentence"></textarea>
+                </div>
+                
+                <div class="question">
+                    <p>3. She is the student that won the competition.</p>
+                    <p><em>(Is this correct? If not, correct it.)</em></p>
+                    <textarea rows="1" placeholder="Correct sentence"></textarea>
+                </div>
+                
+                <div class="question">
+                    <p>4. The book <span class="highlight">who</span> I borrowed from the library is interesting.</p>
+                    <textarea rows="1" placeholder="Correct sentence"></textarea>
+                </div>
+                
+                <div class="question">
+                    <p>5. This is the hospital where my sister works.</p>
+                    <p><em>(Is this correct? If not, correct it.)</em></p>
+                    <textarea rows="1" placeholder="Correct sentence"></textarea>
+                </div>
+            </div>
+            
+            <div class="answer" onclick="this.innerHTML='Answers: 1. who/that, 2. which/that, 3. ✓ (correct), 4. which/that, 5. ✓ (correct)'">
+                Click to see answers
+            </div>
+        </div>
+        
+        <!-- Slide 9: Exercise 6 – Create Your Own Sentences -->
+        <div class="slide" id="slide9">
+            <h1>Exercise 6 – Create Your Own Sentences</h1>
+            <p>Use the prompts to create sentences with relative pronouns:</p>
+            
+            <div class="exercise">
+                <div class="question">
+                    <p>1. (doctor / help sick people)</p>
+                    <p>A doctor is someone <textarea rows="1" placeholder="complete the sentence"></textarea>.</p>
+                </div>
+                
+                <div class="question">
+                    <p>2. (phone / take good photos)</p>
+                    <p>This is the phone <textarea rows="1" placeholder="complete the sentence"></textarea>.</p>
+                </div>
+                
+                <div class="question">
+                    <p>3. (teacher / teach mathematics)</p>
+                    <p>Mrs. Chen is the teacher <textarea rows="1" placeholder="complete the sentence"></textarea>.</p>
+                </div>
+                
+                <div class="question">
+                    <p>4. (park / have a playground)</p>
+                    <p>We went to a park <textarea rows="1" placeholder="complete the sentence"></textarea>.</p>
+                </div>
+                
+                <div class="question">
+                    <p>5. (friend / always tell funny jokes)</p>
+                    <p>My friend Sam is someone <textarea rows="1" placeholder="complete the sentence"></textarea>.</p>
+                </div>
+            </div>
+            
+            <div class="answer" onclick="this.innerHTML='Sample answers: 1. who helps sick people, 2. which takes good photos, 3. who teaches mathematics, 4. which has a playground, 5. who always tells funny jokes'">
+                Click to see sample answers
+            </div>
+            
+            <div class="tip-box">
+                <div class="tip-title">💭 Think about:</div>
+                <p>What relative pronoun should you use for people? For things?</p>
+            </div>
+        </div>
+        
+        <!-- Slide 10: Exercise 7 – Multiple Choice Quiz -->
+        <div class="slide" id="slide10">
+            <h1>Exercise 7 – Multiple Choice Quiz</h1>
+            <p>Choose the correct relative pronoun for each sentence:</p>
+            
+            <div class="exercise">
+                <div class="question">
+                    <p>1. The woman ______ is wearing a red dress is my aunt.</p>
+                    <p>a) which &nbsp; b) <span class="highlight">who</span> &nbsp; c) what</p>
+                </div>
+                
+                <div class="question">
+                    <p>2. I lost the pen ______ you gave me.</p>
+                    <p>a) who &nbsp; b) <span class="highlight">which</span> &nbsp; c) whose</p>
+                </div>
+                
+                <div class="question">
+                    <p>3. Dogs ______ bark too much can be annoying.</p>
+                    <p>a) who &nbsp; b) which &nbsp; c) <span class="highlight">that</span></p>
+                </div>
+                
+                <div class="question">
+                    <p>4. The students ______ study hard usually get good grades.</p>
+                    <p>a) which &nbsp; b) <span class="highlight">who</span> &nbsp; c) whom</p>
+                </div>
+                
+                <div class="question">
+                    <p>5. This is the cake ______ my mother baked.</p>
+                    <p>a) who &nbsp; b) <span class="highlight">which</span> &nbsp; c) whose</p>
+                </div>
+                
+                <div class="question">
+                    <p>6. The boy ______ won the race is only 8 years old.</p>
+                    <p>a) <span class="highlight">who</span> &nbsp; b) which &nbsp; c) what</p>
+                </div>
+            </div>
+            
+            <div class="answer" onclick="this.innerHTML='Answers: 1-b, 2-b, 3-c, 4-b, 5-b, 6-a'">
+                Click to see answers
+            </div>
+        </div>
+        
+        <!-- Slide 11: Summary & Tips -->
+        <div class="slide" id="slide11">
+            <h1>Summary & Tips</h1>
+            
+            <div class="summary-box">
+                <h2>Summary:</h2>
+                <div class="pronoun-example">
+                    <div class="pronoun-label">who</div>
+                    <div>for people</div>
+                </div>
+                
+                <div class="pronoun-example">
+                    <div class="pronoun-label">which</div>
+                    <div>for animals and things</div>
+                </div>
+                
+                <div class="pronoun-example">
+                    <div class="pronoun-label">that</div>
+                    <div>for people, animals, or things (informal)</div>
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <div class="tip-title">📝 Important Tips:</div>
+                <p>1. The relative pronoun replaces the subject in the second sentence.</p>
+                <p>2. The relative clause comes right after the noun it describes.</p>
+                <p>3. You can omit 'that' when it's not the subject (e.g., "The book [that] I read").</p>
+                <p>4. Practice by combining two simple sentences into one.</p>
+            </div>
+            
+            <div class="example">
+                <h3>Practice Example:</h3>
+                <p><strong>Two sentences:</strong> I have a friend. She lives in London.</p>
+                <p><strong>Combined:</strong> I have a friend <span class="highlight">who</span> lives in London.</p>
+            </div>
+        </div>
+        
+        <!-- Slide 12: Practice in Daily Life -->
+        <div class="slide" id="slide12">
+            <h1>Practice in Daily Life</h1>
+            
+            <div class="tip-box">
+                <div class="tip-title">🌟 Ways to practice relative pronouns:</div>
+                <p>1. Describe people around you: "That's the man who..."</p>
+                <p>2. Talk about your possessions: "This is the phone which..."</p>
+                <p>3. Read stories and identify relative pronouns.</p>
+                <p>4. When writing, try to combine short sentences.</p>
+                <p>5. Play the "Who/Which am I?" guessing game.</p>
+            </div>
+            
+            <div class="exercise">
+                <h3>Final Challenge:</h3>
+                <p>Write 3 sentences about your family or friends using relative pronouns.</p>
+                
+                <p>Example: "My brother, who is 10 years old, loves football."</p>
+                
+                <textarea rows="3" placeholder="Write your first sentence here..."></textarea>
+                <textarea rows="3" placeholder="Write your second sentence here..." style="margin-top: 10px;"></textarea>
+                <textarea rows="3" placeholder="Write your third sentence here..." style="margin-top: 10px;"></textarea>
+            </div>
+            
+            <div class="tip-box">
+                <div class="tip-title">🎉 Well done!</div>
+                <p>You've completed the relative pronouns lesson. Keep practicing to become more confident!</p>
+            </div>
+        </div>
+        
+        <!-- Navigation buttons -->
+        <div class="nav-buttons">
+            <button id="prevBtn" onclick="changeSlide(-1)">Previous Slide</button>
+            <div class="slide-counter">Slide <span id="currentSlide">1</span> of <span id="totalSlides">12</span></div>
+            <button id="nextBtn" onclick="changeSlide(1)">Next Slide</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 12;
+        
+        function showSlide(n) {
+            // Hide all slides
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Show the current slide
+            document.getElementById(`slide${n}`).classList.add('active');
+            
+            // Update slide counter
+            document.getElementById('currentSlide').textContent = n;
+            
+            // Update button states
+            document.getElementById('prevBtn').disabled = n === 1;
+            document.getElementById('nextBtn').disabled = n === totalSlides;
+        }
+        
+        function changeSlide(direction) {
+            const newSlide = currentSlide + direction;
+            
+            if (newSlide < 1 || newSlide > totalSlides) {
+                return;
+            }
+            
+            currentSlide = newSlide;
+            showSlide(currentSlide);
+        }
+        
+        // Initialize the presentation
+        showSlide(1);
+        
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (event.key === 'ArrowRight') {
+                changeSlide(1);
+            }
+        });
+    </script>
+</body>
+</html>
