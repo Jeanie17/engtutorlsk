@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do/Does in Present Tense - Grammar Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(to right, #2c3e50, #4a6491);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-bottom: 5px solid #fdbb2d;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: #fdbb2d;
+        }
+        
+        .slides-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 20px;
+            gap: 20px;
+            min-height: 600px;
+        }
+        
+        .slide {
+            flex: 0 0 90%;
+            scroll-snap-align: start;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .slide-number {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            background: #2c3e50;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .slide h3 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #fdbb2d;
+        }
+        
+        .slide-content {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #2c3e50;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .highlight {
+            background-color: #fff9c4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .example {
+            background-color: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .tip {
+            background-color: #e8f8e8;
+            border-left: 4px solid #2ecc71;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .warning {
+            background-color: #ffeaa7;
+            border-left: 4px solid #e17055;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .exercise {
+            background-color: #f8f9fa;
+            border: 2px dashed #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-top: 1px solid #ddd;
+        }
+        
+        button {
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #1a252f;
+        }
+        
+        .dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #bbb;
+            cursor: pointer;
+        }
+        
+        .dot.active {
+            background-color: #2c3e50;
+        }
+        
+        .formula-box {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+        
+        .interactive-exercise {
+            background: #f0f7ff;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .answer-input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .check-btn {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        @media (max-width: 768px) {
+            .slide {
+                flex: 0 0 95%;
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .slide h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Do & Does in Present Tense</h1>
+            <h2>Grammar Rules, Usage, and Practice Exercises</h2>
+        </header>
+        
+        <div class="slides-container" id="slidesContainer">
+            <!-- Slide 1 -->
+            <div class="slide">
+                <div class="slide-number">1</div>
+                <h3>When Do We Use Do/Does?</h3>
+                <div class="slide-content">
+                    <p>We use <span class="highlight">do</span> and <span class="highlight">does</span> as auxiliary (helping) verbs in the Simple Present Tense for:</p>
+                    <ul style="margin: 15px 0 15px 30px;">
+                        <li><span class="highlight">Questions:</span> Do you like coffee?</li>
+                        <li><span class="highlight">Negative Statements:</span> I do not (don't) like coffee.</li>
+                        <li><span class="highlight">Short Answers:</span> Yes, I do. / No, I don't.</li>
+                    </ul>
+                    
+                    <div class="formula-box">
+                        Do/Does + Subject + Base Verb + ?
+                    </div>
+                    
+                    <div class="example">
+                        <p><strong>Examples:</strong></p>
+                        <ul style="margin-left: 20px;">
+                            <li>Do you speak English?</li>
+                            <li>Does she work here?</li>
+                            <li>They don't live in Paris.</li>
+                            <li>He doesn't play tennis.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="slide">
+                <div class="slide-number">2</div>
+                <h3>The Basic Rule: Do vs. Does</h3>
+                <div class="slide-content">
+                    <p>The choice between <span class="highlight">do</span> and <span class="highlight">does</span> depends on the subject:</p>
+                    
+                    <table>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Auxiliary Verb</th>
+                            <th>Example</th>
+                        </tr>
+                        <tr>
+                            <td>I / You / We / They</td>
+                            <td><strong>do</strong></td>
+                            <td>Do you like pizza?</td>
+                        </tr>
+                        <tr>
+                            <td>He / She / It</td>
+                            <td><strong>does</strong></td>
+                            <td>Does she like pizza?</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="tip">
+                        <p><strong>Important:</strong> When we use <span class="highlight">does</span> with he/she/it, the main verb returns to its base form (no -s)!</p>
+                        <ul style="margin-left: 20px;">
+                            <li>She <span class="highlight">works</span> here. → Does she <span class="highlight">work</span> here?</li>
+                            <li>He <span class="highlight">plays</span> tennis. → Does he <span class="highlight">play</span> tennis?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="slide">
+                <div class="slide-number">3</div>
+                <h3>Forming Questions with Do/Does</h3>
+                <div class="slide-content">
+                    <p>To form questions in Simple Present Tense, we use:</p>
+                    
+                    <div class="formula-box">
+                        Do/Does + Subject + Base Verb + ?
+                    </div>
+                    
+                    <table>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Question Form</th>
+                            <th>Answer</th>
+                        </tr>
+                        <tr>
+                            <td>I / you / we / they</td>
+                            <td>Do you speak English?</td>
+                            <td>Yes, I do. / No, I don't.</td>
+                        </tr>
+                        <tr>
+                            <td>he / she / it</td>
+                            <td>Does she live here?</td>
+                            <td>Yes, she does. / No, she doesn't.</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="example">
+                        <p><strong>More Examples:</strong></p>
+                        <ul style="margin-left: 20px;">
+                            <li>Do they like movies?</li>
+                            <li>Does he have a car?</li>
+                            <li>Do we need to bring anything?</li>
+                            <li>Does it rain often here?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4 -->
+            <div class="slide">
+                <div class="slide-number">4</div>
+                <h3>Forming Negative Statements</h3>
+                <div class="slide-content">
+                    <p>To form negative statements in Simple Present Tense, we use:</p>
+                    
+                    <div class="formula-box">
+                        Subject + do not/does not + Base Verb
+                    </div>
+                    
+                    <table>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Negative Form</th>
+                            <th>Contraction</th>
+                        </tr>
+                        <tr>
+                            <td>I / you / we / they</td>
+                            <td>They do not like coffee.</td>
+                            <td>They don't like coffee.</td>
+                        </tr>
+                        <tr>
+                            <td>he / she / it</td>
+                            <td>She does not work here.</td>
+                            <td>She doesn't work here.</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="warning">
+                        <p><strong>Remember:</strong> When using "does not/doesn't" with he/she/it, the main verb doesn't get an -s!</p>
+                        <ul style="margin-left: 20px;">
+                            <li>He works → He <span class="highlight">doesn't work</span> (NOT doesn't works)</li>
+                            <li>She plays → She <span class="highlight">doesn't play</span> (NOT doesn't plays)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 5 -->
+            <div class="slide">
+                <div class="slide-number">5</div>
+                <h3>Practice: Do or Does?</h3>
+                <div class="slide-content">
+                    <p>Choose the correct option to complete each sentence.</p>
+                    
+                    <div class="interactive-exercise">
+                        <p>1. ______ you like chocolate?</p>
+                        <input type="text" class="answer-input" id="q1" placeholder="Enter 'do' or 'does'">
+                        <button class="check-btn" onclick="checkAnswer(1)">Check Answer</button>
+                        <div class="feedback" id="feedback1"></div>
+                    </div>
+                    
+                    <div class="interactive-exercise">
+                        <p>2. ______ Maria live in Madrid?</p>
+                        <input type="text" class="answer-input" id="q2" placeholder="Enter 'do' or 'does'">
+                        <button class="check-btn" onclick="checkAnswer(2)">Check Answer</button>
+                        <div class="feedback" id="feedback2"></div>
+                    </div>
+                    
+                    <div class="interactive-exercise">
+                        <p>3. ______ they speak French?</p>
+                        <input type="text" class="answer-input" id="q3" placeholder="Enter 'do' or 'does'">
+                        <button class="check-btn" onclick="checkAnswer(3)">Check Answer</button>
+                        <div class="feedback" id="feedback3"></div>
+                    </div>
+                    
+                    <div class="interactive-exercise">
+                        <p>4. ______ your brother work here?</p>
+                        <input type="text" class="answer-input" id="q4" placeholder="Enter 'do' or 'does'">
+                        <button class="check-btn" onclick="checkAnswer(4)">Check Answer</button>
+                        <div class="feedback" id="feedback4"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 6 -->
+            <div class="slide">
+                <div class="slide-number">6</div>
+                <h3>Practice: Complete the Questions</h3>
+                <div class="slide-content">
+                    <p>Complete the questions with the correct form of the verb.</p>
+                    
+                    <div class="exercise">
+                        <p>1. ______ you ______ (like) classical music?</p>
+                        <p>2. ______ she ______ (work) in an office?</p>
+                        <p>3. ______ they ______ (have) any children?</p>
+                        <p>4. ______ he ______ (play) the guitar?</p>
+                        <p>5. ______ your parents ______ (live) nearby?</p>
+                    </div>
+                    
+                    <div class="tip">
+                        <p><strong>Answers:</strong></p>
+                        <ol style="margin-left: 20px;">
+                            <li>Do, like</li>
+                            <li>Does, work</li>
+                            <li>Do, have</li>
+                            <li>Does, play</li>
+                            <li>Do, live</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 7 -->
+            <div class="slide">
+                <div class="slide-number">7</div>
+                <h3>Practice: Make Negative Sentences</h3>
+                <div class="slide-content">
+                    <p>Change these sentences to negative form.</p>
+                    
+                    <div class="exercise">
+                        <p>1. I like coffee.</p>
+                        <p>2. She works here.</p>
+                        <p>3. They live in Paris.</p>
+                        <p>4. He plays tennis.</p>
+                        <p>5. We speak French.</p>
+                    </div>
+                    
+                    <button class="check-btn" onclick="showNegatives()" style="margin: 15px 0;">Show Answers</button>
+                    
+                    <div class="tip" id="negativeAnswers" style="display: none;">
+                        <p><strong>Answers:</strong></p>
+                        <ol style="margin-left: 20px;">
+                            <li>I don't like coffee.</li>
+                            <li>She doesn't work here.</li>
+                            <li>They don't live in Paris.</li>
+                            <li>He doesn't play tennis.</li>
+                            <li>We don't speak French.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 8 -->
+            <div class="slide">
+                <div class="slide-number">8</div>
+                <h3>Practice: Answer the Questions</h3>
+                <div class="slide-content">
+                    <p>Answer these questions using short answers.</p>
+                    
+                    <div class="exercise">
+                        <p>1. Do you speak English? (Yes)</p>
+                        <p>2. Does she work here? (No)</p>
+                        <p>3. Do they like pizza? (Yes)</p>
+                        <p>4. Does he play football? (No)</p>
+                        <p>5. Do we have class tomorrow? (Yes)</p>
+                    </div>
+                    
+                    <button class="check-btn" onclick="showShortAnswers()" style="margin: 15px 0;">Show Answers</button>
+                    
+                    <div class="tip" id="shortAnswers" style="display: none;">
+                        <p><strong>Answers:</strong></p>
+                        <ol style="margin-left: 20px;">
+                            <li>Yes, I do.</li>
+                            <li>No, she doesn't.</li>
+                            <li>Yes, they do.</li>
+                            <li>No, he doesn't.</li>
+                            <li>Yes, we do.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 9 -->
+            <div class="slide">
+                <div class="slide-number">9</div>
+                <h3>Common Mistakes to Avoid</h3>
+                <div class="slide-content">
+                    <div class="warning">
+                        <p><strong>Mistake 1: Adding -s to the main verb with "does"</strong></p>
+                        <ul style="margin-left: 20px;">
+                            <li>❌ Does she works here?</li>
+                            <li>✅ Does she work here?</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="warning">
+                        <p><strong>Mistake 2: Using "do" with he/she/it</strong></p>
+                        <ul style="margin-left: 20px;">
+                            <li>❌ Do he like coffee?</li>
+                            <li>✅ Does he like coffee?</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="warning">
+                        <p><strong>Mistake 3: Forgetting "do/does" in questions</strong></p>
+                        <ul style="margin-left: 20px;">
+                            <li>❌ You like coffee?</li>
+                            <li>✅ Do you like coffee?</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="warning">
+                        <p><strong>Mistake 4: Using "be" instead of "do/does"</strong></p>
+                        <ul style="margin-left: 20px;">
+                            <li>❌ Are you like coffee?</li>
+                            <li>✅ Do you like coffee?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 10 -->
+            <div class="slide">
+                <div class="slide-number">10</div>
+                <h3>Summary & Quick Review</h3>
+                <div class="slide-content">
+                    <ul style="margin-left: 20px; font-size: 1.3rem;">
+                        <li>Use <span class="highlight">do</span> with <span class="highlight">I, you, we, they</span>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Do you like pizza?</li>
+                                <li>They don't live here.</li>
+                            </ul>
+                        </li>
+                        <li style="margin-top: 15px;">Use <span class="highlight">does</span> with <span class="highlight">he, she, it</span>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Does she work here?</li>
+                                <li>He doesn't play tennis.</li>
+                            </ul>
+                        </li>
+                        <li style="margin-top: 15px;">With <span class="highlight">does</span>, the main verb returns to base form (no -s)
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>She works → Does she work?</li>
+                            </ul>
+                        </li>
+                        <li style="margin-top: 15px;">Use contractions in informal speech:
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>do not → don't</li>
+                                <li>does not → doesn't</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <div class="tip" style="margin-top: 20px;">
+                        <p><strong>Final Tip:</strong> Practice regularly! The more you use "do" and "does" correctly, the more natural it will become.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button id="prevBtn">Previous</button>
+            
+            <div class="dots" id="dotsContainer">
+                <!-- Dots will be generated by JavaScript -->
+            </div>
+            
+            <button id="nextBtn">Next</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slidesContainer = document.getElementById('slidesContainer');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const dotsContainer = document.getElementById('dotsContainer');
+            
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            let currentSlide = 0;
+            
+            // Create dots
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+            
+            // Update dots and scroll position
+            function updateUI() {
+                // Update dots
+                document.querySelectorAll('.dot').forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+                
+                // Scroll to current slide
+                slidesContainer.scrollTo({
+                    left: slides[currentSlide].offsetLeft - slidesContainer.offsetLeft,
+                    behavior: 'smooth'
+                });
+            }
+            
+            // Go to specific slide
+            function goToSlide(slideIndex) {
+                currentSlide = slideIndex;
+                updateUI();
+            }
+            
+            // Next slide
+            nextBtn.addEventListener('click', () => {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    updateUI();
+                }
+            });
+            
+            // Previous slide
+            prevBtn.addEventListener('click', () => {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateUI();
+                }
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') {
+                    if (currentSlide < totalSlides - 1) {
+                        currentSlide++;
+                        updateUI();
+                    }
+                } else if (e.key === 'ArrowLeft') {
+                    if (currentSlide > 0) {
+                        currentSlide--;
+                        updateUI();
+                    }
+                }
+            });
+            
+            // Initialize
+            updateUI();
+        });
+        
+        // Interactive exercise functions
+        function checkAnswer(questionNum) {
+            const answers = {
+                1: "do",
+                2: "does",
+                3: "do",
+                4: "does"
+            };
+            
+            const userAnswer = document.getElementById(`q${questionNum}`).value.trim().toLowerCase();
+            const feedback = document.getElementById(`feedback${questionNum}`);
+            
+            if (userAnswer === answers[questionNum]) {
+                feedback.textContent = "Correct! Well done!";
+                feedback.className = "feedback correct";
+                feedback.style.display = "block";
+            } else {
+                feedback.textContent = `Incorrect. The correct answer is "${answers[questionNum]}".`;
+                feedback.className = "feedback incorrect";
+                feedback.style.display = "block";
+            }
+        }
+        
+        function showNegatives() {
+            document.getElementById('negativeAnswers').style.display = 'block';
+        }
+        
+        function showShortAnswers() {
+            document.getElementById('shortAnswers').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

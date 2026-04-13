@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adjectives Ending with -ing and -ed</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .presentation-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .slide {
+            padding: 40px;
+            min-height: 500px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #2980b9;
+            margin: 20px 0 15px 0;
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: #16a085;
+            margin: 15px 0 10px 0;
+            font-size: 1.4rem;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .rule-box {
+            background-color: #e8f4fc;
+            border-left: 5px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .example {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid #eee;
+        }
+        
+        .example p {
+            margin: 5px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .exercise {
+            background-color: #f0f7ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px dashed #a5d8ff;
+        }
+        
+        .question {
+            margin: 15px 0;
+            padding-left: 10px;
+        }
+        
+        .answer {
+            color: #27ae60;
+            font-weight: bold;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: #eafaf1;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        
+        .highlight {
+            background-color: #fffacd;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background-color: #2c3e50;
+        }
+        
+        button {
+            padding: 12px 25px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        button:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .slide-counter {
+            color: white;
+            font-size: 1.1rem;
+            align-self: center;
+        }
+        
+        .tip-box {
+            background-color: #fffde7;
+            border: 2px solid #ffd54f;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .tip-title {
+            color: #f57c00;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .summary-box {
+            background: linear-gradient(to right, #d4edda, #c3e6cb);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #28a745;
+        }
+        
+        .title-slide {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom right, #3498db, #2c3e50);
+            color: white;
+            min-height: 500px;
+        }
+        
+        .title-slide h1 {
+            color: white;
+            border-bottom: 3px solid #f1c40f;
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+        
+        .title-slide p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .grammar-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .slide {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .title-slide h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Slide 1: Title Slide -->
+        <div class="slide active" id="slide1">
+            <div class="title-slide">
+                <div class="grammar-icon">📚</div>
+                <h1>Adjectives Ending with -ing and -ed</h1>
+                <p>A comprehensive guide to describing feelings and the things that cause them</p>
+                <p style="margin-top: 30px; font-style: italic;">Grammar Presentation and Practice Exercises</p>
+            </div>
+        </div>
+        
+        <!-- Slide 2: Grammar Rule -->
+        <div class="slide" id="slide2">
+            <h1>Grammar Rule</h1>
+            
+            <div class="rule-box">
+                <h2>-ing Adjectives</h2>
+                <p>Describe the <span class="highlight">thing or situation</span> that causes the feeling.</p>
+                <div class="example">
+                    <p><strong>Example:</strong> The movie is <span class="highlight">interesting</span>.</p>
+                    <p><em>(The movie causes interest.)</em></p>
+                </div>
+            </div>
+            
+            <div class="rule-box">
+                <h2>-ed Adjectives</h2>
+                <p>Describe how a <span class="highlight">person (or animal) feels</span>.</p>
+                <div class="example">
+                    <p><strong>Example:</strong> I am <span class="highlight">interested</span> in the movie.</p>
+                    <p><em>(I feel interested.)</em></p>
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <div class="tip-title">💡 Quick Tip:</div>
+                <p>People are <span class="highlight">-ed</span>, things are <span class="highlight">-ing</span>!</p>
+            </div>
+        </div>
+        
+        <!-- Slide 3: Example Chart -->
+        <div class="slide" id="slide3">
+            <h1>Example Chart</h1>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cause (-ing)</th>
+                        <th>Feeling (-ed)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>The game is <span class="highlight">exciting</span>.</td>
+                        <td>The players are <span class="highlight">excited</span>.</td>
+                    </tr>
+                    <tr>
+                        <td>The news is <span class="highlight">surprising</span>.</td>
+                        <td>We are <span class="highlight">surprised</span>.</td>
+                    </tr>
+                    <tr>
+                        <td>The joke is <span class="highlight">amusing</span>.</td>
+                        <td>The audience is <span class="highlight">amused</span>.</td>
+                    </tr>
+                    <tr>
+                        <td>The test is <span class="highlight">frustrating</span>.</td>
+                        <td>The student is <span class="highlight">frustrated</span>.</td>
+                    </tr>
+                    <tr>
+                        <td>The book is <span class="highlight">boring</span>.</td>
+                        <td>The reader is <span class="highlight">bored</span>.</td>
+                    </tr>
+                    <tr>
+                        <td>The movie is <span class="highlight">frightening</span>.</td>
+                        <td>The child is <span class="highlight">frightened</span>.</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="exercise">
+                <h3>Quick Practice:</h3>
+                <p>Complete this sentence: The ________ (excite) race made the spectators feel ________ (excite).</p>
+                <div class="answer" onclick="this.innerHTML='Answer: exciting, excited'">Click for answer</div>
+            </div>
+        </div>
+        
+        <!-- Slide 4: Exercise 1 -->
+        <div class="slide" id="slide4">
+            <h1>Exercise 1 – Choose the Correct Adjective</h1>
+            <p>Circle or select the correct adjective in each sentence.</p>
+            
+            <div class="exercise">
+                <div class="question">
+                    <p>1. The ghost story was (frightening / frightened).</p>
+                </div>
+                
+                <div class="question">
+                    <p>2. I was (frightening / frightened) by the loud noise.</p>
+                </div>
+                
+                <div class="question">
+                    <p>3. The children were (exciting / excited) about the trip.</p>
+                </div>
+                
+                <div class="question">
+                    <p>4. The roller coaster is (exciting / excited).</p>
+                </div>
+                
+                <div class="question">
+                    <p>5. She felt (disappointing / disappointed) with her score.</p>
+                </div>
+            </div>
+            
+            <div class="answer" onclick="this.innerHTML='Answers: 1. frightening, 2. frightened, 3. excited, 4. exciting, 5. disappointed'">
+                Click to see answers
+            </div>
+            
+            <div class="tip-box">
+                <div class="tip-title">💡 Remember:</div>
+                <p>Ask yourself: "Is this describing a thing or a person's feeling?"</p>
+            </div>
+        </div>
+        
+        <!-- Slide 5: Exercise 2 -->
+        <div class="slide" id="slide5">
+            <h1>Exercise 2 – Fill in the Blanks</h1>
+            <p>Fill in the blanks with the correct form of the adjective in parentheses.</p>
+            
+            <div class="exercise">
+                <div class="question">
+                    <p>1. We were __________ (amaze) by the magic trick.</p>
+                </div>
+                
+                <div class="question">
+                    <p>2. The documentary was __________ (interest).</p>
+                </div>
+                
+                <div class="question">
+                    <p>3. He was __________ (bore) during the long lecture.</p>
+                </div>
+                
+                <div class="question">
+                    <p>4. The football match was very __________ (excite).</p>
+                </div>
+                
+                <div class="question">
+                    <p>5. The lost puppy looked __________ (frighten).</p>
+                </div>
+            </div>
+            
+            <div class="answer" onclick="this.innerHTML='Answers: 1. amazed, 2. interesting, 3. bored, 4. exciting, 5. frightened'">
+                Click to see answers
+            </div>
+        </div>
+        
+        <!-- Slide 6: Exercise 3 -->
+        <div class="slide" id="slide6">
+            <h1>Exercise 3 – Correct the Mistakes</h1>
+            <p>Find and correct the wrong adjectives in these sentences.</p>
+            
+            <div class="exercise">
+                <div class="question">
+                    <p>1. The bored movie made us sleepy.</p>
+                </div>
+                
+                <div class="question">
+                    <p>2. I was surprising to see my old friend.</p>
+                </div>
+                
+                <div class="question">
+                    <p>3. The amazed view took my breath away.</p>
+                </div>
+                
+                <div class="question">
+                    <p>4. She is very interesting in science.</p>
+                </div>
+                
+                <div class="question">
+                    <p>5. The children were amusing by the clown.</p>
+                </div>
+            </div>
+            
+            <div class="answer" onclick="this.innerHTML='Answers: 1. boring, 2. surprised, 3. amazing, 4. interested, 5. amused'">
+                Click to see answers
+            </div>
+        </div>
+        
+        <!-- Slide 7: Exercise 4 -->
+        <div class="slide" id="slide7">
+            <h1>Exercise 4 – Complete the Sentences</h1>
+            <p>Complete each sentence with both the -ing and -ed forms of the adjectives.</p>
+            
+            <div class="exercise">
+                <div class="question">
+                    <p>1. The __________ (tire) journey made everyone feel __________ (tire).</p>
+                </div>
+                
+                <div class="question">
+                    <p>2. We were __________ (disappoint) because the cancelled show was __________ (disappoint).</p>
+                </div>
+                
+                <div class="question">
+                    <p>3. His __________ (convince) argument left us __________ (convince).</p>
+                </div>
+                
+                <div class="question">
+                    <p>4. The __________ (challenge) puzzle was __________ (satisfy) to solve.</p>
+                </div>
+                
+                <div class="question">
+                    <p>5. It was __________ (embarrass) to trip in public. I felt __________ (embarrass).</p>
+                </div>
+            </div>
+            
+            <div class="answer" onclick="this.innerHTML='Answers: 1. tiring, tired; 2. disappointed, disappointing; 3. convincing, convinced; 4. challenging, satisfying; 5. embarrassing, embarrassed'">
+                Click to see answers
+            </div>
+        </div>
+        
+        <!-- Slide 8: Exercise 5 -->
+        <div class="slide" id="slide8">
+            <h1>Exercise 5 – Match the Pairs</h1>
+            <p>Match the cause with the feeling.</p>
+            
+            <div class="exercise">
+                <div class="question">
+                    <p>1. <strong>A shocking story</strong></p>
+                    <p>a. feels shocked</p>
+                </div>
+                
+                <div class="question">
+                    <p>2. <strong>An exhausting run</strong></p>
+                    <p>b. looks exhausting</p>
+                </div>
+                
+                <div class="question">
+                    <p>3. <strong>A confusing map</strong></p>
+                    <p>c. is confusing</p>
+                </div>
+                
+                <div class="question">
+                    <p>4. <strong>A satisfied customer</strong></p>
+                    <p>d. is satisfied</p>
+                </div>
+                
+                <div class="question">
+                    <p>5. <strong>A relaxing holiday</strong></p>
+                    <p>e. feels relaxed</p>
+                </div>
+            </div>
+            
+            <div class="answer" onclick="this.innerHTML='Answers: 1-a, 2-b, 3-c, 4-d, 5-e'">
+                Click to see answers
+            </div>
+        </div>
+        
+        <!-- Slide 9: Exercise 6 -->
+        <div class="slide" id="slide9">
+            <h1>Exercise 6 – Short Writing</h1>
+            <p>Describe a time when you felt:</p>
+            
+            <div class="exercise">
+                <div class="question">
+                    <p><strong>1. Surprised by something surprising</strong></p>
+                    <p>Example: I was surprised when my friends threw me a birthday party. The surprise party was really surprising!</p>
+                    <textarea rows="3" placeholder="Write your own example here..." style="width: 100%; padding: 10px; margin-top: 10px;"></textarea>
+                </div>
+                
+                <div class="question">
+                    <p><strong>2. Bored by something boring</strong></p>
+                    <textarea rows="3" placeholder="Write your example here..." style="width: 100%; padding: 10px; margin-top: 10px;"></textarea>
+                </div>
+                
+                <div class="question">
+                    <p><strong>3. Excited by something exciting</strong></p>
+                    <textarea rows="3" placeholder="Write your example here..." style="width: 100%; padding: 10px; margin-top: 10px;"></textarea>
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <div class="tip-title">✏️ Writing Tip:</div>
+                <p>Try to use at least 2-3 sentences for each example. Share with a classmate!</p>
+            </div>
+        </div>
+        
+        <!-- Slide 10: Exercise 7 -->
+        <div class="slide" id="slide10">
+            <h1>Exercise 7 – Multiple Choice Quiz</h1>
+            <p>Choose the correct adjective for each sentence.</p>
+            
+            <div class="exercise">
+                <div class="question">
+                    <p>1. The __________ puppy hid under the table.</p>
+                    <p>a) frightening</p>
+                    <p>b) frightened</p>
+                </div>
+                
+                <div class="question">
+                    <p>2. The maths problem was __________.</p>
+                    <p>a) confused</p>
+                    <p>b) confusing</p>
+                </div>
+                
+                <div class="question">
+                    <p>3. Everyone was __________ by the funny video.</p>
+                    <p>a) amused</p>
+                    <p>b) amusing</p>
+                </div>
+                
+                <div class="question">
+                    <p>4. The __________ results made the team happy.</p>
+                    <p>a) satisfying</p>
+                    <p>b) satisfied</p>
+                </div>
+                
+                <div class="question">
+                    <p>5. We were __________ after the long hike.</p>
+                    <p>a) exhausting</p>
+                    <p>b) exhausted</p>
+                </div>
+            </div>
+            
+            <div class="answer" onclick="this.innerHTML='Answers: 1-b, 2-b, 3-a, 4-a, 5-b'">
+                Click to see answers
+            </div>
+        </div>
+        
+        <!-- Slide 11: Summary -->
+        <div class="slide" id="slide11">
+            <h1>Summary</h1>
+            
+            <div class="summary-box">
+                <h2>Key Points:</h2>
+                <p>• <span class="highlight">-ing adjectives</span> → describe things/situations (the cause)</p>
+                <p>• <span class="highlight">-ed adjectives</span> → describe people's/animals' feelings (the result)</p>
+                <p>• <span class="highlight">Remember</span>: People feel <strong>-ed</strong>, things are <strong>-ing</strong>!</p>
+            </div>
+            
+            <div class="example">
+                <h3>Common -ing/-ed Adjective Pairs:</h3>
+                <p>• interesting / interested</p>
+                <p>• exciting / excited</p>
+                <p>• boring / bored</p>
+                <p>• surprising / surprised</p>
+                <p>• frightening / frightened</p>
+                <p>• amazing / amazed</p>
+                <p>• disappointing / disappointed</p>
+                <p>• amusing / amused</p>
+            </div>
+        </div>
+        
+        <!-- Slide 12: Practice Tips -->
+        <div class="slide" id="slide12">
+            <h1>Practice Tips</h1>
+            
+            <div class="tip-box">
+                <div class="tip-title">1. Ask the Right Question</div>
+                <p>When you're unsure, ask: "Is it describing a thing or a person's feeling?"</p>
+            </div>
+            
+            <div class="tip-box">
+                <div class="tip-title">2. Create Your Own Examples</div>
+                <p>Think of situations from your own life. "The math test was challenging. I felt challenged."</p>
+            </div>
+            
+            <div class="tip-box">
+                <div class="tip-title">3. Read and Notice</div>
+                <p>When reading English texts, pay attention to how -ing and -ed adjectives are used.</p>
+            </div>
+            
+            <div class="tip-box">
+                <div class="tip-title">4. Practice with a Friend</div>
+                <p>Describe your day to a friend using -ing and -ed adjectives.</p>
+            </div>
+            
+            <div class="exercise">
+                <h3>Final Challenge:</h3>
+                <p>Write one sentence using an -ing adjective and one sentence using an -ed adjective about your favorite hobby.</p>
+                <textarea rows="4" placeholder="Write your sentences here..." style="width: 100%; padding: 10px; margin-top: 10px;"></textarea>
+            </div>
+        </div>
+        
+        <!-- Navigation buttons -->
+        <div class="nav-buttons">
+            <button id="prevBtn" onclick="changeSlide(-1)">Previous Slide</button>
+            <div class="slide-counter">Slide <span id="currentSlide">1</span> of <span id="totalSlides">12</span></div>
+            <button id="nextBtn" onclick="changeSlide(1)">Next Slide</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 12;
+        
+        function showSlide(n) {
+            // Hide all slides
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Show the current slide
+            document.getElementById(`slide${n}`).classList.add('active');
+            
+            // Update slide counter
+            document.getElementById('currentSlide').textContent = n;
+            
+            // Update button states
+            document.getElementById('prevBtn').disabled = n === 1;
+            document.getElementById('nextBtn').disabled = n === totalSlides;
+        }
+        
+        function changeSlide(direction) {
+            const newSlide = currentSlide + direction;
+            
+            if (newSlide < 1 || newSlide > totalSlides) {
+                return;
+            }
+            
+            currentSlide = newSlide;
+            showSlide(currentSlide);
+        }
+        
+        // Initialize the presentation
+        showSlide(1);
+        
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (event.key === 'ArrowRight') {
+                changeSlide(1);
+            }
+        });
+    </script>
+</body>
+</html>
