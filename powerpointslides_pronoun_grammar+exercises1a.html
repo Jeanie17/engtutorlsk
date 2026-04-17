@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Pronouns - Grammar Presentation</title>
+    <style>
+        :root {
+            --primary: #4a148c;
+            --secondary: #7b1fa2;
+            --accent: #e91e63;
+            --light: #f3e5f5;
+            --dark: #12005e;
+            --text: #333;
+            --success: #4caf50;
+            --warning: #ff9800;
+            --danger: #f44336;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .presentation-container {
+            width: 100%;
+            max-width: 1200px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .slide-container {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+        
+        .slide {
+            min-width: 100%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow-y: auto;
+        }
+        
+        .slide-title {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 10px;
+        }
+        
+        .slide-subtitle {
+            color: var(--secondary);
+            font-size: 1.8rem;
+            margin: 15px 0;
+        }
+        
+        .content {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .pronoun-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .pronoun-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .pronoun-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pronoun {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .pronoun-type {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .example {
+            font-style: italic;
+            color: #555;
+        }
+        
+        .exercise {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .exercise-title {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .question {
+            margin: 15px 0;
+            padding: 10px;
+            border-left: 4px solid var(--primary);
+            background: var(--light);
+        }
+        
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        
+        .option {
+            background: #e1bee7;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .option:hover {
+            background: #ce93d8;
+        }
+        
+        .correct {
+            background: var(--success);
+            color: white;
+        }
+        
+        .incorrect {
+            background: var(--danger);
+            color: white;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #eee;
+        }
+        
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: var(--secondary);
+        }
+        
+        .btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .progress-bar {
+            height: 5px;
+            background: #e0e0e0;
+            margin-top: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: var(--accent);
+            width: 0%;
+            transition: width 0.3s;
+        }
+        
+        .slide-counter {
+            text-align: center;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .summary-table th, .summary-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .summary-table th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .summary-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .highlight {
+            background-color: #fffacd;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        .person-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .person-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .person-title {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .key-points {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+        
+        .key-points li {
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .slide {
+                padding: 20px;
+            }
+            
+            .slide-title {
+                font-size: 2rem;
+            }
+            
+            .pronoun-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .person-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="slide-container">
+            <div class="slides" id="slides">
+                <!-- Slide 1: Title -->
+                <div class="slide">
+                    <h1 class="slide-title">English Pronouns</h1>
+                    <div class="content" style="text-align: center;">
+                        <p>A comprehensive guide to understanding and using pronouns correctly</p>
+                        <div style="margin: 30px 0;">
+                            <div class="pronoun-card" style="display: inline-block; margin: 10px;">
+                                <div class="pronoun">I, You, We</div>
+                                <div class="pronoun-type">Subject Pronouns</div>
+                            </div>
+                            <div class="pronoun-card" style="display: inline-block; margin: 10px;">
+                                <div class="pronoun">me, your, ours</div>
+                                <div class="pronoun-type">Object & Possessive</div>
+                            </div>
+                        </div>
+                        <p>Let's explore the different types of pronouns and practice using them!</p>
+                    </div>
+                </div>
+                
+                <!-- Slide 2: Introduction to Pronouns -->
+                <div class="slide">
+                    <h1 class="slide-title">What Are Pronouns?</h1>
+                    <div class="content">
+                        <p>Pronouns are words that replace nouns in sentences to avoid repetition and make language more efficient.</p>
+                        
+                        <div class="example" style="margin: 20px 0; padding: 15px; background: var(--light); border-radius: 10px;">
+                            <p><strong>Without pronouns:</strong> Mary said that Mary would bring Mary's book to Mary's friend.</p>
+                            <p><strong>With pronouns:</strong> Mary said that <span class="highlight">she</span> would bring <span class="highlight">her</span> book to <span class="highlight">her</span> friend.</p>
+                        </div>
+                        
+                        <h2 class="slide-subtitle">Why Use Pronouns?</h2>
+                        <ul class="key-points">
+                            <li>Make sentences less repetitive</li>
+                            <li>Make communication more efficient</li>
+                            <li>Help sentences flow better</li>
+                            <li>Refer to people or things without naming them repeatedly</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Slide 3: Person in Pronouns -->
+                <div class="slide">
+                    <h1 class="slide-title">Person in Pronouns</h1>
+                    <div class="content">
+                        <p>Pronouns are categorized by person, which indicates who is speaking, being spoken to, or being spoken about.</p>
+                        
+                        <div class="person-grid">
+                            <div class="person-card">
+                                <div class="person-title">First Person</div>
+                                <p>The person speaking</p>
+                                <p><strong>Examples:</strong> I, me, my, mine, we, us, our, ours</p>
+                            </div>
+                            <div class="person-card">
+                                <div class="person-title">Second Person</div>
+                                <p>The person being spoken to</p>
+                                <p><strong>Examples:</strong> you, your, yours</p>
+                            </div>
+                            <div class="person-card">
+                                <div class="person-title">Third Person</div>
+                                <p>The person being spoken about</p>
+                                <p><strong>Examples:</strong> he, him, his, she, her, hers, it, its, they, them, their, theirs</p>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise">
+                            <h3 class="exercise-title">Quick Practice</h3>
+                            <p>Identify the person of each pronoun:</p>
+                            <div class="question">
+                                <p>"We are going to the park." - What person is "we"?</p>
+                                <div class="options">
+                                    <div class="option" onclick="checkAnswer(this, 'correct')">First Person</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">Second Person</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">Third Person</div>
+                                </div>
+                            </div>
+                            <div class="question">
+                                <p>"They finished their homework." - What person is "they"?</p>
+                                <div class="options">
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">First Person</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">Second Person</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct')">Third Person</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 4: Subject Pronouns -->
+                <div class="slide">
+                    <h1 class="slide-title">Subject Pronouns</h1>
+                    <div class="content">
+                        <p>Subject pronouns are used as the subject of a sentence - the person or thing performing the action.</p>
+                        
+                        <div class="pronoun-grid">
+                            <div class="pronoun-card">
+                                <div class="pronoun">I</div>
+                                <div class="pronoun-type">First Person Singular</div>
+                                <div class="example">I like coffee.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">You</div>
+                                <div class="pronoun-type">Second Person</div>
+                                <div class="example">You are my friend.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">He</div>
+                                <div class="pronoun-type">Third Person Masculine</div>
+                                <div class="example">He plays soccer.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">She</div>
+                                <div class="pronoun-type">Third Person Feminine</div>
+                                <div class="example">She reads books.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">It</div>
+                                <div class="pronoun-type">Third Person Neutral</div>
+                                <div class="example">It is raining.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">We</div>
+                                <div class="pronoun-type">First Person Plural</div>
+                                <div class="example">We study English.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">They</div>
+                                <div class="pronoun-type">Third Person Plural</div>
+                                <div class="example">They live here.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise">
+                            <h3 class="exercise-title">Quick Practice</h3>
+                            <p>Choose the correct subject pronoun:</p>
+                            <div class="question">
+                                <p>______ am learning English. (I/Me)</p>
+                                <div class="options">
+                                    <div class="option" onclick="checkAnswer(this, 'correct')">I</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">Me</div>
+                                </div>
+                            </div>
+                            <div class="question">
+                                <p>______ is a talented musician. (She/Her)</p>
+                                <div class="options">
+                                    <div class="option" onclick="checkAnswer(this, 'correct')">She</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">Her</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 5: Object Pronouns -->
+                <div class="slide">
+                    <h1 class="slide-title">Object Pronouns</h1>
+                    <div class="content">
+                        <p>Object pronouns are used as the object of a verb or preposition - the person or thing receiving the action.</p>
+                        
+                        <div class="pronoun-grid">
+                            <div class="pronoun-card">
+                                <div class="pronoun">me</div>
+                                <div class="pronoun-type">First Person Singular</div>
+                                <div class="example">She called me.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">you</div>
+                                <div class="pronoun-type">Second Person</div>
+                                <div class="example">I see you.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">him</div>
+                                <div class="pronoun-type">Third Person Masculine</div>
+                                <div class="example">Give it to him.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">her</div>
+                                <div class="pronoun-type">Third Person Feminine</div>
+                                <div class="example">I know her.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">it</div>
+                                <div class="pronoun-type">Third Person Neutral</div>
+                                <div class="example">I bought it.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">us</div>
+                                <div class="pronoun-type">First Person Plural</div>
+                                <div class="example">They invited us.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">them</div>
+                                <div class="pronoun-type">Third Person Plural</div>
+                                <div class="example">We saw them.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise">
+                            <h3 class="exercise-title">Quick Practice</h3>
+                            <p>Choose the correct pronoun:</p>
+                            <div class="question">
+                                <p>Sarah gave the book to ______. (I/me)</p>
+                                <div class="options">
+                                    <div class="option" onclick="checkAnswer(this, 'correct')">me</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">I</div>
+                                </div>
+                            </div>
+                            <div class="question">
+                                <p>Please help ______ with this problem. (we/us)</p>
+                                <div class="options">
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">we</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct')">us</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 6: Possessive Adjectives -->
+                <div class="slide">
+                    <h1 class="slide-title">Possessive Adjectives</h1>
+                    <div class="content">
+                        <p>Possessive adjectives show ownership or relationship and come before a noun.</p>
+                        
+                        <div class="pronoun-grid">
+                            <div class="pronoun-card">
+                                <div class="pronoun">my</div>
+                                <div class="pronoun-type">First Person Singular</div>
+                                <div class="example">This is my car.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">your</div>
+                                <div class="pronoun-type">Second Person</div>
+                                <div class="example">Is this your book?</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">his</div>
+                                <div class="pronoun-type">Third Person Masculine</div>
+                                <div class="example">That is his house.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">her</div>
+                                <div class="pronoun-type">Third Person Feminine</div>
+                                <div class="example">I like her dress.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">its</div>
+                                <div class="pronoun-type">Third Person Neutral</div>
+                                <div class="example">The dog wagged its tail.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">our</div>
+                                <div class="pronoun-type">First Person Plural</div>
+                                <div class="example">We love our school.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">their</div>
+                                <div class="pronoun-type">Third Person Plural</div>
+                                <div class="example">They finished their work.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise">
+                            <h3 class="exercise-title">Quick Practice</h3>
+                            <p>Complete the sentences with the correct possessive adjective:</p>
+                            <div class="question">
+                                <p>This is ______ book. (I)</p>
+                                <div class="options">
+                                    <div class="option" onclick="checkAnswer(this, 'correct')">my</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">mine</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">I</div>
+                                </div>
+                            </div>
+                            <div class="question">
+                                <p>That is ______ car. (they)</p>
+                                <div class="options">
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">them</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct')">their</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">theirs</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 7: Possessive Pronouns -->
+                <div class="slide">
+                    <h1 class="slide-title">Possessive Pronouns</h1>
+                    <div class="content">
+                        <p>Possessive pronouns show ownership and replace a noun + possessive adjective.</p>
+                        
+                        <div class="pronoun-grid">
+                            <div class="pronoun-card">
+                                <div class="pronoun">mine</div>
+                                <div class="pronoun-type">First Person Singular</div>
+                                <div class="example">This book is mine.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">yours</div>
+                                <div class="pronoun-type">Second Person</div>
+                                <div class="example">Is this pen yours?</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">his</div>
+                                <div class="pronoun-type">Third Person Masculine</div>
+                                <div class="example">That car is his.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">hers</div>
+                                <div class="pronoun-type">Third Person Feminine</div>
+                                <div class="example">The red bike is hers.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">its</div>
+                                <div class="pronoun-type">Third Person Neutral</div>
+                                <div class="example">The bone is its.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">ours</div>
+                                <div class="pronoun-type">First Person Plural</div>
+                                <div class="example">The victory is ours.</div>
+                            </div>
+                            <div class="pronoun-card">
+                                <div class="pronoun">theirs</div>
+                                <div class="pronoun-type">Third Person Plural</div>
+                                <div class="example">Those books are theirs.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise">
+                            <h3 class="exercise-title">Quick Practice</h3>
+                            <p>Choose the correct possessive pronoun:</p>
+                            <div class="question">
+                                <p>This isn't my bag. It's ______. (you)</p>
+                                <div class="options">
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">your</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct')">yours</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">you</div>
+                                </div>
+                            </div>
+                            <div class="question">
+                                <p>We have our tickets. Where are ______? (they)</p>
+                                <div class="options">
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">their</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct')">theirs</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">them</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 8: Comprehensive Exercise -->
+                <div class="slide">
+                    <h1 class="slide-title">Practice Exercise</h1>
+                    <div class="content">
+                        <p>Fill in the blanks with the correct pronouns:</p>
+                        
+                        <div class="exercise">
+                            <div class="question">
+                                <p>______ am going to the store. Would you like to come with ______? (I/me)</p>
+                                <div class="options">
+                                    <div class="option" onclick="checkAnswer(this, 'correct')">I, me</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">Me, I</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">I, I</div>
+                                </div>
+                            </div>
+                            
+                            <div class="question">
+                                <p>That book belongs to Sarah. It is ______. (she)</p>
+                                <div class="options">
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">her</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct')">hers</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">she</div>
+                                </div>
+                            </div>
+                            
+                            <div class="question">
+                                <p>We invited ______ to ______ party. (they/we)</p>
+                                <div class="options">
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">they, our</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct')">them, our</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">them, ours</div>
+                                </div>
+                            </div>
+                            
+                            <div class="question">
+                                <p>Is this ______ umbrella? No, it's not ______. (you/I)</p>
+                                <div class="options">
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">your, my</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct')">your, mine</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">yours, mine</div>
+                                </div>
+                            </div>
+                            
+                            <div class="question">
+                                <p>______ brother is taller than ______. (I/he)</p>
+                                <div class="options">
+                                    <div class="option" onclick="checkAnswer(this, 'correct')">My, him</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">I, he</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">Mine, his</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 9: Summary Table -->
+                <div class="slide">
+                    <h1 class="slide-title">Pronoun Summary</h1>
+                    <div class="content">
+                        <p>Here's a complete overview of all the pronoun types we've learned:</p>
+                        
+                        <table class="summary-table">
+                            <thead>
+                                <tr>
+                                    <th>Person</th>
+                                    <th>Subject</th>
+                                    <th>Object</th>
+                                    <th>Possessive Adjective</th>
+                                    <th>Possessive Pronoun</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1st Singular</td>
+                                    <td>I</td>
+                                    <td>me</td>
+                                    <td>my</td>
+                                    <td>mine</td>
+                                </tr>
+                                <tr>
+                                    <td>2nd</td>
+                                    <td>you</td>
+                                    <td>you</td>
+                                    <td>your</td>
+                                    <td>yours</td>
+                                </tr>
+                                <tr>
+                                    <td>3rd Masculine</td>
+                                    <td>he</td>
+                                    <td>him</td>
+                                    <td>his</td>
+                                    <td>his</td>
+                                </tr>
+                                <tr>
+                                    <td>3rd Feminine</td>
+                                    <td>she</td>
+                                    <td>her</td>
+                                    <td>her</td>
+                                    <td>hers</td>
+                                </tr>
+                                <tr>
+                                    <td>3rd Neutral</td>
+                                    <td>it</td>
+                                    <td>it</td>
+                                    <td>its</td>
+                                    <td>its</td>
+                                </tr>
+                                <tr>
+                                    <td>1st Plural</td>
+                                    <td>we</td>
+                                    <td>us</td>
+                                    <td>our</td>
+                                    <td>ours</td>
+                                </tr>
+                                <tr>
+                                    <td>3rd Plural</td>
+                                    <td>they</td>
+                                    <td>them</td>
+                                    <td>their</td>
+                                    <td>theirs</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="exercise">
+                            <h3 class="exercise-title">Key Points to Remember</h3>
+                            <ul class="key-points">
+                                <li>Subject pronouns are the <strong>doers</strong> of the action</li>
+                                <li>Object pronouns <strong>receive</strong> the action</li>
+                                <li>Possessive adjectives come <strong>before</strong> a noun</li>
+                                <li>Possessive pronouns <strong>replace</strong> a noun</li>
+                                <li>Some pronouns like <strong>his</strong> and <strong>its</strong> are the same in both possessive forms</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 10: Final Exercise -->
+                <div class="slide">
+                    <h1 class="slide-title">Final Challenge</h1>
+                    <div class="content">
+                        <p>Let's test your understanding with this final exercise. Correct the pronoun errors in the following sentences:</p>
+                        
+                        <div class="exercise">
+                            <div class="question">
+                                <p>Me and him are going to the movies.</p>
+                                <div class="options">
+                                    <div class="option" onclick="checkAnswer(this, 'correct')">He and I are going to the movies.</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">Him and me are going to the movies.</div>
+                                </div>
+                            </div>
+                            
+                            <div class="question">
+                                <p>That car is her's.</p>
+                                <div class="options">
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">That car is her.</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct')">That car is hers.</div>
+                                </div>
+                            </div>
+                            
+                            <div class="question">
+                                <p>Between you and I, this is a secret.</p>
+                                <div class="options">
+                                    <div class="option" onclick="checkAnswer(this, 'correct')">Between you and me, this is a secret.</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">Between you and myself, this is a secret.</div>
+                                </div>
+                            </div>
+                            
+                            <div class="question">
+                                <p>Their going to bring they're books.</p>
+                                <div class="options">
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">There going to bring their books.</div>
+                                    <div class="option" onclick="checkAnswer(this, 'correct')">They're going to bring their books.</div>
+                                </div>
+                            </div>
+                            
+                            <div class="question">
+                                <p>This is between she and I.</p>
+                                <div class="options">
+                                    <div class="option" onclick="checkAnswer(this, 'correct')">This is between her and me.</div>
+                                    <div class="option" onclick="checkAnswer(this, 'incorrect')">This is between she and me.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 11: Conclusion -->
+                <div class="slide">
+                    <h1 class="slide-title">Congratulations!</h1>
+                    <div class="content" style="text-align: center;">
+                        <p>You've completed the English Pronouns lesson!</p>
+                        <div style="font-size: 4rem; margin: 20px 0;">🎉</div>
+                        <h2 class="slide-subtitle">Key Takeaways</h2>
+                        <ul class="key-points" style="text-align: left; display: inline-block; margin: 20px 0;">
+                            <li>You can now identify and use different types of pronouns</li>
+                            <li>You understand the difference between subject and object pronouns</li>
+                            <li>You know when to use possessive adjectives vs. possessive pronouns</li>
+                            <li>You can correct common pronoun errors in sentences</li>
+                        </ul>
+                        <p>Keep practicing to master English pronouns!</p>
+                        <div style="margin-top: 30px;">
+                            <button class="btn" onclick="goToSlide(0)">Restart Presentation</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <button class="btn" id="prev-btn" onclick="prevSlide()">Previous</button>
+            <div>
+                <div class="slide-counter">Slide <span id="current-slide">1</span> of <span id="total-slides">11</span></div>
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+            </div>
+            <button class="btn" id="next-btn" onclick="nextSlide()">Next</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = document.querySelectorAll('.slide').length;
+        const slidesContainer = document.getElementById('slides');
+        const currentSlideElement = document.getElementById('current-slide');
+        const totalSlidesElement = document.getElementById('total-slides');
+        const progressElement = document.getElementById('progress');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        
+        // Initialize
+        totalSlidesElement.textContent = totalSlides;
+        updateNavigation();
+        
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+            updateNavigation();
+        }
+        
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                goToSlide(currentSlide);
+            }
+        }
+        
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                goToSlide(currentSlide);
+            }
+        }
+        
+        function updateNavigation() {
+            currentSlideElement.textContent = currentSlide + 1;
+            progressElement.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+            
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+        }
+        
+        function checkAnswer(element, result) {
+            // Remove any existing classes
+            const options = element.parentElement.querySelectorAll('.option');
+            options.forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+            });
+            
+            // Add the appropriate class
+            element.classList.add(result);
+            
+            // If correct, move to next question after a delay
+            if (result === 'correct') {
+                setTimeout(() => {
+                    const nextQuestion = element.closest('.question').nextElementSibling;
+                    if (nextQuestion && nextQuestion.classList.contains('question')) {
+                        nextQuestion.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }, 1000);
+            }
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prepositions of Time: IN, AT, ON</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a237e 0%, #4a148c 100%);
+            color: #333;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .presentation-container {
+            width: 100%;
+            max-width: 1200px;
+            height: 90vh;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header */
+        .presentation-header {
+            background: linear-gradient(to right, #1a237e, #4a148c);
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .presentation-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .slide-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .slide-counter {
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+        }
+        
+        /* Slides container */
+        .slides-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 40px;
+            display: none;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        
+        .slide.active {
+            display: flex;
+            animation: slideIn 0.5s ease;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        /* Slide content */
+        .slide-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: #7e57c2;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .slide-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #311b92;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid #7e57c2;
+        }
+        
+        .slide-title.center {
+            text-align: center;
+            border-bottom: none;
+            margin-bottom: 40px;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.6rem;
+            color: #5d4037;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 1.3rem;
+            line-height: 1.7;
+        }
+        
+        .content-center {
+            text-align: center;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        
+        /* Preposition columns */
+        .prepositions-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+            gap: 20px;
+        }
+        
+        .preposition-column {
+            flex: 1;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .preposition-column:hover {
+            transform: translateY(-10px);
+        }
+        
+        .preposition-column.in {
+            background: linear-gradient(to bottom, #e3f2fd, #bbdefb);
+            border-top: 5px solid #1976d2;
+        }
+        
+        .preposition-column.on {
+            background: linear-gradient(to bottom, #f3e5f5, #e1bee7);
+            border-top: 5px solid #7b1fa2;
+        }
+        
+        .preposition-column.at {
+            background: linear-gradient(to bottom, #fff8e1, #ffecb3);
+            border-top: 5px solid #ff8f00;
+        }
+        
+        .preposition-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .preposition-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .preposition-circle.in {
+            background: linear-gradient(135deg, #1976d2, #0d47a1);
+        }
+        
+        .preposition-circle.on {
+            background: linear-gradient(135deg, #7b1fa2, #4a148c);
+        }
+        
+        .preposition-circle.at {
+            background: linear-gradient(135deg, #ff8f00, #ef6c00);
+        }
+        
+        .preposition-list {
+            list-style-type: none;
+        }
+        
+        .preposition-item {
+            padding: 12px 0;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .preposition-item:last-child {
+            border-bottom: none;
+        }
+        
+        .preposition-item i {
+            margin-right: 12px;
+            font-size: 1.1rem;
+        }
+        
+        .preposition-item.in i {
+            color: #1976d2;
+        }
+        
+        .preposition-item.on i {
+            color: #7b1fa2;
+        }
+        
+        .preposition-item.at i {
+            color: #ff8f00;
+        }
+        
+        /* Rules section */
+        .rules-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .rule-card {
+            background: #f5f5f5;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-left: 5px solid #7e57c2;
+        }
+        
+        .rule-title {
+            font-size: 1.5rem;
+            color: #311b92;
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Exercise slides */
+        .exercise-container {
+            background: #f3e5f5;
+            border-radius: 15px;
+            padding: 35px;
+            margin-top: 20px;
+        }
+        
+        .exercise-title {
+            color: #7b1fa2;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .question {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            border-left: 5px solid #7e57c2;
+        }
+        
+        .options {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .option {
+            padding: 15px 25px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            font-size: 1.2rem;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .option:hover {
+            border-color: #7e57c2;
+            background: #f3e5f5;
+        }
+        
+        .option.selected {
+            border-color: #4caf50;
+            background: #e8f5e9;
+            color: #2e7d32;
+            font-weight: 600;
+        }
+        
+        .option.correct {
+            border-color: #4caf50;
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+        
+        .option.incorrect {
+            border-color: #f44336;
+            background: #ffebee;
+            color: #c62828;
+        }
+        
+        .check-btn {
+            background: #7e57c2;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .check-btn:hover {
+            background: #5e35b1;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .check-btn.reset {
+            background: #78909c;
+        }
+        
+        .check-btn.reset:hover {
+            background: #546e7a;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        .result.correct {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-left: 5px solid #4caf50;
+        }
+        
+        .result.incorrect {
+            background: #ffebee;
+            color: #c62828;
+            border-left: 5px solid #f44336;
+        }
+        
+        .exercise-score {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-top: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border: 2px dashed #7e57c2;
+        }
+        
+        /* Navigation buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 30px;
+            background: #f5f5f5;
+            border-top: 1px solid #ddd;
+        }
+        
+        .nav-btn {
+            background: #7e57c2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        
+        .nav-btn:hover {
+            background: #5e35b1;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-btn:disabled {
+            background: #b0bec5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .slide-indicators {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .slide-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .slide-indicator.active {
+            background: #7e57c2;
+            transform: scale(1.3);
+        }
+        
+        /* Summary slide */
+        .summary-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .summary-card {
+            background: #f5f5f5;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .summary-card h3 {
+            font-size: 1.5rem;
+            color: #311b92;
+            margin-bottom: 20px;
+        }
+        
+        .summary-example {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .slide-title {
+                font-size: 2.2rem;
+            }
+            
+            .prepositions-container {
+                flex-direction: column;
+            }
+            
+            .rules-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .slide {
+                padding: 25px;
+            }
+            
+            .slide-title {
+                font-size: 1.8rem;
+            }
+            
+            .preposition-circle {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+            
+            .options {
+                flex-direction: column;
+            }
+            
+            .option {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Header -->
+        <div class="presentation-header">
+            <div class="presentation-title">Prepositions of Time: IN, AT, ON</div>
+            <div class="slide-controls">
+                <div class="slide-counter">
+                    Slide <span id="currentSlide">1</span> of <span id="totalSlides">8</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slides Container -->
+        <div class="slides-container">
+            <!-- Slide 1: Title -->
+            <div class="slide active" id="slide1">
+                <div class="slide-number">1</div>
+                <h1 class="slide-title center">Prepositions of Time</h1>
+                <h2 class="slide-subtitle center">IN, AT, ON - When to Use Each One</h2>
+                
+                <div class="content-center">
+                    <div style="display: flex; justify-content: center; gap: 30px; margin: 50px 0;">
+                        <div class="preposition-circle in">IN</div>
+                        <div class="preposition-circle on">ON</div>
+                        <div class="preposition-circle at">AT</div>
+                    </div>
+                    
+                    <p style="font-size: 1.4rem; color: #555; max-width: 800px; line-height: 1.6;">
+                        Learn the correct usage of prepositions of time with clear rules, examples, and practice exercises.
+                        Master when to use <strong>IN</strong>, <strong>ON</strong>, and <strong>AT</strong> with time expressions.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Slide 2: IN Column -->
+            <div class="slide" id="slide2">
+                <div class="slide-number">2</div>
+                <h1 class="slide-title">Preposition <span style="color: #1976d2;">IN</span></h1>
+                <p class="slide-subtitle">Used for longer periods of time</p>
+                
+                <div class="preposition-column in">
+                    <div class="preposition-header">
+                        <div class="preposition-circle in">IN</div>
+                    </div>
+                    
+                    <ul class="preposition-list">
+                        <li class="preposition-item in"><i class="far fa-clock"></i> in the morning</li>
+                        <li class="preposition-item in"><i class="far fa-clock"></i> in the afternoon</li>
+                        <li class="preposition-item in"><i class="fas fa-sun"></i> in (the) summer</li>
+                        <li class="preposition-item in"><i class="far fa-calendar"></i> in 1980</li>
+                        <li class="preposition-item in"><i class="fas fa-history"></i> in the 1900s</li>
+                        <li class="preposition-item in"><i class="fas fa-landmark"></i> in the 17th century</li>
+                        <li class="preposition-item in"><i class="fas fa-egg"></i> in the Easter holiday</li>
+                        <li class="preposition-item in"><i class="fas fa-rocket"></i> in the next century</li>
+                        <li class="preposition-item in"><i class="fas fa-crystal-ball"></i> in the future</li>
+                        <li class="preposition-item in"><i class="fas fa-hourglass-end"></i> in 10 years time</li>
+                    </ul>
+                </div>
+                
+                <div class="rule-card" style="margin-top: 30px;">
+                    <h3 class="rule-title"><i class="fas fa-lightbulb" style="color: #1976d2;"></i> Rule for IN</h3>
+                    <p>Use <strong>IN</strong> for:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px; font-size: 1.2rem;">
+                        <li>Parts of the day (morning, afternoon, evening - but NOT night)</li>
+                        <li>Months, seasons, years, decades, centuries</li>
+                        <li>Long periods of time (the future, the past, holidays)</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>Exception:</strong> We say "at night" not "in the night"</p>
+                </div>
+            </div>
+            
+            <!-- Slide 3: ON Column -->
+            <div class="slide" id="slide3">
+                <div class="slide-number">3</div>
+                <h1 class="slide-title">Preposition <span style="color: #7b1fa2;">ON</span></h1>
+                <p class="slide-subtitle">Used for specific days and dates</p>
+                
+                <div class="preposition-column on">
+                    <div class="preposition-header">
+                        <div class="preposition-circle on">ON</div>
+                    </div>
+                    
+                    <ul class="preposition-list">
+                        <li class="preposition-item on"><i class="far fa-calendar-alt"></i> on Monday</li>
+                        <li class="preposition-item on"><i class="far fa-calendar-alt"></i> on Saturday</li>
+                        <li class="preposition-item on"><i class="far fa-calendar"></i> on June 3rd</li>
+                        <li class="preposition-item on"><i class="far fa-calendar"></i> on 1st October 2013</li>
+                        <li class="preposition-item on"><i class="fas fa-tree"></i> on Christmas day</li>
+                        <li class="preposition-item on"><i class="fas fa-birthday-cake"></i> on my birthday</li>
+                        <li class="preposition-item on"><i class="far fa-clock"></i> on Tuesday evening</li>
+                        <li class="preposition-item on"><i class="fas fa-hourglass-start"></i> on time</li>
+                        <li class="preposition-item on"><i class="fas fa-snowflake"></i> on a winter evening</li>
+                        <li class="preposition-item on"><i class="fas fa-sun"></i> on a warm day</li>
+                    </ul>
+                </div>
+                
+                <div class="rule-card" style="margin-top: 30px;">
+                    <h3 class="rule-title"><i class="fas fa-lightbulb" style="color: #7b1fa2;"></i> Rule for ON</h3>
+                    <p>Use <strong>ON</strong> for:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px; font-size: 1.2rem;">
+                        <li>Days of the week (Monday, Tuesday, etc.)</li>
+                        <li>Specific dates (June 3rd, 1st October 2013)</li>
+                        <li>Special days (Christmas day, my birthday)</li>
+                        <li>Days with parts of the day (Tuesday evening)</li>
+                        <li>Specific days described (a winter evening, a warm day)</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>Note:</strong> "On time" means punctual, not early or late</p>
+                </div>
+            </div>
+            
+            <!-- Slide 4: AT Column -->
+            <div class="slide" id="slide4">
+                <div class="slide-number">4</div>
+                <h1 class="slide-title">Preposition <span style="color: #ff8f00;">AT</span></h1>
+                <p class="slide-subtitle">Used for precise times and expressions</p>
+                
+                <div class="preposition-column at">
+                    <div class="preposition-header">
+                        <div class="preposition-circle at">AT</div>
+                    </div>
+                    
+                    <ul class="preposition-list">
+                        <li class="preposition-item at"><i class="far fa-clock"></i> at 9 am</li>
+                        <li class="preposition-item at"><i class="far fa-clock"></i> at 8 o'clock</li>
+                        <li class="preposition-item at"><i class="far fa-clock"></i> at 6 pm</li>
+                        <li class="preposition-item at"><i class="fas fa-moon"></i> at night</li>
+                        <li class="preposition-item at"><i class="fas fa-sun"></i> at noon/midday</li>
+                        <li class="preposition-item at"><i class="fas fa-egg"></i> at Easter</li>
+                        <li class="preposition-item at"><i class="fas fa-tree"></i> at Christmas</li>
+                        <li class="preposition-item at"><i class="fas fa-utensils"></i> at dinner time</li>
+                        <li class="preposition-item at"><i class="fas fa-utensils"></i> at dinner</li>
+                        <li class="preposition-item at"><i class="fas fa-bolt"></i> at that moment</li>
+                    </ul>
+                </div>
+                
+                <div class="rule-card" style="margin-top: 30px;">
+                    <h3 class="rule-title"><i class="fas fa-lightbulb" style="color: #ff8f00;"></i> Rule for AT</h3>
+                    <p>Use <strong>AT</strong> for:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px; font-size: 1.2rem;">
+                        <li>Clock times (9 am, 8 o'clock, 6 pm)</li>
+                        <li>Specific points in the day (night, noon, midnight)</li>
+                        <li>Holiday periods (Easter, Christmas) when referring to the period</li>
+                        <li>Meal times (breakfast, lunch, dinner)</li>
+                        <li>Specific moments (that moment, this time)</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>Note:</strong> We say "at Christmas" for the holiday period but "on Christmas day" for the specific day</p>
+                </div>
+            </div>
+            
+            <!-- Slide 5: Comparison & Rules -->
+            <div class="slide" id="slide5">
+                <div class="slide-number">5</div>
+                <h1 class="slide-title center">Rules Summary</h1>
+                <p class="slide-subtitle center">When to use each preposition</p>
+                
+                <div class="rules-container">
+                    <div class="rule-card">
+                        <h3 class="rule-title"><span style="color: #1976d2;">IN</span> - The Big Picture</h3>
+                        <p>Think of <strong>IN</strong> as the "big container" of time:</p>
+                        <div class="summary-example">in July (the whole month)</div>
+                        <div class="summary-example">in 2023 (the whole year)</div>
+                        <div class="summary-example">in the morning (the whole morning period)</div>
+                        <p style="margin-top: 15px; font-size: 1.1rem;"><i class="fas fa-check-circle" style="color: #1976d2;"></i> Use for months, years, seasons, centuries</p>
+                    </div>
+                    
+                    <div class="rule-card">
+                        <h3 class="rule-title"><span style="color: #7b1fa2;">ON</span> - The Specific Day</h3>
+                        <p>Think of <strong>ON</strong> as a specific point on a calendar:</p>
+                        <div class="summary-example">on Monday (a specific day)</div>
+                        <div class="summary-example">on June 15th (a specific date)</div>
+                        <div class="summary-example">on my birthday (a specific day)</div>
+                        <p style="margin-top: 15px; font-size: 1.1rem;"><i class="fas fa-check-circle" style="color: #7b1fa2;"></i> Use for days and dates</p>
+                    </div>
+                    
+                    <div class="rule-card">
+                        <h3 class="rule-title"><span style="color: #ff8f00;">AT</span> - The Precise Point</h3>
+                        <p>Think of <strong>AT</strong> as a precise point on a clock:</p>
+                        <div class="summary-example">at 3:00 PM (exact time)</div>
+                        <div class="summary-example">at night (the night period)</div>
+                        <div class="summary-example">at Christmas (the holiday period)</div>
+                        <p style="margin-top: 15px; font-size: 1.1rem;"><i class="fas fa-check-circle" style="color: #ff8f00;"></i> Use for clock times and expressions</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 40px; padding: 25px; background: #e8eaf6; border-radius: 15px;">
+                    <h3 style="color: #311b92; margin-bottom: 15px; font-size: 1.4rem;">Quick Memory Tip</h3>
+                    <div style="display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap;">
+                        <div>
+                            <div class="preposition-circle in" style="width: 60px; height: 60px; font-size: 1.5rem; margin: 0 auto 10px;">IN</div>
+                            <p style="font-weight: 600; color: #1976d2;">Long periods</p>
+                        </div>
+                        <div>
+                            <div class="preposition-circle on" style="width: 60px; height: 60px; font-size: 1.5rem; margin: 0 auto 10px;">ON</div>
+                            <p style="font-weight: 600; color: #7b1fa2;">Specific days</p>
+                        </div>
+                        <div>
+                            <div class="preposition-circle at" style="width: 60px; height: 60px; font-size: 1.5rem; margin: 0 auto 10px;">AT</div>
+                            <p style="font-weight: 600; color: #ff8f00;">Precise times</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 6: Exercise 1 -->
+            <div class="slide" id="slide6">
+                <div class="slide-number">6</div>
+                <h1 class="slide-title">Exercise 1: Fill in the Blank</h1>
+                <p class="slide-subtitle">Choose the correct preposition for each sentence</p>
+                
+                <div class="exercise-container">
+                    <h3 class="exercise-title"><i class="fas fa-pencil-alt"></i> Basic Practice</h3>
+                    
+                    <div class="question" id="q1">
+                        <p><strong>1. I usually wake up ______ 7:00 ______ the morning.</strong></p>
+                        <div class="options">
+                            <div class="option" data-q="1" data-answer="at,in">AT, IN</div>
+                            <div class="option" data-q="1" data-answer="on,in">ON, IN</div>
+                            <div class="option" data-q="1" data-answer="in,at">IN, AT</div>
+                        </div>
+                        <div class="result" id="result1"></div>
+                    </div>
+                    
+                    <div class="question" id="q2">
+                        <p><strong>2. My birthday is ______ June, and we always have a party ______ Saturday.</strong></p>
+                        <div class="options">
+                            <div class="option" data-q="2" data-answer="in,on">IN, ON</div>
+                            <div class="option" data-q="2" data-answer="at,on">AT, ON</div>
+                            <div class="option" data-q="2" data-answer="on,in">ON, IN</div>
+                        </div>
+                        <div class="result" id="result2"></div>
+                    </div>
+                    
+                    <div class="question" id="q3">
+                        <p><strong>3. We usually visit our grandparents ______ Christmas, and we open presents ______ Christmas morning.</strong></p>
+                        <div class="options">
+                            <div class="option" data-q="3" data-answer="at,on">AT, ON</div>
+                            <div class="option" data-q="3" data-answer="on,at">ON, AT</div>
+                            <div class="option" data-q="3" data-answer="in,on">IN, ON</div>
+                        </div>
+                        <div class="result" id="result3"></div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; margin-top: 30px;">
+                        <button class="check-btn" id="checkExercise1">
+                            <i class="fas fa-check-circle"></i> Check Answers
+                        </button>
+                        <button class="check-btn reset" id="resetExercise1">
+                            <i class="fas fa-redo"></i> Reset
+                        </button>
+                    </div>
+                    
+                    <div class="exercise-score" id="score1" style="display: none;">
+                        <p>Your Score: <span id="scoreValue1">0</span>/3</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 7: Exercise 2 -->
+            <div class="slide" id="slide7">
+                <div class="slide-number">7</div>
+                <h1 class="slide-title">Exercise 2: Complete the Sentences</h1>
+                <p class="slide-subtitle">More challenging practice with time expressions</p>
+                
+                <div class="exercise-container">
+                    <h3 class="exercise-title"><i class="fas fa-brain"></i> Intermediate Practice</h3>
+                    
+                    <div class="question" id="q4">
+                        <p><strong>1. The conference will be held ______ 15th May 2024, ______ the afternoon.</strong></p>
+                        <div class="options">
+                            <div class="option" data-q="4" data-answer="on,in">ON, IN</div>
+                            <div class="option" data-q="4" data-answer="at,on">AT, ON</div>
+                            <div class="option" data-q="4" data-answer="in,at">IN, AT</div>
+                        </div>
+                        <div class="result" id="result4"></div>
+                    </div>
+                    
+                    <div class="question" id="q5">
+                        <p><strong>2. ______ the 1990s, people didn't have smartphones. ______ that time, we used regular phones.</strong></p>
+                        <div class="options">
+                            <div class="option" data-q="5" data-answer="in,at">IN, AT</div>
+                            <div class="option" data-q="5" data-answer="on,in">ON, IN</div>
+                            <div class="option" data-q="5" data-answer="at,on">AT, ON</div>
+                        </div>
+                        <div class="result" id="result5"></div>
+                    </div>
+                    
+                    <div class="question" id="q6">
+                        <p><strong>3. I love walking ______ warm summer evenings, especially ______ sunset.</strong></p>
+                        <div class="options">
+                            <div class="option" data-q="6" data-answer="on,at">ON, AT</div>
+                            <div class="option" data-q="6" data-answer="in,on">IN, ON</div>
+                            <div class="option" data-q="6" data-answer="at,in">AT, IN</div>
+                        </div>
+                        <div class="result" id="result6"></div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; margin-top: 30px;">
+                        <button class="check-btn" id="checkExercise2">
+                            <i class="fas fa-check-circle"></i> Check Answers
+                        </button>
+                        <button class="check-btn reset" id="resetExercise2">
+                            <i class="fas fa-redo"></i> Reset
+                        </button>
+                    </div>
+                    
+                    <div class="exercise-score" id="score2" style="display: none;">
+                        <p>Your Score: <span id="scoreValue2">0</span>/3</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 8: Exercise 3 -->
+            <div class="slide" id="slide8">
+                <div class="slide-number">8</div>
+                <h1 class="slide-title">Exercise 3: Challenge Questions</h1>
+                <p class="slide-subtitle">Test your understanding with tricky situations</p>
+                
+                <div class="exercise-container">
+                    <h3 class="exercise-title"><i class="fas fa-trophy"></i> Advanced Practice</h3>
+                    
+                    <div class="question" id="q7">
+                        <p><strong>1. The train is never late; it always arrives ______ time, usually ______ 8:30 exactly.</strong></p>
+                        <div class="options">
+                            <div class="option" data-q="7" data-answer="on,at">ON, AT</div>
+                            <div class="option" data-q="7" data-answer="at,on">AT, ON</div>
+                            <div class="option" data-q="7" data-answer="in,at">IN, AT</div>
+                        </div>
+                        <div class="result" id="result7"></div>
+                    </div>
+                    
+                    <div class="question" id="q8">
+                        <p><strong>2. ______ Easter, we usually go to church, and ______ Easter Sunday we have a big family dinner.</strong></p>
+                        <div class="options">
+                            <div class="option" data-q="8" data-answer="at,on">AT, ON</div>
+                            <div class="option" data-q="8" data-answer="on,at">ON, AT</div>
+                            <div class="option" data-q="8" data-answer="in,on">IN, ON</div>
+                        </div>
+                        <div class="result" id="result8"></div>
+                    </div>
+                    
+                    <div class="question" id="q9">
+                        <p><strong>3. My grandfather was born ______ 1925, ______ July 10th, ______ a Tuesday ______ the morning.</strong></p>
+                        <div class="options">
+                            <div class="option" data-q="9" data-answer="in,on,on,in">IN, ON, ON, IN</div>
+                            <div class="option" data-q="9" data-answer="at,on,in,at">AT, ON, IN, AT</div>
+                            <div class="option" data-q="9" data-answer="on,in,at,on">ON, IN, AT, ON</div>
+                        </div>
+                        <div class="result" id="result9"></div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; margin-top: 30px;">
+                        <button class="check-btn" id="checkExercise3">
+                            <i class="fas fa-check-circle"></i> Check Answers
+                        </button>
+                        <button class="check-btn reset" id="resetExercise3">
+                            <i class="fas fa-redo"></i> Reset
+                        </button>
+                    </div>
+                    
+                    <div class="exercise-score" id="score3" style="display: none;">
+                        <p>Your Final Score: <span id="scoreValue3">0</span>/3</p>
+                        <p style="margin-top: 10px; font-size: 1.2rem;" id="scoreMessage"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+            <button id="prevBtn" class="nav-btn" disabled>
+                <i class="fas fa-chevron-left"></i> Previous
+            </button>
+            
+            <div class="slide-indicators">
+                <div class="slide-indicator active" data-slide="1"></div>
+                <div class="slide-indicator" data-slide="2"></div>
+                <div class="slide-indicator" data-slide="3"></div>
+                <div class="slide-indicator" data-slide="4"></div>
+                <div class="slide-indicator" data-slide="5"></div>
+                <div class="slide-indicator" data-slide="6"></div>
+                <div class="slide-indicator" data-slide="7"></div>
+                <div class="slide-indicator" data-slide="8"></div>
+            </div>
+            
+            <button id="nextBtn" class="nav-btn">
+                Next <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // PowerPoint-like presentation functionality
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let currentSlideIndex = 0;
+        
+        // Elements
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slideIndicators = document.querySelectorAll('.slide-indicator');
+        const currentSlideSpan = document.getElementById('currentSlide');
+        const totalSlidesSpan = document.getElementById('totalSlides');
+        
+        // Initialize
+        totalSlidesSpan.textContent = totalSlides;
+        updateSlideIndicator();
+        
+        // Navigation functions
+        function goToSlide(index) {
+            if (index < 0 || index >= totalSlides) return;
+            
+            // Hide current slide
+            slides[currentSlideIndex].classList.remove('active');
+            slideIndicators[currentSlideIndex].classList.remove('active');
+            
+            // Update current slide index
+            currentSlideIndex = index;
+            
+            // Show new slide
+            slides[currentSlideIndex].classList.add('active');
+            slideIndicators[currentSlideIndex].classList.add('active');
+            currentSlideSpan.textContent = currentSlideIndex + 1;
+            
+            // Update button states
+            prevBtn.disabled = currentSlideIndex === 0;
+            nextBtn.disabled = currentSlideIndex === totalSlides - 1;
+        }
+        
+        function nextSlide() {
+            goToSlide(currentSlideIndex + 1);
+        }
+        
+        function prevSlide() {
+            goToSlide(currentSlideIndex - 1);
+        }
+        
+        function updateSlideIndicator() {
+            slideIndicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlideIndex);
+            });
+        }
+        
+        // Event listeners for navigation
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'Home') goToSlide(0);
+            if (e.key === 'End') goToSlide(totalSlides - 1);
+        });
+        
+        // Click on slide indicators
+        slideIndicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                goToSlide(index);
+            });
+        });
+        
+        // Exercise functionality
+        let exercise1Answers = {1: null, 2: null, 3: null};
+        let exercise2Answers = {4: null, 5: null, 6: null};
+        let exercise3Answers = {7: null, 8: null, 9: null};
+        
+        // Set up option selection for all questions
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const questionNum = parseInt(this.getAttribute('data-q'));
+                const answer = this.getAttribute('data-answer');
+                
+                // Remove selected class from all options in this question
+                const questionElement = document.getElementById(`q${questionNum}`);
+                questionElement.querySelectorAll('.option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                
+                // Store answer
+                if (questionNum <= 3) {
+                    exercise1Answers[questionNum] = answer;
+                } else if (questionNum <= 6) {
+                    exercise2Answers[questionNum] = answer;
+                } else {
+                    exercise3Answers[questionNum] = answer;
+                }
+            });
+        });
+        
+        // Exercise 1: Check answers
+        document.getElementById('checkExercise1').addEventListener('click', function() {
+            const correctAnswers = {
+                1: 'at,in',
+                2: 'in,on',
+                3: 'at,on'
+            };
+            
+            let score = 0;
+            
+            for (let q = 1; q <= 3; q++) {
+                const resultDiv = document.getElementById(`result${q}`);
+                const userAnswer = exercise1Answers[q];
+                const correctAnswer = correctAnswers[q];
+                
+                if (userAnswer === correctAnswer) {
+                    resultDiv.textContent = `Correct! ✓ (${correctAnswer})`;
+                    resultDiv.className = 'result correct';
+                    resultDiv.style.display = 'block';
+                    score++;
+                    
+                    // Highlight correct option
+                    document.querySelectorAll(`.option[data-q="${q}"]`).forEach(opt => {
+                        if (opt.getAttribute('data-answer') === correctAnswer) {
+                            opt.classList.add('correct');
+                        }
+                    });
+                } else if (userAnswer) {
+                    resultDiv.textContent = `Incorrect. The correct answer is: ${correctAnswer}`;
+                    resultDiv.className = 'result incorrect';
+                    resultDiv.style.display = 'block';
+                    
+                    // Highlight correct and incorrect options
+                    document.querySelectorAll(`.option[data-q="${q}"]`).forEach(opt => {
+                        const answer = opt.getAttribute('data-answer');
+                        if (answer === correctAnswer) {
+                            opt.classList.add('correct');
+                        } else if (answer === userAnswer) {
+                            opt.classList.add('incorrect');
+                        }
+                    });
+                } else {
+                    resultDiv.textContent = `Please select an answer. Correct answer: ${correctAnswer}`;
+                    resultDiv.className = 'result incorrect';
+                    resultDiv.style.display = 'block';
+                }
+            }
+            
+            // Show score
+            const scoreDiv = document.getElementById('score1');
+            const scoreValue = document.getElementById('scoreValue1');
+            scoreValue.textContent = score;
+            scoreDiv.style.display = 'block';
+        });
+        
+        // Exercise 2: Check answers
+        document.getElementById('checkExercise2').addEventListener('click', function() {
+            const correctAnswers = {
+                4: 'on,in',
+                5: 'in,at',
+                6: 'on,at'
+            };
+            
+            let score = 0;
+            
+            for (let q = 4; q <= 6; q++) {
+                const resultDiv = document.getElementById(`result${q}`);
+                const userAnswer = exercise2Answers[q];
+                const correctAnswer = correctAnswers[q];
+                
+                if (userAnswer === correctAnswer) {
+                    resultDiv.textContent = `Correct! ✓ (${correctAnswer})`;
+                    resultDiv.className = 'result correct';
+                    resultDiv.style.display = 'block';
+                    score++;
+                    
+                    // Highlight correct option
+                    document.querySelectorAll(`.option[data-q="${q}"]`).forEach(opt => {
+                        if (opt.getAttribute('data-answer') === correctAnswer) {
+                            opt.classList.add('correct');
+                        }
+                    });
+                } else if (userAnswer) {
+                    resultDiv.textContent = `Incorrect. The correct answer is: ${correctAnswer}`;
+                    resultDiv.className = 'result incorrect';
+                    resultDiv.style.display = 'block';
+                    
+                    // Highlight correct and incorrect options
+                    document.querySelectorAll(`.option[data-q="${q}"]`).forEach(opt => {
+                        const answer = opt.getAttribute('data-answer');
+                        if (answer === correctAnswer) {
+                            opt.classList.add('correct');
+                        } else if (answer === userAnswer) {
+                            opt.classList.add('incorrect');
+                        }
+                    });
+                } else {
+                    resultDiv.textContent = `Please select an answer. Correct answer: ${correctAnswer}`;
+                    resultDiv.className = 'result incorrect';
+                    resultDiv.style.display = 'block';
+                }
+            }
+            
+            // Show score
+            const scoreDiv = document.getElementById('score2');
+            const scoreValue = document.getElementById('scoreValue2');
+            scoreValue.textContent = score;
+            scoreDiv.style.display = 'block';
+        });
+        
+        // Exercise 3: Check answers
+        document.getElementById('checkExercise3').addEventListener('click', function() {
+            const correctAnswers = {
+                7: 'on,at',
+                8: 'at,on',
+                9: 'in,on,on,in'
+            };
+            
+            let score = 0;
+            
+            for (let q = 7; q <= 9; q++) {
+                const resultDiv = document.getElementById(`result${q}`);
+                const userAnswer = exercise3Answers[q];
+                const correctAnswer = correctAnswers[q];
+                
+                if (userAnswer === correctAnswer) {
+                    resultDiv.textContent = `Correct! ✓ (${correctAnswer})`;
+                    resultDiv.className = 'result correct';
+                    resultDiv.style.display = 'block';
+                    score++;
+                    
+                    // Highlight correct option
+                    document.querySelectorAll(`.option[data-q="${q}"]`).forEach(opt => {
+                        if (opt.getAttribute('data-answer') === correctAnswer) {
+                            opt.classList.add('correct');
+                        }
+                    });
+                } else if (userAnswer) {
+                    resultDiv.textContent = `Incorrect. The correct answer is: ${correctAnswer}`;
+                    resultDiv.className = 'result incorrect';
+                    resultDiv.style.display = 'block';
+                    
+                    // Highlight correct and incorrect options
+                    document.querySelectorAll(`.option[data-q="${q}"]`).forEach(opt => {
+                        const answer = opt.getAttribute('data-answer');
+                        if (answer === correctAnswer) {
+                            opt.classList.add('correct');
+                        } else if (answer === userAnswer) {
+                            opt.classList.add('incorrect');
+                        }
+                    });
+                } else {
+                    resultDiv.textContent = `Please select an answer. Correct answer: ${correctAnswer}`;
+                    resultDiv.className = 'result incorrect';
+                    resultDiv.style.display = 'block';
+                }
+            }
+            
+            // Show score and message
+            const scoreDiv = document.getElementById('score3');
+            const scoreValue = document.getElementById('scoreValue3');
+            const scoreMessage = document.getElementById('scoreMessage');
+            scoreValue.textContent = score;
+            
+            if (score === 3) {
+                scoreMessage.textContent = "Excellent! You've mastered prepositions of time!";
+                scoreMessage.style.color = "#4caf50";
+            } else if (score === 2) {
+                scoreMessage.textContent = "Good job! Review the rules and try again.";
+                scoreMessage.style.color = "#ff9800";
+            } else {
+                scoreMessage.textContent = "Keep practicing! Review the rules on slides 2-5.";
+                scoreMessage.style.color = "#f44336";
+            }
+            
+            scoreDiv.style.display = 'block';
+        });
+        
+        // Reset functions
+        function resetExercise(exerciseNum) {
+            let startQ, endQ;
+            if (exerciseNum === 1) {
+                startQ = 1; endQ = 3;
+                exercise1Answers = {1: null, 2: null, 3: null};
+            } else if (exerciseNum === 2) {
+                startQ = 4; endQ = 6;
+                exercise2Answers = {4: null, 5: null, 6: null};
+            } else {
+                startQ = 7; endQ = 9;
+                exercise3Answers = {7: null, 8: null, 9: null};
+            }
+            
+            for (let q = startQ; q <= endQ; q++) {
+                // Reset result display
+                const resultDiv = document.getElementById(`result${q}`);
+                resultDiv.style.display = 'none';
+                resultDiv.textContent = '';
+                
+                // Reset options styling
+                document.querySelectorAll(`.option[data-q="${q}"]`).forEach(opt => {
+                    opt.classList.remove('selected', 'correct', 'incorrect');
+                });
+            }
+            
+            // Hide score
+            const scoreDiv = document.getElementById(`score${exerciseNum}`);
+            scoreDiv.style.display = 'none';
+        }
+        
+        // Reset button event listeners
+        document.getElementById('resetExercise1').addEventListener('click', () => resetExercise(1));
+        document.getElementById('resetExercise2').addEventListener('click', () => resetExercise(2));
+        document.getElementById('resetExercise3').addEventListener('click', () => resetExercise(3));
+        
+        // Initialize first slide
+        goToSlide(0);
+    </script>
+</body>
+</html>

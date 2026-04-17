@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Tense Practice - Present & Past Tenses</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(to right, #2c3e50, #4a6491);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-bottom: 5px solid #fdbb2d;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: #fdbb2d;
+        }
+        
+        .section {
+            padding: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .section-title {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #fdbb2d;
+        }
+        
+        .exercise {
+            background-color: #f8f9fa;
+            border: 2px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .exercise-title {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .question {
+            margin: 15px 0;
+            font-size: 1.1rem;
+        }
+        
+        .answer-input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .check-btn {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        
+        .check-btn:hover {
+            background: #27ae60;
+        }
+        
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .instructions {
+            background-color: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+            font-size: 1.1rem;
+        }
+        
+        .tip {
+            background-color: #e8f8e8;
+            border-left: 4px solid #2ecc71;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .highlight {
+            background-color: #fff9c4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .tense-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .tense-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .tense-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tense-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .tense-text {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .present-simple { color: #FF6B6B; }
+        .present-cont { color: #4ECDC4; }
+        .past-simple { color: #45B7D1; }
+        
+        .summary {
+            background-color: #f0f7ff;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .formula-box {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-top: 1px solid #ddd;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .tense-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Advanced Tense Practice</h1>
+            <h2>Present Simple, Present Continuous & Past Simple</h2>
+        </header>
+        
+        <div class="section">
+            <div class="instructions">
+                <p><strong>Instructions:</strong> Complete all 50 exercises below. Pay close attention to verb forms, especially irregular verbs in the Past Simple tense. Use the "Check Answer" buttons to verify your responses.</p>
+            </div>
+            
+            <div class="tense-grid">
+                <div class="tense-card">
+                    <div class="tense-icon present-simple">📅</div>
+                    <div class="tense-text">Present Simple</div>
+                    <p>For habits, routines, facts</p>
+                </div>
+                <div class="tense-card">
+                    <div class="tense-icon present-cont">⏳</div>
+                    <div class="tense-text">Present Continuous</div>
+                    <p>For actions happening now</p>
+                </div>
+                <div class="tense-card">
+                    <div class="tense-icon past-simple">📚</div>
+                    <div class="tense-text">Past Simple</div>
+                    <p>For completed past actions</p>
+                </div>
+            </div>
+            
+            <div class="summary">
+                <h3>Key Formulas:</h3>
+                <div class="formula-box">
+                    Present Simple: Subject + Base Verb (add -s/-es for he/she/it)
+                </div>
+                <div class="formula-box">
+                    Present Continuous: Subject + am/is/are + verb-ing
+                </div>
+                <div class="formula-box">
+                    Past Simple: Subject + verb-ed (or irregular past form)
+                </div>
+            </div>
+        </div>
+        
+        <!-- Present Simple Section -->
+        <div class="section">
+            <h2 class="section-title">Present Simple Tense (15 Questions)</h2>
+            
+            <div class="exercise">
+                <div class="exercise-title">Fill in the blanks with the correct form of the verb:</div>
+                
+                <div class="question">
+                    <p>1. She __________ (go) to the gym every morning.</p>
+                    <input type="text" class="answer-input" id="q1" placeholder="Enter the correct verb form">
+                    <button class="check-btn" onclick="checkAnswer(1)">Check Answer</button>
+                    <div class="feedback" id="feedback1"></div>
+                </div>
+                
+                <div class="question">
+                    <p>2. They __________ (not/like) coffee; they prefer tea.</p>
+                    <input type="text" class="answer-input" id="q2" placeholder="Enter the correct verb form">
+                    <button class="check-btn" onclick="checkAnswer(2)">Check Answer</button>
+                    <div class="feedback" id="feedback2"></div>
+                </div>
+                
+                <div class="question">
+                    <p>3. My brother __________ (study) engineering at university.</p>
+                    <input type="text" class="answer-input" id="q3" placeholder="Enter the correct verb form">
+                    <button class="check-btn" onclick="checkAnswer(3)">Check Answer</button>
+                    <div class="feedback" id="feedback3"></div>
+                </div>
+                
+                <div class="question">
+                    <p>4. The sun __________ (rise) in the east.</p>
+                    <input type="text" class="answer-input" id="q4" placeholder="Enter the correct verb form">
+                    <button class="check-btn" onclick="checkAnswer(4)">Check Answer</button>
+                    <div class="feedback" id="feedback4"></div>
+                </div>
+                
+                <div class="question">
+                    <p>5. I __________ (not/work) on weekends.</p>
+                    <input type="text" class="answer-input" id="q5" placeholder="Enter the correct verb form">
+                    <button class="check-btn" onclick="checkAnswer(5)">Check Answer</button>
+                    <div class="feedback" id="feedback5"></div>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <div class="exercise-title">Choose the correct option:</div>
+                
+                <div class="question">
+                    <p>6. He __________ to music while working.</p>
+                    <input type="radio" name="q6" id="q6a" value="a"> <label for="q6a">listen</label><br>
+                    <input type="radio" name="q6" id="q6b" value="b"> <label for="q6b">listens</label><br>
+                    <input type="radio" name="q6" id="q6c" value="c"> <label for="q6c">is listening</label><br>
+                    <button class="check-btn" onclick="checkRadioAnswer(6)">Check Answer</button>
+                    <div class="feedback" id="feedback6"></div>
+                </div>
+                
+                <div class="question">
+                    <p>7. They __________ dinner at 7 PM every day.</p>
+                    <input type="radio" name="q7" id="q7a" value="a"> <label for="q7a">have</label><br>
+                    <input type="radio" name="q7" id="q7b" value="b"> <label for="q7b">has</label><br>
+                    <input type="radio" name="q7" id="q7c" value="c"> <label for="q7c">are having</label><br>
+                    <button class="check-btn" onclick="checkRadioAnswer(7)">Check Answer</button>
+                    <div class="feedback" id="feedback7"></div>
+                </div>
+                
+                <div class="question">
+                    <p>8. Water __________ at 100 degrees Celsius.</p>
+                    <input type="radio" name="q8" id="q8a" value="a"> <label for="q8a">boil</label><br>
+                    <input type="radio" name="q8" id="q8b" value="b"> <label for="q8b">boils</label><br>
+                    <input type="radio" name="q8" id="q8c" value="c"> <label for="q8c">is boiling</label><br>
+                    <button class="check-btn" onclick="checkRadioAnswer(8)">Check Answer</button>
+                    <div class="feedback" id="feedback8"></div>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <div class="exercise-title">Correct the mistakes:</div>
+                
+                <div class="question">
+                    <p>9. She don't like spicy food.</p>
+                    <input type="text" class="answer-input" id="q9" placeholder="Write the corrected sentence">
+                    <button class="check-btn" onclick="checkCorrection(9)">Check Answer</button>
+                    <div class="feedback" id="feedback9"></div>
+                </div>
+                
+                <div class="question">
+                    <p>10. My parents lives in London.</p>
+                    <input type="text" class="answer-input" id="q10" placeholder="Write the corrected sentence">
+                    <button class="check-btn" onclick="checkCorrection(10)">Check Answer</button>
+                    <div class="feedback" id="feedback10"></div>
+                </div>
+                
+                <div class="question">
+                    <p>11. He always is late for meetings.</p>
+                    <input type="text" class="answer-input" id="q11" placeholder="Write the corrected sentence">
+                    <button class="check-btn" onclick="checkCorrection(11)">Check Answer</button>
+                    <div class="feedback" id="feedback11"></div>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <div class="exercise-title">Make questions:</div>
+                
+                <div class="question">
+                    <p>12. you / speak / French</p>
+                    <input type="text" class="answer-input" id="q12" placeholder="Write the complete question">
+                    <button class="check-btn" onclick="checkSentence(12)">Check Answer</button>
+                    <div class="feedback" id="feedback12"></div>
+                </div>
+                
+                <div class="question">
+                    <p>13. she / work / in an office</p>
+                    <input type="text" class="answer-input" id="q13" placeholder="Write the complete question">
+                    <button class="check-btn" onclick="checkSentence(13)">Check Answer</button>
+                    <div class="feedback" id="feedback13"></div>
+                </div>
+                
+                <div class="question">
+                    <p>14. they / have / any children</p>
+                    <input type="text" class="answer-input" id="q14" placeholder="Write the complete question">
+                    <button class="check-btn" onclick="checkSentence(14)">Check Answer</button>
+                    <div class="feedback" id="feedback14"></div>
+                </div>
+                
+                <div class="question">
+                    <p>15. he / play / the piano</p>
+                    <input type="text" class="answer-input" id="q15" placeholder="Write the complete question">
+                    <button class="check-btn" onclick="checkSentence(15)">Check Answer</button>
+                    <div class="feedback" id="feedback15"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Present Continuous Section -->
+        <div class="section">
+            <h2 class="section-title">Present Continuous Tense (15 Questions)</h2>
+            
+            <div class="exercise">
+                <div class="exercise-title">Fill in the blanks with the correct form of the verb:</div>
+                
+                <div class="question">
+                    <p>16. Right now, I __________ (write) an email to my boss.</p>
+                    <input type="text" class="answer-input" id="q16" placeholder="Enter the correct verb form">
+                    <button class="check-btn" onclick="checkAnswer(16)">Check Answer</button>
+                    <div class="feedback" id="feedback16"></div>
+                </div>
+                
+                <div class="question">
+                    <p>17. They __________ (not/listen) to the teacher at the moment.</p>
+                    <input type="text" class="answer-input" id="q17" placeholder="Enter the correct verb form">
+                    <button class="check-btn" onclick="checkAnswer(17)">Check Answer</button>
+                    <div class="feedback" id="feedback17"></div>
+                </div>
+                
+                <div class="question">
+                    <p>18. Look! It __________ (snow) outside.</p>
+                    <input type="text" class="answer-input" id="q18" placeholder="Enter the correct verb form">
+                    <button class="check-btn" onclick="checkAnswer(18)">Check Answer</button>
+                    <div class="feedback" id="feedback18"></div>
+                </div>
+                
+                <div class="question">
+                    <p>19. She __________ (study) for her exams this week.</p>
+                    <input type="text" class="answer-input" id="q19" placeholder="Enter the correct verb form">
+                    <button class="check-btn" onclick="checkAnswer(19)">Check Answer</button>
+                    <div class="feedback" id="feedback19"></div>
+                </div>
+                
+                <div class="question">
+                    <p>20. We __________ (plan) our vacation for next month.</p>
+                    <input type="text" class="answer-input" id="q20" placeholder="Enter the correct verb form">
+                    <button class="check-btn" onclick="checkAnswer(20)">Check Answer</button>
+                    <div class="feedback" id="feedback20"></div>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <div class="exercise-title">Choose the correct option:</div>
+                
+                <div class="question">
+                    <p>21. I can't talk right now, I __________ dinner.</p>
+                    <input type="radio" name="q21" id="q21a" value="a"> <label for="q21a">cook</label><br>
+                    <input type="radio" name="q21" id="q21b" value="b"> <label for="q21b">cooks</label><br>
+                    <input type="radio" name="q21" id="q21c" value="c"> <label for="q21c">am cooking</label><br>
+                    <button class="check-btn" onclick="checkRadioAnswer(21)">Check Answer</button>
+                    <div class="feedback" id="feedback21"></div>
+                </div>
+                
+                <div class="question">
+                    <p>22. They __________ a new house these days.</p>
+                    <input type="radio" name="q22" id="q22a" value="a"> <label for="q22a">look for</label><br>
+                    <input type="radio" name="q22" id="q22b" value="b"> <label for="q22b">are looking for</label><br>
+                    <input type="radio" name="q22" id="q22c" value="c"> <label for="q22c">looks for</label><br>
+                    <button class="check-btn" onclick="checkRadioAnswer(22)">Check Answer</button>
+                    <div class="feedback" id="feedback22"></div>
+                </div>
+                
+                <div class="question">
+                    <p>23. He __________ to improve his English.</p>
+                    <input type="radio" name="q23" id="q23a" value="a"> <label for="q23a">try</label><br>
+                    <input type="radio" name="q23" id="q23b" value="b"> <label for="q23b">tries</label><br>
+                    <input type="radio" name="q23" id="q23c" value="c"> <label for="q23c">is trying</label><br>
+                    <button class="check-btn" onclick="checkRadioAnswer(23)">Check Answer</button>
+                    <div class="feedback" id="feedback23"></div>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <div class="exercise-title">Correct the mistakes:</div>
+                
+                <div class="question">
+                    <p>24. They are watch TV right now.</p>
+                    <input type="text" class="answer-input" id="q24" placeholder="Write the corrected sentence">
+                    <button class="check-btn" onclick="checkCorrection(24)">Check Answer</button>
+                    <div class="feedback" id="feedback24"></div>
+                </div>
+                
+                <div class="question">
+                    <p>25. She is not understanding the question.</p>
+                    <input type="text" class="answer-input" id="q25" placeholder="Write the corrected sentence">
+                    <button class="check-btn" onclick="checkCorrection(25)">Check Answer</button>
+                    <div class="feedback" id="feedback25"></div>
+                </div>
+                
+                <div class="question">
+                    <p>26. We are have a great time at the party.</p>
+                    <input type="text" class="answer-input" id="q26" placeholder="Write the corrected sentence">
+                    <button class="check-btn" onclick="checkCorrection(26)">Check Answer</button>
+                    <div class="feedback" id="feedback26"></div>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <div class="exercise-title">Make questions:</div>
+                
+                <div class="question">
+                    <p>27. you / wait / for someone</p>
+                    <input type="text" class="answer-input" id="q27" placeholder="Write the complete question">
+                    <button class="check-btn" onclick="checkSentence(27)">Check Answer</button>
+                    <div class="feedback" id="feedback27"></div>
+                </div>
+                
+                <div class="question">
+                    <p>28. what / she / do / right now</p>
+                    <input type="text" class="answer-input" id="q28" placeholder="Write the complete question">
+                    <button class="check-btn" onclick="checkSentence(28)">Check Answer</button>
+                    <div class="feedback" id="feedback28"></div>
+                </div>
+                
+                <div class="question">
+                    <p>29. they / come / to the party tonight</p>
+                    <input type="text" class="answer-input" id="q29" placeholder="Write the complete question">
+                    <button class="check-btn" onclick="checkSentence(29)">Check Answer</button>
+                    <div class="feedback" id="feedback29"></div>
+                </div>
+                
+                <div class="question">
+                    <p>30. why / he / wear / a coat</p>
+                    <input type="text" class="answer-input" id="q30" placeholder="Write the complete question">
+                    <button class="check-btn" onclick="checkSentence(30)">Check Answer</button>
+                    <div class="feedback" id="feedback30"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Past Simple Section -->
+        <div class="section">
+            <h2 class="section-title">Past Simple Tense (20 Questions)</h2>
+            
+            <div class="tip">
+                <p><strong>Remember:</strong> Pay special attention to irregular verbs in the Past Simple tense. Some common irregular verbs include: go→went, see→saw, take→took, come→came, know→knew, get→got, give→gave, find→found, think→thought, tell→told, become→became, leave→left, feel→felt, put→put, bring→brought, begin→began, keep→kept, hold→held, write→wrote, stand→stood, hear→heard, let→let, mean→meant, set→set, meet→met, run→ran, pay→paid, sit→sat, speak→spoke, lie→lay, lead→led, read→read, grow→grew, lose→lost, fall→fell, send→sent, build→built, understand→understood, draw→drew, break→broke, spend→spent, cut→cut, rise→rose, drive→drove, buy→bought, wear→wore, choose→chose.</p>
+            </div>
+            
+            <div class="exercise">
+                <div class="exercise-title">Fill in the blanks with the correct form of the verb:</div>
+                
+                <div class="question">
+                    <p>31. Yesterday, I __________ (go) to the store to buy some milk.</p>
+                    <input type="text" class="answer-input" id="q31" placeholder="Enter the correct verb form">
+                    <button class="check-btn" onclick="checkAnswer(31)">Check Answer</button>
+                    <div class="feedback" id="feedback31"></div>
+                </div>
+                
+                <div class="question">
+                    <p>32. She __________ (not/eat) breakfast this morning.</p>
+                    <input type="text" class="answer-input" id="q32" placeholder="Enter the correct verb form">
+                    <button class="check-btn" onclick="checkAnswer(32)">Check Answer</button>
+                    <div class="feedback" id="feedback32"></div>
+                </div>
+                
+                <div class="question">
+                    <p>33. They __________ (see) that movie last week.</p>
+                    <input type="text" class="answer-input" id="q33" placeholder="Enter the correct verb form">
+                    <button class="check-btn" onclick="checkAnswer(33)">Check Answer</button>
+                    <div class="feedback" id="feedback33"></div>
+                </div>
+                
+                <div class="question">
+                    <p>34. He __________ (write) a letter to his grandmother yesterday.</p>
+                    <input type="text" class="answer-input" id="q34" placeholder="Enter the correct verb form">
+                    <button class="check-btn" onclick="checkAnswer(34)">Check Answer</button>
+                    <div class="feedback" id="feedback34"></div>
+                </div>
+                
+                <div class="question">
+                    <p>35. We __________ (not/have) time to finish the project.</p>
+                    <input type="text" class="answer-input" id="q35" placeholder="Enter the correct verb form">
+                    <button class="check-btn" onclick="checkAnswer(35)">Check Answer</button>
+                    <div class="feedback" id="feedback35"></div>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <div class="exercise-title">Choose the correct option:</div>
+                
+                <div class="question">
+                    <p>36. She __________ her keys at home this morning.</p>
+                    <input type="radio" name="q36" id="q36a" value="a"> <label for="q36a">leave</label><br>
+                    <input type="radio" name="q36" id="q36b" value="b"> <label for="q36b">leaved</label><br>
+                    <input type="radio" name="q36" id="q36c" value="c"> <label for="q36c">left</label><br>
+                    <button class="check-btn" onclick="checkRadioAnswer(36)">Check Answer</button>
+                    <div class="feedback" id="feedback36"></div>
+                </div>
+                
+                <div class="question">
+                    <p>37. They __________ to the concert last night.</p>
+                    <input type="radio" name="q37" id="q37a" value="a"> <label for="q37a">go</label><br>
+                    <input type="radio" name="q37" id="q37b" value="b"> <label for="q37b">went</label><br>
+                    <input type="radio" name="q37" id="q37c" value="c"> <label for="q37c">gone</label><br>
+                    <button class="check-btn" onclick="checkRadioAnswer(37)">Check Answer</button>
+                    <div class="feedback" id="feedback37"></div>
+                </div>
+                
+                <div class="question">
+                    <p>38. I __________ a strange dream last night.</p>
+                    <input type="radio" name="q38" id="q38a" value="a"> <label for="q38a">have</label><br>
+                    <input type="radio" name="q38" id="q38b" value="b"> <label for="q38b">has</label><br>
+                    <input type="radio" name="q38" id="q38c" value="c"> <label for="q38c">had</label><br>
+                    <button class="check-btn" onclick="checkRadioAnswer(38)">Check Answer</button>
+                    <div class="feedback" id="feedback38"></div>
+                </div>
+                
+                <div class="question">
+                    <p>39. He __________ his homework before dinner.</p>
+                    <input type="radio" name="q39" id="q39a" value="a"> <label for="q39a">finish</label><br>
+                    <input type="radio" name="q39" id="q39b" value="b"> <label for="q39b">finished</label><br>
+                    <input type="radio" name="q39" id="q39c" value="c"> <label for="q39c">finishes</label><br>
+                    <button class="check-btn" onclick="checkRadioAnswer(39)">Check Answer</button>
+                    <div class="feedback" id="feedback39"></div>
+                </div>
+                
+                <div class="question">
+                    <p>40. We __________ a great time at the beach yesterday.</p>
+                    <input type="radio" name="q40" id="q40a" value="a"> <label for="q40a">have</label><br>
+                    <input type="radio" name="q40" id="q40b" value="b"> <label for="q40b">has</label><br>
+                    <input type="radio" name="q40" id="q40c" value="c"> <label for="q40c">had</label><br>
+                    <button class="check-btn" onclick="checkRadioAnswer(40)">Check Answer</button>
+                    <div class="feedback" id="feedback40"></div>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <div class="exercise-title">Correct the mistakes:</div>
+                
+                <div class="question">
+                    <p>41. She didn't went to school yesterday.</p>
+                    <input type="text" class="answer-input" id="q41" placeholder="Write the corrected sentence">
+                    <button class="check-btn" onclick="checkCorrection(41)">Check Answer</button>
+                    <div class="feedback" id="feedback41"></div>
+                </div>
+                
+                <div class="question">
+                    <p>42. I seed him at the supermarket last week.</p>
+                    <input type="text" class="answer-input" id="q42" placeholder="Write the corrected sentence">
+                    <button class="check-btn" onclick="checkCorrection(42)">Check Answer</button>
+                    <div class="feedback" id="feedback42"></div>
+                </div>
+                
+                <div class="question">
+                    <p>43. They didn't ate anything for breakfast.</p>
+                    <input type="text" class="answer-input" id="q43" placeholder="Write the corrected sentence">
+                    <button class="check-btn" onclick="checkCorrection(43)">Check Answer</button>
+                    <div class="feedback" id="feedback43"></div>
+                </div>
+                
+                <div class="question">
+                    <p>44. He buyed a new car last month.</p>
+                    <input type="text" class="answer-input" id="q44" placeholder="Write the corrected sentence">
+                    <button class="check-btn" onclick="checkCorrection(44)">Check Answer</button>
+                    <div class="feedback" id="feedback44"></div>
+                </div>
+                
+                <div class="question">
+                    <p>45. We didn't saw that movie yet.</p>
+                    <input type="text" class="answer-input" id="q45" placeholder="Write the corrected sentence">
+                    <button class="check-btn" onclick="checkCorrection(45)">Check Answer</button>
+                    <div class="feedback" id="feedback45"></div>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <div class="exercise-title">Make questions:</div>
+                
+                <div class="question">
+                    <p>46. you / go / to the party last night</p>
+                    <input type="text" class="answer-input" id="q46" placeholder="Write the complete question">
+                    <button class="check-btn" onclick="checkSentence(46)">Check Answer</button>
+                    <div class="feedback" id="feedback46"></div>
+                </div>
+                
+                <div class="question">
+                    <p>47. what / she / say / about the project</p>
+                    <input type="text" class="answer-input" id="q47" placeholder="Write the complete question">
+                    <button class="check-btn" onclick="checkSentence(47)">Check Answer</button>
+                    <div class="feedback" id="feedback47"></div>
+                </div>
+                
+                <div class="question">
+                    <p>48. when / they / arrive / at the airport</p>
+                    <input type="text" class="answer-input" id="q48" placeholder="Write the complete question">
+                    <button class="check-btn" onclick="checkSentence(48)">Check Answer</button>
+                    <div class="feedback" id="feedback48"></div>
+                </div>
+                
+                <div class="question">
+                    <p>49. why / he / leave / the meeting early</p>
+                    <input type="text" class="answer-input" id="q49" placeholder="Write the complete question">
+                    <button class="check-btn" onclick="checkSentence(49)">Check Answer</button>
+                    <div class="feedback" id="feedback49"></div>
+                </div>
+                
+                <div class="question">
+                    <p>50. how much / it / cost</p>
+                    <input type="text" class="answer-input" id="q50" placeholder="Write the complete question">
+                    <button class="check-btn" onclick="checkSentence(50)">Check Answer</button>
+                    <div class="feedback" id="feedback50"></div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Advanced Tense Practice - Keep practicing to master English grammar!</p>
+        </footer>
+    </div>
+
+    <script>
+        // Answer keys for all questions
+        const answers = {
+            // Present Simple fill in the blanks
+            1: "goes",
+            2: "do not like",
+            3: "studies",
+            4: "rises",
+            5: "do not work",
+            
+            // Present Continuous fill in the blanks
+            16: "am writing",
+            17: "are not listening",
+            18: "is snowing",
+            19: "is studying",
+            20: "are planning",
+            
+            // Past Simple fill in the blanks
+            31: "went",
+            32: "did not eat",
+            33: "saw",
+            34: "wrote",
+            35: "did not have"
+        };
+        
+        const radioAnswers = {
+            // Present Simple multiple choice
+            6: "b", // listens
+            7: "a", // have
+            8: "b", // boils
+            
+            // Present Continuous multiple choice
+            21: "c", // am cooking
+            22: "b", // are looking for
+            23: "c", // is trying
+            
+            // Past Simple multiple choice
+            36: "c", // left
+            37: "b", // went
+            38: "c", // had
+            39: "b", // finished
+            40: "c"  // had
+        };
+        
+        const sentenceAnswers = {
+            // Present Simple questions
+            12: "do you speak french",
+            13: "does she work in an office",
+            14: "do they have any children",
+            15: "does he play the piano",
+            
+            // Present Continuous questions
+            27: "are you waiting for someone",
+            28: "what is she doing right now",
+            29: "are they coming to the party tonight",
+            30: "why is he wearing a coat",
+            
+            // Past Simple questions
+            46: "did you go to the party last night",
+            47: "what did she say about the project",
+            48: "when did they arrive at the airport",
+            49: "why did he leave the meeting early",
+            50: "how much did it cost"
+        };
+        
+        const correctionAnswers = {
+            // Present Simple corrections
+            9: "she doesn't like spicy food",
+            10: "my parents live in london",
+            11: "he is always late for meetings",
+            
+            // Present Continuous corrections
+            24: "they are watching tv right now",
+            25: "she does not understand the question",
+            26: "we are having a great time at the party",
+            
+            // Past Simple corrections
+            41: "she didn't go to school yesterday",
+            42: "i saw him at the supermarket last week",
+            43: "they didn't eat anything for breakfast",
+            44: "he bought a new car last month",
+            45: "we didn't see that movie yet"
+        };
+        
+        // Check answers for fill in the blanks
+        function checkAnswer(questionNum) {
+            const userAnswer = document.getElementById(`q${questionNum}`).value.trim().toLowerCase();
+            const feedback = document.getElementById(`feedback${questionNum}`);
+            
+            if (userAnswer === answers[questionNum]) {
+                feedback.textContent = "Correct! Well done!";
+                feedback.className = "feedback correct";
+                feedback.style.display = "block";
+            } else {
+                feedback.textContent = `Incorrect. The correct answer is "${answers[questionNum]}".`;
+                feedback.className = "feedback incorrect";
+                feedback.style.display = "block";
+            }
+        }
+        
+        // Check answers for multiple choice questions
+        function checkRadioAnswer(questionNum) {
+            const selectedOption = document.querySelector(`input[name="q${questionNum}"]:checked`);
+            const feedback = document.getElementById(`feedback${questionNum}`);
+            
+            if (!selectedOption) {
+                feedback.textContent = "Please select an answer.";
+                feedback.className = "feedback incorrect";
+                feedback.style.display = "block";
+                return;
+            }
+            
+            if (selectedOption.value === radioAnswers[questionNum]) {
+                feedback.textContent = "Correct! Well done!";
+                feedback.className = "feedback correct";
+                feedback.style.display = "block";
+            } else {
+                feedback.textContent = "Incorrect. Try again!";
+                feedback.className = "feedback incorrect";
+                feedback.style.display = "block";
+            }
+        }
+        
+        // Check answers for sentence formation
+        function checkSentence(questionNum) {
+            const userAnswer = document.getElementById(`q${questionNum}`).value.trim().toLowerCase();
+            const feedback = document.getElementById(`feedback${questionNum}`);
+            const correctAnswer = sentenceAnswers[questionNum];
+            
+            // More flexible checking for questions
+            let isCorrect = false;
+            
+            switch(questionNum) {
+                case 12:
+                    isCorrect = userAnswer.includes("do you") && userAnswer.includes("speak french");
+                    break;
+                case 13:
+                    isCorrect = userAnswer.includes("does she") && userAnswer.includes("work") && userAnswer.includes("office");
+                    break;
+                case 14:
+                    isCorrect = userAnswer.includes("do they") && userAnswer.includes("have") && (userAnswer.includes("children") || userAnswer.includes("kids"));
+                    break;
+                case 15:
+                    isCorrect = userAnswer.includes("does he") && userAnswer.includes("play") && userAnswer.includes("piano");
+                    break;
+                case 27:
+                    isCorrect = userAnswer.includes("are you") && userAnswer.includes("waiting") && userAnswer.includes("someone");
+                    break;
+                case 28:
+                    isCorrect = userAnswer.includes("what") && userAnswer.includes("is she") && userAnswer.includes("doing") && userAnswer.includes("now");
+                    break;
+                case 29:
+                    isCorrect = userAnswer.includes("are they") && userAnswer.includes("coming") && userAnswer.includes("party") && userAnswer.includes("tonight");
+                    break;
+                case 30:
+                    isCorrect = userAnswer.includes("why") && userAnswer.includes("is he") && userAnswer.includes("wearing") && userAnswer.includes("coat");
+                    break;
+                case 46:
+                    isCorrect = userAnswer.includes("did you") && userAnswer.includes("go") && userAnswer.includes("party") && userAnswer.includes("last night");
+                    break;
+                case 47:
+                    isCorrect = userAnswer.includes("what") && userAnswer.includes("did she") && userAnswer.includes("say") && userAnswer.includes("project");
+                    break;
+                case 48:
+                    isCorrect = userAnswer.includes("when") && userAnswer.includes("did they") && userAnswer.includes("arrive") && userAnswer.includes("airport");
+                    break;
+                case 49:
+                    isCorrect = userAnswer.includes("why") && userAnswer.includes("did he") && userAnswer.includes("leave") && userAnswer.includes("meeting") && userAnswer.includes("early");
+                    break;
+                case 50:
+                    isCorrect = userAnswer.includes("how much") && userAnswer.includes("did it") && userAnswer.includes("cost");
+                    break;
+            }
+            
+            if (isCorrect) {
+                feedback.textContent = "Correct! Well done!";
+                feedback.className = "feedback correct";
+                feedback.style.display = "block";
+            } else {
+                feedback.textContent = `Good try! The correct question is: "${correctAnswer}?".`;
+                feedback.className = "feedback incorrect";
+                feedback.style.display = "block";
+            }
+        }
+        
+        // Check answers for corrections
+        function checkCorrection(questionNum) {
+            const userAnswer = document.getElementById(`q${questionNum}`).value.trim().toLowerCase();
+            const feedback = document.getElementById(`feedback${questionNum}`);
+            const correctAnswer = correctionAnswers[questionNum];
+            
+            // More flexible checking for corrections
+            let isCorrect = false;
+            
+            switch(questionNum) {
+                case 9:
+                    isCorrect = userAnswer.includes("doesn't") || userAnswer.includes("does not") && userAnswer.includes("like") && userAnswer.includes("spicy food");
+                    break;
+                case 10:
+                    isCorrect = userAnswer.includes("my parents") && userAnswer.includes("live") && userAnswer.includes("london");
+                    break;
+                case 11:
+                    isCorrect = userAnswer.includes("he") && userAnswer.includes("always") && userAnswer.includes("late") && userAnswer.includes("meetings");
+                    break;
+                case 24:
+                    isCorrect = userAnswer.includes("they") && userAnswer.includes("watching") && userAnswer.includes("tv") && userAnswer.includes("now");
+                    break;
+                case 25:
+                    isCorrect = (userAnswer.includes("doesn't") || userAnswer.includes("does not")) && userAnswer.includes("understand") && userAnswer.includes("question");
+                    break;
+                case 26:
+                    isCorrect = userAnswer.includes("we") && userAnswer.includes("having") && userAnswer.includes("great time") && userAnswer.includes("party");
+                    break;
+                case 41:
+                    isCorrect = userAnswer.includes("she") && (userAnswer.includes("didn't") || userAnswer.includes("did not")) && userAnswer.includes("go") && userAnswer.includes("school") && userAnswer.includes("yesterday");
+                    break;
+                case 42:
+                    isCorrect = userAnswer.includes("i") && userAnswer.includes("saw") && userAnswer.includes("him") && userAnswer.includes("supermarket") && userAnswer.includes("last week");
+                    break;
+                case 43:
+                    isCorrect = userAnswer.includes("they") && (userAnswer.includes("didn't") || userAnswer.includes("did not")) && userAnswer.includes("eat") && userAnswer.includes("anything") && userAnswer.includes("breakfast");
+                    break;
+                case 44:
+                    isCorrect = userAnswer.includes("he") && userAnswer.includes("bought") && userAnswer.includes("new car") && userAnswer.includes("last month");
+                    break;
+                case 45:
+                    isCorrect = userAnswer.includes("we") && (userAnswer.includes("didn't") || userAnswer.includes("did not")) && userAnswer.includes("see") && userAnswer.includes("that movie") && userAnswer.includes("yet");
+                    break;
+            }
+            
+            if (isCorrect) {
+                feedback.textContent = "Correct! Well done!";
+                feedback.className = "feedback correct";
+                feedback.style.display = "block";
+            } else {
+                feedback.textContent = `Good try! The correct sentence is: "${correctAnswer}".`;
+                feedback.className = "feedback incorrect";
+                feedback.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
