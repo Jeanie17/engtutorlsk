@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar & Writing PowerPack | Cardinal, Articles, Possessives, Prepositions, Question Words, Drinks, Fast Food, Greetings</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #1f4e6e;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .master-deck {
+            max-width: 1400px;
+            width: 100%;
+            background: #f4faff;
+            border-radius: 55px;
+            box-shadow: 0 25px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+            padding: 20px 30px 45px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            background: white;
+            display: inline-block;
+            padding: 12px 35px;
+            border-radius: 70px;
+            color: #1f5e7e;
+            border-left: 18px solid #e67e22;
+            margin-bottom: 25px;
+        }
+        .topic-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        .topic-btn {
+            background: #eef2fc;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        .topic-btn.active {
+            background: #2c6e9e;
+            color: white;
+            box-shadow: 0 6px 0 #124257;
+            transform: translateY(-2px);
+        }
+        .slide {
+            background: white;
+            border-radius: 50px;
+            padding: 25px 30px;
+            margin-top: 15px;
+            box-shadow: 0 15px 0 #b8cee5;
+            display: none;
+        }
+        .slide.active-slide {
+            display: block;
+        }
+        .section-title {
+            font-size: 2rem;
+            background: #1f6390;
+            color: white;
+            display: inline-block;
+            padding: 8px 40px;
+            border-radius: 60px;
+            margin-top: -45px;
+            margin-bottom: 20px;
+            border: 4px solid white;
+        }
+        .rule-card {
+            background: #eef4fc;
+            border-left: 14px solid #f39c12;
+            padding: 18px 24px;
+            border-radius: 35px;
+            margin-bottom: 25px;
+        }
+        .exercises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 22px;
+            margin: 25px 0;
+        }
+        .ex-card {
+            background: #fafeff;
+            border: 2px solid #cde0f0;
+            border-radius: 32px;
+            padding: 18px;
+            box-shadow: 0 6px 0 #97adc7;
+        }
+        .question {
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .toggle-ans {
+            background: #3b7c9c;
+            border: none;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            margin: 8px 0;
+        }
+        .answer {
+            background: #e9f0f8;
+            border-radius: 28px;
+            padding: 10px 16px;
+            margin-top: 12px;
+            font-family: monospace;
+            display: none;
+            border-left: 8px solid #e67e22;
+        }
+        .answer.show {
+            display: block;
+        }
+        .writing-sample {
+            background: #fff7e8;
+            border-radius: 35px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 2px solid #ffd966;
+        }
+        .btn-full-answers {
+            background: #f3ae42;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: bold;
+            margin: 15px 0;
+            cursor: pointer;
+        }
+        .full-answers-panel {
+            background: #173f53;
+            border-radius: 40px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+        .full-answers-content {
+            background: #225f7c;
+            padding: 18px;
+            border-radius: 30px;
+            color: white;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .nav-btn {
+            background: #356f8c;
+            color: white;
+            border: none;
+            padding: 10px 32px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #6183a0;
+        }
+    </style>
+</head>
+<body>
+<div class="master-deck">
+    <h1><i class="fas fa-book-open"></i> Grammar & Writing Studio</h1>
+    <div class="topic-grid" id="topicTabs"></div>
+
+    <!-- =================== 12 SLIDES =================== -->
+    <div id="slideContainer"></div>
+
+    <div class="nav-buttons">
+        <button class="nav-btn" id="prevSlide"><i class="fas fa-chevron-left"></i> Previous</button>
+        <button class="nav-btn" id="nextSlide">Next <i class="fas fa-chevron-right"></i></button>
+    </div>
+    <footer>✨ 点击题目下方按钮显示答案 | 每部分底部可显示全部答案 | 包含 guided writing ✨</footer>
+</div>
+
+<script>
+    // ---------- 定义所有课件数据 (每个slide: 名称, 规则, 练习题数组, 写作引导可选) ----------
+    const slidesData = [
+        { id: "cardinal", name: "🔢 Cardinal & Ordinal Numbers", rule: "基数词表示数量 (one, two, three)，序数词表示顺序 (first, second, third)。注意特殊变化: one→first, two→second, three→third, five→fifth, eight→eighth, nine→ninth, twelve→twelfth, twenty→twentieth。",
+          exercises: [
+              { q: "Write the ordinal form: 1 → ______", a: "first" },
+              { q: "Write the ordinal form: 3 → ______", a: "third" },
+              { q: "Write the cardinal form: 12th → ______", a: "twelve" },
+              { q: "Write the ordinal form: 21 → ______", a: "twenty-first" },
+              { q: "Write the number: thirty-second → ______", a: "32nd" },
+              { q: "What is the ordinal of 5? ______", a: "fifth" },
+              { q: "What is the cardinal of 9th? ______", a: "nine" }
+          ], writing: "Write a sentence using 'third' and 'twenty': Example: 'I am the third child, and my sister is twenty years old.'" },
+        { id: "articles", name: "📘 Articles: a / an / the / X", rule: "用 'a' 放在辅音音素前，'an' 放在元音音素前。人名、专有名词、复数泛指、不可数名词通常不加冠词 (X)。",
+          exercises: [
+              { q: "I want ___ apple.", a: "an" },
+              { q: "She is ___ doctor.", a: "a" },
+              { q: "___ orange is on the table.", a: "An" },
+              { q: "___ Tom is my friend.", a: "X" },
+              { q: "He has ___ umbrella.", a: "an" },
+              { q: "This is ___ useful tool.", a: "a" },
+              { q: "I like ___ cats.", a: "X" }
+          ], writing: "Write 3 sentences using 'a', 'an', and no article (X) correctly. Example: I have a pencil. She eats an orange. Dogs are friendly." },
+        { id: "possessive", name: "🧸 Possessive Adjectives", rule: "my, your, his, her, its, our, their 表示所属关系。注意区分 'its' 和 'it's'。",
+          exercises: [
+              { q: "This is Tom's bag. It is ______ bag.", a: "his" },
+              { q: "I have a cat. ______ name is Mimi.", a: "My" },
+              { q: "You have a new phone. Is that ______ phone?", a: "your" },
+              { q: "Mary loves ______ doll.", a: "her" },
+              { q: "We have a house. This is ______ house.", a: "our" },
+              { q: "The dog wags ______ tail.", a: "its" },
+              { q: "They are students. ______ teacher is kind.", a: "Their" }
+          ], writing: "Write 4 sentences about your family using possessive adjectives (my, his, her, their)." },
+        { id: "preposition", name: "📍 Prepositions: in, on, under", rule: "in 在里面, on 在上面接触, under 在下面。用于描述位置。",
+          exercises: [
+              { q: "The cat is ______ the box.", a: "in" },
+              { q: "The book is ______ the table.", a: "on" },
+              { q: "The shoes are ______ the bed.", a: "under" },
+              { q: "She is sitting ______ the chair.", a: "on" },
+              { q: "The pencil is ______ the pencil case.", a: "in" },
+              { q: "The mouse is hiding ______ the cheese.", a: "under" },
+              { q: "The picture is ______ the wall.", a: "on" }
+          ], writing: "Describe where 3 items are in your room using 'in', 'on', 'under'." },
+        { id: "questionwords", name: "❓ Question Words: What, Who, How, How many, When, Where", rule: "What (事物), Who (人), How (方式/状态), How many (数量), When (时间), Where (地点)。",
+          exercises: [
+              { q: "______ is your name?", a: "What" },
+              { q: "______ is she? She is my mother.", a: "Who" },
+              { q: "______ old are you?", a: "How" },
+              { q: "______ books do you have?", a: "How many" },
+              { q: "______ is the party? At 6pm.", a: "When" },
+              { q: "______ do you live? In Hong Kong.", a: "Where" },
+              { q: "______ are you today? I'm fine.", a: "How" }
+          ], writing: "Write 5 questions using 5 different question words (What, Who, How, When, Where)." },
+        { id: "drinks", name: "🥤 Drinks Vocabulary", rule: "water, orange juice, milk, coffee, lemonade, tea, beer, soda, hot chocolate, milkshake, red wine, bubble tea, etc.",
+          exercises: [
+              { q: "a cup of hot ______ (朱古力)", a: "chocolate" },
+              { q: "a glass of ______ (柠檬水)", a: "lemonade" },
+              { q: "a can of ______ (梳打)", a: "soda" },
+              { q: "a bottle of ______ (橙汁)", a: "orange juice" },
+              { q: "a pot of ______ (绿茶)", a: "green tea" },
+              { q: "a glass of ______ (珍珠奶茶)", a: "bubble tea" },
+              { q: "a cup of ______ (浓缩咖啡)", a: "espresso" }
+          ], writing: "Write your favourite drink order: 'I would like a ___ of ___ , please.'" },
+        { id: "fastfood", name: "🍔 Fast Food", rule: "hamburger, French fries, fried chicken, pizza, hot dog, onion rings, fish and chips, chicken nuggets, corn dog, burrito",
+          exercises: [
+              { q: "I want a ______ (汉堡包).", a: "hamburger" },
+              { q: "Let's share some ______ (薯条).", a: "French fries" },
+              { q: "______ (炸鸡) is crispy.", a: "Fried chicken" },
+              { q: "I love ______ (披萨).", a: "pizza" },
+              { q: "A ______ (热狗) with ketchup.", a: "hot dog" },
+              { q: "Can I have ______ (洋葱圈)?", a: "onion rings" },
+              { q: "______ (炸鱼薯条) is British.", a: "Fish and chips" }
+          ], writing: "Write a short dialogue ordering fast food (2-3 lines)." },
+        { id: "greetings", name: "👋 Greetings & Introductions", rule: "Good morning. What is your name? My name is ___. How are you? I'm fine, thank you. Nice to meet you.",
+          exercises: [
+              { q: "________? My name is Amy.", a: "What is your name" },
+              { q: "How are you? ________.", a: "I'm fine, thank you" },
+              { q: "Good morning. ________.", a: "Good morning" },
+              { q: "How old are you? ________.", a: "I'm six years old" },
+              { q: "Nice to meet you. ________.", a: "Nice to meet you too" },
+              { q: "Can you spell your name? ________.", a: "Yes, A-M-Y" },
+              { q: "Hello! ________. I'm John.", a: "Hi" }
+          ], writing: "Write a short conversation between two people meeting for the first time (4 exchanges)." },
+        { id: "theseThose", name: "🔍 This / That / These / Those", rule: "this (近单数), that (远单数), these (近复数), those (远复数)。",
+          exercises: [
+              { q: "______ is my book (near me).", a: "This" },
+              { q: "Look at ______ bird in the sky (far).", a: "that" },
+              { q: "______ are my pencils (near).", a: "These" },
+              { q: "______ are mountains in the distance.", a: "Those" },
+              { q: "______ is a nice dress (near).", a: "This" },
+              { q: "______ apples on the tree look fresh (far).", a: "Those" },
+              { q: "______ toys here are mine.", a: "These" }
+          ], writing: "Write 2 sentences using 'these' and 2 using 'those' about objects around you." },
+        { id: "doDoes", name: "✅ Do / Does (Present Simple)", rule: "I/you/we/they → do; he/she/it → does. 疑问句和否定句用助动词。",
+          exercises: [
+              { q: "Yes, I ______.", a: "do" },
+              { q: "No, she ______ like pizza.", a: "doesn't" },
+              { q: "______ you like ice cream?", a: "Do" },
+              { q: "______ he play football?", a: "Does" },
+              { q: "They ______ (not) want to go.", a: "don't" },
+              { q: "Yes, it ______.", a: "does" },
+              { q: "______ we need to study?", a: "Do" }
+          ], writing: "Write 3 questions using 'do' and 3 using 'does' about daily routines." },
+        { id: "guidedWriting", name: "✍️ Guided Writing Samples", rule: "模仿范例完成写作。参考提供的自我介绍、人物描述等。",
+          exercises: [
+              { q: "Write about yourself: My name is ___. I am in Class ___. My teacher is ___.", a: "My name is Kitty. I am in Class 1A. My teacher is Miss Ho." },
+              { q: "Describe your friend: This is ___. He/She is my friend. He/She is ___ years old.", a: "This is Calvin. He is my friend. He is six years old." },
+              { q: "Describe a family member: He is my ___. His name is ___. He has ___ eyes.", a: "He is my uncle. His name is Peter. He has big eyes." },
+              { q: "What would you like for dessert? I would like ___ .", a: "I would like cookies for dessert." },
+              { q: "Write about breakfast: I would like ___ for breakfast.", a: "I would like a muffin for breakfast." },
+              { q: "Describe a pet: I have a ___. It is ___ .", a: "I have a cat. It is white and fluffy." }
+          ], writing: "Create a short paragraph (4 sentences) introducing your best friend using name, age, class, and one hobby." }
+    ];
+
+    let currentSlide = 0;
+    const container = document.getElementById("slideContainer");
+    const tabsContainer = document.getElementById("topicTabs");
+
+    // 渲染tabs
+    function renderTabs() {
+        tabsContainer.innerHTML = "";
+        slidesData.forEach((s, idx) => {
+            const btn = document.createElement("button");
+            btn.className = `topic-btn ${idx === currentSlide ? "active" : ""}`;
+            btn.innerText = s.name;
+            btn.addEventListener("click", () => {
+                currentSlide = idx;
+                renderSlide();
+                updateTabsActive();
+            });
+            tabsContainer.appendChild(btn);
+        });
+    }
+
+    function updateTabsActive() {
+        document.querySelectorAll(".topic-btn").forEach((btn, i) => {
+            if (i === currentSlide) btn.classList.add("active");
+            else btn.classList.remove("active");
+        });
+    }
+
+    // 渲染当前slide (包含规则、练习题、写作)
+    function renderSlide() {
+        const data = slidesData[currentSlide];
+        let exHtml = "";
+        data.exercises.forEach((ex, idx) => {
+            exHtml += `
+                <div class="ex-card">
+                    <div class="question"><strong>Q${idx+1}.</strong> ${ex.q}</div>
+                    <button class="toggle-ans" data-exidx="${idx}"><i class="far fa-eye"></i> Show answer</button>
+                    <div class="answer" id="ans-${currentSlide}-${idx}">${ex.a}</div>
+                </div>
+            `;
+        });
+
+        // 构建写作部分
+        let writingHtml = `
+            <div class="writing-sample">
+                <i class="fas fa-pen-fancy"></i> <strong>✍️ Guided Writing Practice</strong><br>
+                ${data.writing}
+                <button class="toggle-ans" id="writingToggleBtn" style="margin-top:12px;"><i class="far fa-eye"></i> Show sample answer</button>
+                <div class="answer" id="writingSampleAnswer" style="margin-top:8px;">
+                    ${data.id === "guidedWriting" ? "参考: My name is Amy. I am in Class 2B. My teacher is Mr. Lee. I love reading." : 
+                      data.id === "cardinal" ? "I am the third child in my family, and my brother is twenty years old." :
+                      data.id === "articles" ? "I have a dog. She eats an apple every day. Dogs are lovely." :
+                      data.id === "possessive" ? "My mother is kind. Her smile is bright. Their house is big." :
+                      data.id === "preposition" ? "The phone is on the desk. My keys are in the bag. The ball is under the chair." :
+                      data.id === "questionwords" ? "What is your hobby? Who is your hero? How do you go to school? When is your birthday? Where do you study?" :
+                      data.id === "drinks" ? "I would like a cup of hot chocolate, please." :
+                      data.id === "fastfood" ? "Waiter: Can I take your order? Me: I'd like a hamburger and fries, please." :
+                      data.id === "greetings" ? "A: Good morning! What's your name? B: My name is Lisa. A: Nice to meet you, Lisa." :
+                      data.id === "theseThose" ? "These shoes are new. Those mountains look majestic." :
+                      data.id === "doDoes" ? "Do you play chess? Does she like music? We don't eat meat." :
+                      "Sample: I am a student. I study English every day."}
+                </div>
+            </div>
+        `;
+
+        const fullHtml = `
+            <div class="slide active-slide">
+                <div class="section-title">${data.name}</div>
+                <div class="rule-card"><i class="fas fa-lightbulb"></i> ${data.rule}</div>
+                <div class="exercises-grid">${exHtml}</div>
+                ${writingHtml}
+                <button class="btn-full-answers" id="fullAnswersBtn"><i class="fas fa-list"></i> Show all answers for this topic</button>
+                <div class="full-answers-panel" id="fullPanel" style="display:none;">
+                    <div class="full-answers-content" id="fullAnswersContent"></div>
+                </div>
+            </div>
+        `;
+        container.innerHTML = fullHtml;
+
+        // 绑定每个exercise的toggle按钮
+        document.querySelectorAll(".toggle-ans").forEach(btn => {
+            if (btn.id !== "writingToggleBtn") {
+                const exIdx = btn.getAttribute("data-exidx");
+                btn.addEventListener("click", () => {
+                    const ansDiv = document.getElementById(`ans-${currentSlide}-${exIdx}`);
+                    if (ansDiv) {
+                        ansDiv.classList.toggle("show");
+                        btn.innerHTML = ansDiv.classList.contains("show") ? '<i class="far fa-eye-slash"></i> Hide answer' : '<i class="far fa-eye"></i> Show answer';
+                    }
+                });
+            }
+        });
+
+        // 写作toggle按钮
+        const writingBtn = document.getElementById("writingToggleBtn");
+        if (writingBtn) {
+            writingBtn.addEventListener("click", () => {
+                const sampleDiv = document.getElementById("writingSampleAnswer");
+                if (sampleDiv) {
+                    sampleDiv.classList.toggle("show");
+                    writingBtn.innerHTML = sampleDiv.classList.contains("show") ? '<i class="far fa-eye-slash"></i> Hide sample' : '<i class="far fa-eye"></i> Show sample answer';
+                }
+            });
+        }
+
+        // full answers panel
+        const fullBtn = document.getElementById("fullAnswersBtn");
+        const panel = document.getElementById("fullPanel");
+        const contentDiv = document.getElementById("fullAnswersContent");
+        fullBtn.addEventListener("click", () => {
+            if (panel.style.display === "none" || panel.style.display === "") {
+                let allAns = data.exercises.map((ex, i) => `Q${i+1}. ${ex.q} → ${ex.a}`).join("\n");
+                allAns += `\n\n✍️ Writing Guide: ${data.writing}\n📝 Sample: ${data.id === "guidedWriting" ? "My name is Amy. I am in Class 2B. My teacher is Mr. Lee. I love reading." : 
+                      data.id === "cardinal" ? "I am the third child in my family, and my brother is twenty years old." :
+                      data.id === "articles" ? "I have a dog. She eats an apple every day. Dogs are lovely." :
+                      data.id === "possessive" ? "My mother is kind. Her smile is bright. Their house is big." :
+                      data.id === "preposition" ? "The phone is on the desk. My keys are in the bag. The ball is under the chair." :
+                      data.id === "questionwords" ? "What is your hobby? Who is your hero? How do you go to school? When is your birthday? Where do you study?" :
+                      data.id === "drinks" ? "I would like a cup of hot chocolate, please." :
+                      data.id === "fastfood" ? "Waiter: Can I take your order? Me: I'd like a hamburger and fries, please." :
+                      data.id === "greetings" ? "A: Good morning! What's your name? B: My name is Lisa. A: Nice to meet you, Lisa." :
+                      data.id === "theseThose" ? "These shoes are new. Those mountains look majestic." :
+                      data.id === "doDoes" ? "Do you play chess? Does she like music? We don't eat meat." :
+                      "Sample: I am a student. I study English every day."}`;
+                contentDiv.innerText = allAns;
+                panel.style.display = "block";
+                fullBtn.innerHTML = '<i class="fas fa-eye-slash"></i> Hide all answers';
+            } else {
+                panel.style.display = "none";
+                fullBtn.innerHTML = '<i class="fas fa-list"></i> Show all answers for this topic';
+            }
+        });
+    }
+
+    function goPrev() {
+        currentSlide = (currentSlide - 1 + slidesData.length) % slidesData.length;
+        renderSlide();
+        updateTabsActive();
+    }
+    function goNext() {
+        currentSlide = (currentSlide + 1) % slidesData.length;
+        renderSlide();
+        updateTabsActive();
+    }
+
+    renderTabs();
+    renderSlide();
+    document.getElementById("prevSlide").addEventListener("click", goPrev);
+    document.getElementById("nextSlide").addEventListener("click", goNext);
+</script>
+</body>
+</html>

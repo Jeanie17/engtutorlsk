@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Time Activities - English Exercise</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #e0f7fa 0%, #bbdefb 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        section {
+            padding: 25px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        h2 {
+            color: #2575fc;
+            border-left: 5px solid #2575fc;
+            padding-left: 15px;
+            margin: 20px 0;
+            font-size: 1.6rem;
+        }
+        
+        .instructions {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .picture-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .picture-box {
+            border: 2px solid #2575fc;
+            border-radius: 10px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8fbff;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        .picture-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .picture-box.selected {
+            border-color: #ff4081;
+            background-color: #fce4ec;
+            box-shadow: 0 5px 15px rgba(255, 64, 129, 0.2);
+        }
+        
+        .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        
+        .picture-label {
+            font-weight: bold;
+            color: #2575fc;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .sentences {
+            background-color: #f5f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .sentence-item {
+            padding: 12px;
+            border-bottom: 1px dotted #d0e0ff;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sentence-number {
+            background-color: #2575fc;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .question-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            border-left: 4px solid #4caf50;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .example {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-style: italic;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        input[type="text"] {
+            padding: 10px 15px;
+            border: 1px solid #c5c5c5;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        input[type="text"]:focus {
+            border-color: #2575fc;
+            box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.2);
+            outline: none;
+        }
+        
+        .adverb-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fff3e0;
+            border-radius: 10px;
+            border-left: 4px solid #ff9800;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin: 30px auto;
+            display: block;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 117, 252, 0.4);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        .match-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .match-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #f0f8ff;
+            border-radius: 8px;
+            border: 1px solid #d0e0ff;
+        }
+        
+        .match-number {
+            background-color: #2575fc;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .match-select {
+            margin-left: auto;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid #c5c5c5;
+        }
+        
+        @media (max-width: 768px) {
+            .picture-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            section {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .picture-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎉 Free Time Activities 🎉</h1>
+            <div class="subtitle">Quiz: "How Well Do You Know Your Hobbies?" ✨</div>
+        </header>
+        
+        <section>
+            <div class="exercise">
+                <h2>1. Picture Match! 🖼️➡️📝</h2>
+                <div class="instructions">Look at the pictures and sentences below. Match each sentence to the correct picture by selecting from the dropdown menu.</div>
+                
+                <div class="picture-grid">
+                    <div class="picture-box" data-id="1">
+                        <div class="icon">🎮</div>
+                        <div class="picture-label">Picture A</div>
+                    </div>
+                    <div class="picture-box" data-id="2">
+                        <div class="icon">🛹</div>
+                        <div class="picture-label">Picture B</div>
+                    </div>
+                    <div class="picture-box" data-id="3">
+                        <div class="icon">♟️</div>
+                        <div class="picture-label">Picture C</div>
+                    </div>
+                    <div class="picture-box" data-id="4">
+                        <div class="icon">🛍️</div>
+                        <div class="picture-label">Picture D</div>
+                    </div>
+                    <div class="picture-box" data-id="5">
+                        <div class="icon">🎣</div>
+                        <div class="picture-label">Picture E</div>
+                    </div>
+                </div>
+                
+                <div class="sentences">
+                    <div class="match-container">
+                        <div class="match-item">
+                            <div class="match-number">1</div>
+                            <div><strong>He likes playing computer games.</strong></div>
+                            <select class="match-select">
+                                <option value="">Select Picture</option>
+                                <option value="A">Picture A</option>
+                                <option value="B">Picture B</option>
+                                <option value="C">Picture C</option>
+                                <option value="D">Picture D</option>
+                                <option value="E">Picture E</option>
+                            </select>
+                        </div>
+                        <div class="match-item">
+                            <div class="match-number">2</div>
+                            <div><strong>She likes skateboarding.</strong></div>
+                            <select class="match-select">
+                                <option value="">Select Picture</option>
+                                <option value="A">Picture A</option>
+                                <option value="B">Picture B</option>
+                                <option value="C">Picture C</option>
+                                <option value="D">Picture D</option>
+                                <option value="E">Picture E</option>
+                            </select>
+                        </div>
+                        <div class="match-item">
+                            <div class="match-number">3</div>
+                            <div><strong>They like playing chess.</strong></div>
+                            <select class="match-select">
+                                <option value="">Select Picture</option>
+                                <option value="A">Picture A</option>
+                                <option value="B">Picture B</option>
+                                <option value="C">Picture C</option>
+                                <option value="D">Picture D</option>
+                                <option value="E">Picture E</option>
+                            </select>
+                        </div>
+                        <div class="match-item">
+                            <div class="match-number">4</div>
+                            <div><strong>They like shopping.</strong></div>
+                            <select class="match-select">
+                                <option value="">Select Picture</option>
+                                <option value="A">Picture A</option>
+                                <option value="B">Picture B</option>
+                                <option value="C">Picture C</option>
+                                <option value="D">Picture D</option>
+                                <option value="E">Picture E</option>
+                            </select>
+                        </div>
+                        <div class="match-item">
+                            <div class="match-number">5</div>
+                            <div><strong>They like fishing.</strong></div>
+                            <select class="match-select">
+                                <option value="">Select Picture</option>
+                                <option value="A">Picture A</option>
+                                <option value="B">Picture B</option>
+                                <option value="C">Picture C</option>
+                                <option value="D">Picture D</option>
+                                <option value="E">Picture E</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <div class="exercise">
+                <h2>2. Let's Make Questions! ❓</h2>
+                <div class="instructions">Look at the clues and write the question. Then, answer it with <strong>Yes</strong> or <strong>No</strong> as shown.</div>
+                
+                <div class="example">
+                    <strong>Example:</strong><br>
+                    <strong>Clue:</strong> he / like / dance?<br>
+                    <strong>Question:</strong> Does he like dancing?<br>
+                    <strong>Answer:</strong> No, he doesn't.
+                </div>
+                
+                <div class="question-item">
+                    <strong>Clue:</strong> he / like / fish?<br>
+                    <div class="input-group">
+                        <label for="q1-question">Question:</label>
+                        <input type="text" id="q1-question" placeholder="Write the question here">
+                        <label for="q1-answer">Answer:</label>
+                        <input type="text" id="q1-answer" placeholder="No, ______________">
+                    </div>
+                </div>
+                
+                <div class="question-item">
+                    <strong>Clue:</strong> she / like / play the guitar?<br>
+                    <div class="input-group">
+                        <label for="q2-question">Question:</label>
+                        <input type="text" id="q2-question" placeholder="Write the question here">
+                        <label for="q2-answer">Answer:</label>
+                        <input type="text" id="q2-answer" placeholder="Yes, ______________">
+                    </div>
+                </div>
+                
+                <div class="question-item">
+                    <strong>Clue:</strong> they / like / visit family?<br>
+                    <div class="input-group">
+                        <label for="q3-question">Question:</label>
+                        <input type="text" id="q3-question" placeholder="Write the question here">
+                        <label for="q3-answer">Answer:</label>
+                        <input type="text" id="q3-answer" placeholder="Yes, ______________">
+                    </div>
+                </div>
+                
+                <div class="question-item">
+                    <strong>Clue:</strong> he / like / run?<br>
+                    <div class="input-group">
+                        <label for="q4-question">Question:</label>
+                        <input type="text" id="q4-question" placeholder="Write the question here">
+                        <label for="q4-answer">Answer:</label>
+                        <input type="text" id="q4-answer" placeholder="No, ______________">
+                    </div>
+                </div>
+                
+                <div class="question-item">
+                    <strong>Clue:</strong> they / like / read?<br>
+                    <div class="input-group">
+                        <label for="q5-question">Question:</label>
+                        <input type="text" id="q5-question" placeholder="Write the question here">
+                        <label for="q5-answer">Answer:</label>
+                        <input type="text" id="q5-answer" placeholder="Yes, ______________">
+                    </div>
+                </div>
+                
+                <div class="question-item">
+                    <strong>Clue:</strong> they / like / play basketball?<br>
+                    <div class="input-group">
+                        <label for="q6-question">Question:</label>
+                        <input type="text" id="q6-question" placeholder="Write the question here">
+                        <label for="q6-answer">Answer:</label>
+                        <input type="text" id="q6-answer" placeholder="No, ______________">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <div class="exercise">
+                <h2>3. Adverb Adventure! ✍️</h2>
+                <div class="instructions">Rewrite each sentence and put the adverb in brackets ( ) in the correct place.</div>
+                
+                <div class="example">
+                    <strong>Example:</strong><br>
+                    I listen to music. (always) → <strong>I always listen to music.</strong>
+                </div>
+                
+                <div class="adverb-item">
+                    I do my homework on Saturday. (never)<br>
+                    <div class="input-group">
+                        <input type="text" id="a1" placeholder="Write the complete sentence here">
+                    </div>
+                </div>
+                
+                <div class="adverb-item">
+                    I am happy at the weekend. (always)<br>
+                    <div class="input-group">
+                        <input type="text" id="a2" placeholder="Write the complete sentence here">
+                    </div>
+                </div>
+                
+                <div class="adverb-item">
+                    I meet my best friend at the cinema. (sometimes)<br>
+                    <div class="input-group">
+                        <input type="text" id="a3" placeholder="Write the complete sentence here">
+                    </div>
+                </div>
+                
+                <div class="adverb-item">
+                    I go out on Saturday morning. (often)<br>
+                    <div class="input-group">
+                        <input type="text" id="a4" placeholder="Write the complete sentence here">
+                    </div>
+                </div>
+                
+                <div class="adverb-item">
+                    The films are interesting. (usually)<br>
+                    <div class="input-group">
+                        <input type="text" id="a5" placeholder="Write the complete sentence here">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <button class="btn" id="submit-btn">Check Answers</button>
+        
+        <footer>
+            <p>Great job! You've finished the quiz! 🏆</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple script to enhance interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Picture selection functionality
+            const pictureBoxes = document.querySelectorAll('.picture-box');
+            pictureBoxes.forEach(box => {
+                box.addEventListener('click', function() {
+                    // Remove selected class from all boxes
+                    pictureBoxes.forEach(b => b.classList.remove('selected'));
+                    // Add selected class to clicked box
+                    this.classList.add('selected');
+                });
+            });
+            
+            // Input focus effects
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.style.backgroundColor = '#fff';
+                });
+                
+                input.addEventListener('blur', function() {
+                    if (this.value === '') {
+                        this.style.backgroundColor = '';
+                    }
+                });
+            });
+            
+            // Submit button animation
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.addEventListener('click', function() {
+                // Add animation
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                    alert('Answers submitted! Great work!');
+                }, 200);
+            });
+            
+            // Dropdown change effect
+            const selects = document.querySelectorAll('.match-select');
+            selects.forEach(select => {
+                select.addEventListener('change', function() {
+                    if (this.value) {
+                        this.style.backgroundColor = '#e8f5e9';
+                        this.style.borderColor = '#4caf50';
+                    } else {
+                        this.style.backgroundColor = '';
+                        this.style.borderColor = '#c5c5c5';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
