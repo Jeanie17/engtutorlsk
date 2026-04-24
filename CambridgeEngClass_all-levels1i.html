@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Cambridge English: Grammar Rules & Exercises | Pre-Starters to Flyers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', system-ui, sans-serif;
+            background: linear-gradient(145deg, #eef2f7 0%, #dbe5f0 100%);
+            padding: 30px 20px;
+        }
+
+        /* main deck container */
+        .grammar-deck {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 56px;
+            box-shadow: 0 30px 45px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        /* level tabs */
+        .level-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            background: #f8fafc;
+            border-bottom: 2px solid #e2edf2;
+            padding: 0 20px;
+            gap: 8px;
+        }
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 16px 28px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #4a627a;
+            cursor: pointer;
+            transition: 0.2s;
+            border-radius: 32px 32px 0 0;
+            margin-bottom: -2px;
+        }
+        .tab-btn.active {
+            background: #ffffff;
+            color: #1f6392;
+            border-bottom: 3px solid #2a9d8f;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.02);
+        }
+        .tab-btn:hover:not(.active) {
+            background: #eaf2f9;
+            color: #2c7da0;
+        }
+
+        /* content panels */
+        .level-panel {
+            display: none;
+            padding: 32px 40px;
+            animation: fade 0.3s ease;
+        }
+        .level-panel.active-panel {
+            display: block;
+        }
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(6px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #1f4e6e;
+            border-left: 7px solid #2a9d8f;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        .grammar-rule-box {
+            background: #f0f7fc;
+            border-radius: 32px;
+            padding: 20px 28px;
+            margin-bottom: 30px;
+            border: 1px solid #cde3ef;
+        }
+        .rule-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .badge {
+            background: #e4edf5;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-weight: 500;
+            color: #1f5e7e;
+        }
+        .exercise-section {
+            margin-top: 35px;
+        }
+        .exercise-type {
+            background: #fefcf5;
+            border-radius: 28px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid #eaeef2;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+        }
+        .exercise-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #2c5f7a;
+            border-left: 4px solid #f4b942;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+        .question-item {
+            background: white;
+            border-radius: 24px;
+            padding: 16px 20px;
+            margin-bottom: 16px;
+            border: 1px solid #e5ecf3;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+        .q-text {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.98rem;
+        }
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 8px 0 12px;
+            font-size: 0.9rem;
+        }
+        .opt {
+            background: #f6faff;
+            padding: 4px 14px;
+            border-radius: 28px;
+        }
+        .reveal-ans {
+            background: #2a9d8f;
+            border: none;
+            color: white;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: 0.1s;
+            margin-top: 6px;
+        }
+        .reveal-ans:hover {
+            background: #1e7e6f;
+            transform: scale(0.97);
+        }
+        .answer-fb {
+            margin-top: 12px;
+            background: #eaf9ef;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 28px;
+            color: #1f6e43;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+        hr {
+            margin: 8px 0;
+        }
+        footer {
+            text-align: center;
+            background: #f9fbfd;
+            padding: 18px;
+            font-size: 0.75rem;
+            color: #4f6f8f;
+            border-top: 1px solid #e2eaf0;
+        }
+        @media (max-width: 780px) {
+            .level-panel { padding: 20px; }
+            .tab-btn { padding: 12px 18px; font-size: 0.9rem; }
+            .options { gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+<div class="grammar-deck">
+    <div class="level-tabs">
+        <button class="tab-btn active" data-level="prestarters">🌟 Pre-Starters (K1-K3)</button>
+        <button class="tab-btn" data-level="starters">🐣 Starters (YLE Level 1)</button>
+        <button class="tab-btn" data-level="movers">🚀 Movers (YLE Level 2)</button>
+        <button class="tab-btn" data-level="flyers">🪁 Flyers (YLE Level 3)</button>
+    </div>
+
+    <!-- Pre-Starters Panel -->
+    <div class="level-panel active-panel" id="prestarters-panel">
+        <h2>📘 Pre-Starters Grammar Foundations</h2>
+        <div class="grammar-rule-box">
+            <div class="rule-grid">
+                <span class="badge">Nouns (singular/plural: -s)</span>
+                <span class="badge">Verb 'to be' (am/is/are)</span>
+                <span class="badge">Basic adjectives (big/small)</span>
+                <span class="badge">Simple questions (What? Where?)</span>
+                <span class="badge">Numbers 1-20 & colours</span>
+                <span class="badge">Prepositions: in, on, under</span>
+                <span class="badge">Imperatives & common verbs</span>
+            </div>
+            <p><strong>Key rules:</strong> Use 'a' / 'an' before singular nouns. Add -s for plurals (cat→cats). 'I am / you are / he is'. Introduce 'have got' positive and question forms.</p>
+        </div>
+        <div class="exercise-section" id="prestarters-exercises"></div>
+    </div>
+
+    <!-- Starters Panel -->
+    <div class="level-panel" id="starters-panel">
+        <h2>📙 Starters Essential Grammar</h2>
+        <div class="grammar-rule-box">
+            <div class="rule-grid">
+                <span class="badge">Present simple (like/likes, play/plays)</span>
+                <span class="badge">Can / can't for ability</span>
+                <span class="badge">Possessive adjectives (my, your, his)</span>
+                <span class="badge">Question words (who, which, how many)</span>
+                <span class="badge">Prepositions: next to, between</span>
+                <span class="badge">Plurals: -ies, -ves</span>
+                <span class="badge">Present continuous (actions now)</span>
+            </div>
+            <p>Present simple for routines; present continuous for now; 'there is/there are'; adverbs of frequency (always, sometimes).</p>
+        </div>
+        <div class="exercise-section" id="starters-exercises"></div>
+    </div>
+
+    <!-- Movers Panel -->
+    <div class="level-panel" id="movers-panel">
+        <h2>📒 Movers: Building Confidence</h2>
+        <div class="grammar-rule-box">
+            <div class="rule-grid">
+                <span class="badge">Past simple (regular & common irregular)</span>
+                <span class="badge">Comparatives (bigger, more interesting)</span>
+                <span class="badge">Going to for future plans</span>
+                <span class="badge">Adverbs of manner (quickly, happily)</span>
+                <span class="badge">Must / mustn't for obligation</span>
+                <span class="badge">Object pronouns (me, him, them)</span>
+                <span class="badge">Wh- questions in past</span>
+            </div>
+            <p>Past simple: -ed endings, irregular verbs (go→went, see→saw). Sequence connectors (then, after that). Comparatives and basic superlatives.</p>
+        </div>
+        <div class="exercise-section" id="movers-exercises"></div>
+    </div>
+
+    <!-- Flyers Panel -->
+    <div class="level-panel" id="flyers-panel">
+        <h2>📕 Flyers: Towards Independence</h2>
+        <div class="grammar-rule-box">
+            <div class="rule-grid">
+                <span class="badge">Present perfect (experience, results)</span>
+                <span class="badge">First conditional (if... will)</span>
+                <span class="badge">Passive voice (basic)</span>
+                <span class="badge">Reported speech (say/tell)</span>
+                <span class="badge">Relative clauses (who, which, where)</span>
+                <span class="badge">Modals: could, should, might</span>
+                <span class="badge">Connectors: although, however</span>
+            </div>
+            <p>Introduce since/for, ever/never. Conditionals for real possibilities. Passive with present simple (English is spoken).</p>
+        </div>
+        <div class="exercise-section" id="flyers-exercises"></div>
+    </div>
+    <footer>✨ Each level: 30 interactive questions (5 exercise types × 6 questions). Click "Show Answer" to check.</footer>
+</div>
+
+<script>
+    // ----------------------------------------------
+    // DATA: 5 exercise types per level, 6 questions each = 30 per level
+    // Types: Type A: Fill-in (choose correct word), Type B: Multiple choice grammar, 
+    // Type C: Sentence correction, Type D: Matching meaning, Type E: Choose correct form.
+    // Each question object: { text, options, correct }
+    // Now generate for Pre-starters, Starters, Movers, Flyers
+    // ----------------------------------------------
+
+    // ------ PRE-STARTERS (30 questions) ------
+    const preStartersQs = [
+        // Type A (Fill-in) 6
+        { text: "I ___ a boy.", options: ["A. am", "B. is", "C. are"], correct: "A. am" },
+        { text: "She ___ got a red pencil.", options: ["A. have", "B. has", "C. is"], correct: "B. has" },
+        { text: "There ___ two apples on the table.", options: ["A. is", "B. are", "C. am"], correct: "B. are" },
+        { text: "The cat is ___ the box.", options: ["A. under", "B. next", "C. between"], correct: "A. under" },
+        { text: "I like ___ apple.", options: ["A. a", "B. an", "C. the"], correct: "B. an" },
+        { text: "My sister ___ to school every day.", options: ["A. go", "B. goes", "C. going"], correct: "B. goes" },
+        // Type B: multiple choice
+        { text: "What ___ your name?", options: ["A. am", "B. is", "C. are"], correct: "B. is" },
+        { text: "We ___ happy.", options: ["A. is", "B. am", "C. are"], correct: "C. are" },
+        { text: "Choose the correct plural: one box, two ___", options: ["A. boxs", "B. boxes", "C. box'es"], correct: "B. boxes" },
+        { text: "Can you ___ me the ball?", options: ["A. gives", "B. give", "C. giving"], correct: "B. give" },
+        { text: "I ___ a blue shirt today.", options: ["A. have", "B. has", "C. am"], correct: "A. have" },
+        { text: "Let's count: one, two, three, ___", options: ["A. four", "B. five", "C. six"], correct: "A. four" },
+        // Type C Correction
+        { text: "CORRECT THE SENTENCE: 'He are my friend.'", options: ["A. He am my friend.", "B. He is my friend.", "C. He be my friend."], correct: "B. He is my friend." },
+        { text: "CORRECT: 'She have a cat.'", options: ["A. She has a cat.", "B. She haves a cat.", "C. She having a cat."], correct: "A. She has a cat." },
+        { text: "CORRECT: 'There is five pens.'", options: ["A. There are five pens.", "B. There is five pen.", "C. There am five pens."], correct: "A. There are five pens." },
+        { text: "CORRECT: 'I no like pizza.'", options: ["A. I no like pizza.", "B. I don't like pizza.", "C. I doesn't like pizza."], correct: "B. I don't like pizza." },
+        { text: "CORRECT: 'The bird are flying.'", options: ["A. The bird am flying.", "B. The bird is flying.", "C. The bird flying."], correct: "B. The bird is flying." },
+        { text: "CORRECT: 'We has a big house.'", options: ["A. We have a big house.", "B. We haves a big house.", "C. We are a big house."], correct: "A. We have a big house." },
+        // Type D: choose the correct word
+        { text: "Choose the correct word: 'My sister ___ very tall.'", options: ["A. are", "B. is", "C. am"], correct: "B. is" },
+        { text: "'Please ___ the door.'", options: ["A. opening", "B. open", "C. opens"], correct: "B. open" },
+        { text: "'How many ___ ?'", options: ["A. childs", "B. children", "C. child"], correct: "B. children" },
+        { text: "'The pencil is ___ the bag.'", options: ["A. on", "B. in", "C. under"], correct: "B. in" },
+        { text: "'___ you like ice cream?'", options: ["A. Does", "B. Do", "C. Is"], correct: "B. Do" },
+        { text: "'I ___ to the park yesterday.' (Pre-starters basic: introduce past?) but use present: I ___ to the park every Sunday.", options: ["A. go", "B. goes", "C. going"], correct: "A. go" },
+        // Type E: choose best form
+        { text: "She ___ to music now.", options: ["A. listen", "B. listens", "C. is listening"], correct: "C. is listening" },
+        { text: "___ you want a cookie?", options: ["A. Does", "B. Do", "C. Is"], correct: "B. Do" },
+        { text: "The dog ___ running fast.", options: ["A. am", "B. are", "C. is"], correct: "C. is" },
+        { text: "Where ___ my shoes?", options: ["A. is", "B. are", "C. am"], correct: "B. are" },
+        { text: "Let's ___ to the zoo.", options: ["A. go", "B. goes", "C. going"], correct: "A. go" },
+        { text: "My father ___ a new car.", options: ["A. have", "B. has", "C. is"], correct: "B. has" }
+    ];
+
+    // ------ STARTERS (30 questions) ------
+    const startersQs = [
+        { text: "My brother ___ football every Saturday.", options: ["A. play", "B. plays", "C. playing"], correct: "B. plays" },
+        { text: "They ___ watching TV at the moment.", options: ["A. is", "B. am", "C. are"], correct: "C. are" },
+        { text: "Can you ___ a bicycle?", options: ["A. ride", "B. rides", "C. riding"], correct: "A. ride" },
+        { text: "___ she like ice cream?", options: ["A. Do", "B. Does", "C. Is"], correct: "B. Does" },
+        { text: "These are my shoes. ___ are blue.", options: ["A. They", "B. It", "C. Their"], correct: "A. They" },
+        { text: "There aren't ___ apples left.", options: ["A. some", "B. any", "C. a"], correct: "B. any" },
+        // Type B
+        { text: "What time ___ you get up?", options: ["A. does", "B. do", "C. is"], correct: "B. do" },
+        { text: "She ___ to school by bus.", options: ["A. go", "B. goes", "C. going"], correct: "B. goes" },
+        { text: "We ___ a test yesterday.", options: ["A. have", "B. has", "C. had"], correct: "C. had" },
+        { text: "The cat is sleeping ___ the chair.", options: ["A. on", "B. between", "C. under"], correct: "A. on" },
+        { text: "I'm ___ a letter right now.", options: ["A. write", "B. writes", "C. writing"], correct: "C. writing" },
+        { text: "Let's go ___ home.", options: ["A. to", "B. at", "C. - (nothing)"], correct: "C. - (nothing)" },
+        // Type C correction
+        { text: "CORRECT: 'He don't like apples.'", options: ["A. He doesn't like apples.", "B. He don't likes apples.", "C. He not like apples."], correct: "A. He doesn't like apples." },
+        { text: "CORRECT: 'I am go to school.'", options: ["A. I go to school.", "B. I am going to school.", "C. I goes to school."], correct: "B. I am going to school." },
+        { text: "CORRECT: 'She can plays piano.'", options: ["A. She can play piano.", "B. She cans play piano.", "C. She playing piano."], correct: "A. She can play piano." },
+        { text: "CORRECT: 'There is many birds.'", options: ["A. There are many birds.", "B. There is many bird.", "C. There am many birds."], correct: "A. There are many birds." },
+        { text: "CORRECT: 'What time she gets up?'", options: ["A. What time does she get up?", "B. What time she get up?", "C. What time do she get up?"], correct: "A. What time does she get up?" },
+        { text: "CORRECT: 'They was happy.'", options: ["A. They were happy.", "B. They was happy.", "C. They are happy."], correct: "A. They were happy." },
+        // Type D choose correct
+        { text: "I usually ___ breakfast at 7 am.", options: ["A. have", "B. has", "C. having"], correct: "A. have" },
+        { text: "Look! It ___ raining.", options: ["A. is", "B. are", "C. am"], correct: "A. is" },
+        { text: "He ___ run very fast.", options: ["A. can", "B. cans", "C. can to"], correct: "A. can" },
+        { text: "These are my ___ .", options: ["A. toy", "B. toyes", "C. toys"], correct: "C. toys" },
+        { text: "I ___ a new bag yesterday.", options: ["A. buy", "B. bought", "C. buys"], correct: "B. bought" },
+        { text: "She is ___ than her brother.", options: ["A. tall", "B. taller", "C. tallest"], correct: "B. taller" },
+        // Type E extras
+        { text: "___ you help me, please?", options: ["A. Could", "B. May", "C. Do"], correct: "A. Could" },
+        { text: "My grandma ___ stories every night.", options: ["A. tell", "B. tells", "C. telling"], correct: "B. tells" },
+        { text: "The children ___ playing outside.", options: ["A. is", "B. are", "C. am"], correct: "B. are" },
+        { text: "What ___ you do last weekend?", options: ["A. did", "B. do", "C. does"], correct: "A. did" },
+        { text: "Let's ___ to the cinema.", options: ["A. to go", "B. go", "C. going"], correct: "B. go" },
+        { text: "It was dark, so I ___ the lights.", options: ["A. turn on", "B. turned on", "C. turning on"], correct: "B. turned on" }
+    ];
+
+    // Movers 30 questions (sample grammar appropriate)
+    const moversQs = [
+        { text: "Yesterday I ___ to the park.", options: ["A. go", "B. went", "C. gone"], correct: "B. went" },
+        { text: "She is ___ than her sister.", options: ["A. tall", "B. taller", "C. tallest"], correct: "B. taller" },
+        { text: "We ___ visit grandma next week.", options: ["A. going to", "B. are going to", "C. go to"], correct: "B. are going to" },
+        { text: "He ___ his arm while playing football.", options: ["A. break", "B. broke", "C. broken"], correct: "B. broke" },
+        { text: "You ___ run in the corridor. It's dangerous.", options: ["A. mustn't", "B. don't have to", "C. can't"], correct: "A. mustn't" },
+        { text: "This book is ___ than the other one.", options: ["A. interesting", "B. more interesting", "C. most interesting"], correct: "B. more interesting" },
+        { text: "I saw ___ movie last night. ___ movie was great.", options: ["A. a / The", "B. the / A", "C. an / The"], correct: "A. a / The" },
+        { text: "What ___ you doing at 5pm yesterday?", options: ["A. was", "B. were", "C. did"], correct: "B. were" },
+        { text: "She plays the piano ___ .", options: ["A. beautiful", "B. beautifully", "C. beautifuly"], correct: "B. beautifully" },
+        { text: "If it rains tomorrow, we ___ at home.", options: ["A. stay", "B. will stay", "C. stayed"], correct: "B. will stay" },
+        { text: "CORRECT: 'He didn't went to school.'", options: ["A. He didn't go to school.", "B. He didn't went to school.", "C. He not went to school."], correct: "A. He didn't go to school." },
+        { text: "CORRECT: 'She is more tall than me.'", options: ["A. She is taller than me.", "B. She is more taller than me.", "C. She is the tallest than me."], correct: "A. She is taller than me." },
+        { text: "CORRECT: 'Where did you went?'", options: ["A. Where did you go?", "B. Where you went?", "C. Where did you went?"], correct: "A. Where did you go?" },
+        { text: "CORRECT: 'There isn't some milk.'", options: ["A. There isn't any milk.", "B. There isn't no milk.", "C. There is not some milk."], correct: "A. There isn't any milk." },
+        { text: "CORRECT: 'He can swims very fast.'", options: ["A. He can swim very fast.", "B. He can to swim fast.", "C. He swims can fast."], correct: "A. He can swim very fast." },
+        { text: "CORRECT: 'I am going to cinema.'", options: ["A. I am going to the cinema.", "B. I going cinema.", "C. I am go to cinema."], correct: "A. I am going to the cinema." },
+        { text: "Choose: 'She ___ her keys yesterday.'", options: ["A. lose", "B. lost", "C. losed"], correct: "B. lost" },
+        { text: "The exam was ___ than I expected.", options: ["A. easy", "B. easier", "C. easiest"], correct: "B. easier" },
+        { text: "You ___ eat more vegetables. It's healthy.", options: ["A. should", "B. mustn't", "C. can't"], correct: "A. should" },
+        { text: "We ___ a party next Saturday.", options: ["A. have", "B. are having", "C. had"], correct: "B. are having" },
+        { text: "This is the ___ cake I've ever eaten.", options: ["A. good", "B. better", "C. best"], correct: "C. best" },
+        { text: "I'll call you when I ___ home.", options: ["A. get", "B. will get", "C. got"], correct: "A. get" },
+        { text: "She speaks English ___ .", options: ["A. fluent", "B. fluently", "C. more fluent"], correct: "B. fluently" },
+        { text: "They ___ watching a film at 8pm last night.", options: ["A. was", "B. were", "C. are"], correct: "B. were" },
+        { text: "What time ___ you get up yesterday?", options: ["A. do", "B. did", "C. were"], correct: "B. did" },
+        { text: "I don't mind ___ the dishes.", options: ["A. wash", "B. to wash", "C. washing"], correct: "C. washing" },
+        { text: "It's important ___ on time.", options: ["A. be", "B. to be", "C. being"], correct: "B. to be" },
+        { text: "He is interested in ___ music.", options: ["A. learn", "B. learning", "C. to learn"], correct: "B. learning" },
+        { text: "She ran ___ to catch the bus.", options: ["A. quick", "B. quickly", "C. more quick"], correct: "B. quickly" },
+        { text: "If we ___ hard, we'll pass.", options: ["A. study", "B. will study", "C. studied"], correct: "A. study" }
+    ];
+
+    // Flyers 30 questions (more advanced)
+    const flyersQs = [
+        { text: "I have ___ finished my homework.", options: ["A. just", "B. yet", "C. ago"], correct: "A. just" },
+        { text: "She ___ to London twice.", options: ["A. has been", "B. have been", "C. went"], correct: "A. has been" },
+        { text: "If you study hard, you ___ pass.", options: ["A. will", "B. would", "C. are"], correct: "A. will" },
+        { text: "The letter ___ by the secretary yesterday.", options: ["A. is sent", "B. was sent", "C. sent"], correct: "B. was sent" },
+        { text: "He said that he ___ tired.", options: ["A. is", "B. was", "C. were"], correct: "B. was" },
+        { text: "This is the girl ___ won the prize.", options: ["A. which", "B. who", "C. where"], correct: "B. who" },
+        { text: "You ___ see that film – it's great.", options: ["A. should", "B. might", "C. could"], correct: "A. should" },
+        { text: "They ___ for five years.", options: ["A. have been married", "B. are married", "C. got married"], correct: "A. have been married" },
+        { text: "I wish I ___ more time.", options: ["A. have", "B. had", "C. would have"], correct: "B. had" },
+        { text: "The car needs ___.", options: ["A. wash", "B. washing", "C. to wash"], correct: "B. washing" },
+        { text: "CORRECT: 'She have never seen snow.'", options: ["A. She has never seen snow.", "B. She have never see snow.", "C. She never have seen snow."], correct: "A. She has never seen snow." },
+        { text: "CORRECT: 'If I will see him, I tell him.'", options: ["A. If I see him, I will tell him.", "B. If I will see him, I will tell.", "C. If I saw him, I tell."], correct: "A. If I see him, I will tell him." },
+        { text: "CORRECT: 'English speak all over the world.'", options: ["A. English is spoken all over the world.", "B. English speaks all over the world.", "C. English are spoken."], correct: "A. English is spoken all over the world." },
+        { text: "CORRECT: 'He told that he is coming.'", options: ["A. He said that he was coming.", "B. He told that he was come.", "C. He said he is come."], correct: "A. He said that he was coming." },
+        { text: "CORRECT: 'This is the house which I live.'", options: ["A. This is the house where I live.", "B. This is the house which I live in it.", "C. This is the house I live which."], correct: "A. This is the house where I live." },
+        { text: "CORRECT: 'I have visited Paris last year.'", options: ["A. I visited Paris last year.", "B. I have visited Paris last year.", "C. I visit Paris last year."], correct: "A. I visited Paris last year." },
+        { text: "Choose: She speaks ___ French.", options: ["A. a little", "B. little", "C. few"], correct: "A. a little" },
+        { text: "By the time we arrive, the film ___.", options: ["A. will start", "B. will have started", "C. starts"], correct: "B. will have started" },
+        { text: "He is ___ to lift the box.", options: ["A. enough strong", "B. strong enough", "C. too strong"], correct: "B. strong enough" },
+        { text: "She ___ be at home; her light is on.", options: ["A. must", "B. can't", "C. might"], correct: "A. must" },
+        { text: "They suggested ___ to the museum.", options: ["A. going", "B. to go", "C. go"], correct: "A. going" },
+        { text: "If I ___ you, I'd apologize.", options: ["A. am", "B. were", "C. was"], correct: "B. were" },
+        { text: "It's time you ___ a decision.", options: ["A. make", "B. made", "C. will make"], correct: "B. made" },
+        { text: "___ of the students passed the exam.", options: ["A. Most", "B. Much", "C. A lot"], correct: "A. Most" },
+        { text: "This time next week, I ___ on holiday.", options: ["A. will be lying", "B. will lie", "C. am lying"], correct: "A. will be lying" },
+        { text: "Not only ___ she late, but she also forgot her homework.", options: ["A. was", "B. is", "C. were"], correct: "A. was" },
+        { text: "The more you study, ___ you become.", options: ["A. the smarter", "B. smarter", "C. the smartest"], correct: "A. the smarter" },
+        { text: "I'd rather ___ at home tonight.", options: ["A. stay", "B. to stay", "C. staying"], correct: "A. stay" },
+        { text: "She denied ___ the window.", options: ["A. to break", "B. breaking", "C. break"], correct: "B. breaking" },
+        { text: "___ he was tired, he finished the race.", options: ["A. Although", "B. Because", "C. So"], correct: "A. Although" }
+    ];
+
+    function renderLevel(levelId, questionsArray, containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        container.innerHTML = '';
+        // Split into 5 exercise types (6 questions each)
+        const types = ['📝 Fill-in / Multiple Choice', '✅ Grammar Selection', '🔍 Sentence Correction', '🎯 Choose Correct Word', '⭐ Advanced Choices'];
+        for (let t = 0; t < 5; t++) {
+            const startIdx = t * 6;
+            const typeQs = questionsArray.slice(startIdx, startIdx + 6);
+            const typeDiv = document.createElement('div');
+            typeDiv.className = 'exercise-type';
+            typeDiv.innerHTML = `<div class="exercise-title">${types[t]} (${t+1}/5)</div>`;
+            typeQs.forEach((q, idx) => {
+                const qDiv = document.createElement('div');
+                qDiv.className = 'question-item';
+                const optsHtml = q.options.map(opt => `<span class="opt">${opt}</span>`).join('');
+                qDiv.innerHTML = `
+                    <div class="q-text">${startIdx + idx + 1}. ${q.text}</div>
+                    <div class="options">${optsHtml}</div>
+                    <button class="reveal-ans" data-answer="${q.correct.replace(/"/g, '&quot;')}">🔍 Show Answer</button>
+                    <div class="answer-fb" style="display:none;"></div>
+                `;
+                typeDiv.appendChild(qDiv);
+            });
+            container.appendChild(typeDiv);
+        }
+
+        // attach answer button listeners
+        container.querySelectorAll('.reveal-ans').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const ans = btn.getAttribute('data-answer');
+                const fbDiv = btn.nextElementSibling;
+                if (fbDiv) {
+                    fbDiv.style.display = 'block';
+                    fbDiv.innerHTML = `✔️ Correct answer: <strong>${ans}</strong>`;
+                }
+            });
+        });
+    }
+
+    // Render all levels
+    renderLevel('prestarters', preStartersQs, 'prestarters-exercises');
+    renderLevel('starters', startersQs, 'starters-exercises');
+    renderLevel('movers', moversQs, 'movers-exercises');
+    renderLevel('flyers', flyersQs, 'flyers-exercises');
+
+    // Tab switching logic
+    const tabs = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.level-panel');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const level = tab.getAttribute('data-level');
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            panels.forEach(panel => panel.classList.remove('active-panel'));
+            document.getElementById(`${level}-panel`).classList.add('active-panel');
+        });
+    });
+</script>
+</body>
+</html>
